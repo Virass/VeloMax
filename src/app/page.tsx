@@ -1,5 +1,8 @@
 export default function Home() {
+
   return (
-    <div>Hello, VeloMax!</div>
+    <div>
+      <h1>Hello, VeloMax!</h1>
+    </div>
   );
 }

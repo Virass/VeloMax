@@ -14,8 +14,13 @@ type ModalWindowType = {
     size: ModalSize;
 };
 
+type OpenModalPayload = {
+    title: string;
+    content: React.ReactNode | React.ComponentType;
+};
+
 type ModalWindowStoreActions = {
-    openModal({ title, content }: { title: string, content: React.ReactNode | React.ComponentType }): void;
+    openModal(payload: OpenModalPayload): void;
     closeModal(): void;
 };
 

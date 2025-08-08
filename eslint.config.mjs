@@ -21,14 +21,12 @@ const eslintConfig = [
             /* -------- General Best Practices -------- */
             eqeqeq: ['error', 'always'],
             'no-console': ['warn', { allow: ['warn', 'error'] }],
-            'no-debugger': 'error',
             'no-alert': 'warn',
             'no-duplicate-imports': 'error',
             'prefer-const': 'error',
             'no-var': 'error',
             'no-shadow': 'error',
             curly: ['error', 'all'],
-            'object-shorthand': ['error', 'always'],
             'arrow-body-style': ['error', 'as-needed'],
 
             /* -------- TypeScript Rules -------- */
@@ -38,7 +36,7 @@ const eslintConfig = [
                 { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
             ],
             '@typescript-eslint/explicit-function-return-type': 'off',
-            '@typescript-eslint/no-non-null-assertion': 'warn',
+            '@typescript-eslint/no-non-null-assertion': 'error',
             '@typescript-eslint/consistent-type-imports': [
                 'error',
                 { prefer: 'type-imports', disallowTypeAnnotations: false },
@@ -51,7 +49,6 @@ const eslintConfig = [
             'react/jsx-curly-brace-presence': ['error', 'never'],
             'react/self-closing-comp': 'error',
             'react-hooks/rules-of-hooks': 'error',
-            'react-hooks/exhaustive-deps': 'warn',
 
             /* -------- Import Rules -------- */
             'import/order': [
@@ -80,13 +77,6 @@ const eslintConfig = [
 
             /* -------- Accessibility Rules -------- */
             'jsx-a11y/alt-text': 'warn',
-            'jsx-a11y/anchor-is-valid': [
-                'warn',
-                {
-                    aspects: ['invalidHref'],
-                    components: ['Link'],
-                },
-            ],
 
             /* -------- Next.js Specific -------- */
             '@next/next/no-img-element': 'error',

@@ -51,7 +51,7 @@ export const createModalWindowStore: StoreStateType<ModalWindowStoreType> = (set
         set((state) => ({
             modalWindow: {
                 ...state.modalWindow,
-                isModalOpen: false,
+                ...initialState,
             },
         }));
     },

@@ -45,8 +45,6 @@ const eslintConfig = [
             ],
 
             /* -------- React Rules -------- */
-            'react/react-in-jsx-scope': 'off',
-            'react/jsx-uses-react': 'off',
             'react/prop-types': 'off',
             'react/jsx-no-duplicate-props': 'error',
             'react/no-unescaped-entities': 'off',

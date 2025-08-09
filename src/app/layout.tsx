@@ -1,40 +1,42 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
+import {
+    ColorSchemeScript,
+    MantineProvider,
+    mantineHtmlProps,
+} from '@mantine/core';
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
-import "@/shared/styles/reset.css";
+import '@/shared/styles/reset.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: '--font-geist-sans',
+    subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "VeloMax",
-  description: "Вело майстерня VeloMax",
+    title: 'VeloMax',
+    description: 'Вело майстерня VeloMax',
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript />
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <MantineProvider>
-        {children}
-        </MantineProvider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" {...mantineHtmlProps}>
+            <head>
+                <ColorSchemeScript />
+            </head>
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                <MantineProvider>{children}</MantineProvider>
+            </body>
+        </html>
+    );
 }

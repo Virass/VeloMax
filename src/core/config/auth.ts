@@ -1,6 +1,7 @@
-import NextAuth from "next-auth"
-import { SupabaseAdapter } from "@auth/supabase-adapter"
-import { supabaseServiceRoleKey, supabaseUrl } from "./supabase"
+import { SupabaseAdapter } from '@auth/supabase-adapter';
+import NextAuth from 'next-auth';
+
+import { supabaseServiceRoleKey, supabaseUrl } from './supabase';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [],
@@ -8,4 +9,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         url: supabaseUrl,
         secret: supabaseServiceRoleKey,
     }),
-})
+});

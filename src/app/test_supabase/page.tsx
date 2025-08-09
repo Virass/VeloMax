@@ -1,9 +1,12 @@
-import { supabase } from "@/core/config/supabase";
+import { supabase } from '@/core/config/supabase';
 
-export const dynamic = "force-dynamic"; // SSR for Next.js app directory
+export const dynamic = 'force-dynamic'; // SSR for Next.js app directory
 
 export default async function TestSupabasePage() {
-    const { data, error } = await supabase.from('test_table').select('*').limit(1);
+    const { data, error } = await supabase
+        .from('test_table')
+        .select('*')
+        .limit(1);
     const result = error ? error.message : data;
 
     return (

@@ -12,15 +12,20 @@ export default function Navbar() {
     return (
         <AppShell.Navbar>
             <AppShell.Section grow my="md" component={ScrollArea} px="md">
-                {navItems.map(({ label, link }) => (
-                    <NavLink
-                        href={link}
-                        key={link}
-                        component={Link}
-                        label={label}
-                        active={link === pathname}
-                    />
-                ))}
+                {navItems.map(({ label, link }) => {
+                    const isActive = link === pathname;
+
+                    return (
+                        <NavLink
+                            href={link}
+                            key={link}
+                            component={Link}
+                            label={label}
+                            active={isActive}
+                            disabled={isActive}
+                        />
+                    );
+                })}
             </AppShell.Section>
         </AppShell.Navbar>
     );

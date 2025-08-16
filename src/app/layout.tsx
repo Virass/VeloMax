@@ -1,3 +1,5 @@
+import { type PropsWithChildren } from 'react';
+
 import {
     ColorSchemeScript,
     MantineProvider,
@@ -9,7 +11,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
 import '@/shared/styles/reset.css';
-import { PropsWithChildren } from 'react';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',

@@ -18,5 +18,5 @@ const website = {
 
 export const URLs = {
     admin: adminPanel,
-    website: website
+    website: website,
 };

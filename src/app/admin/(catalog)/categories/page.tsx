@@ -49,7 +49,7 @@ export default async function Categories() {
     return (
         <Group grow>
             {categories.map(({ id, name, description }) => (
-                <div key={id} className="border p-2 mb-2">
+                <div key={id}>
                     <h2>{name}</h2>
                     <p>{description}</p>
                 </div>

@@ -58,7 +58,7 @@ export default async function Products() {
     return (
         <Group grow>
             {products.map(({ id, name, brand, price, category }) => (
-                <div key={id} className="border p-2 mb-2">
+                <div key={id}>
                     <h2>{name}</h2>
                     <p>Brand: {brand}</p>
                     <p>Category: {category}</p>

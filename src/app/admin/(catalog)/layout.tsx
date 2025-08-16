@@ -3,9 +3,9 @@
 import { Stack } from '@mantine/core';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-import type { BaseLayoutProps } from '@/shared/types/core';
+import { PropsWithChildren } from 'react';
 
-export default function CatalogLayout({ children }: BaseLayoutProps) {
+export default function CatalogLayout({ children }: PropsWithChildren) {
     const catalog = useSelectedLayoutSegment();
 
     return (

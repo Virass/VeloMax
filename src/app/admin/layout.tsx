@@ -3,12 +3,11 @@
 import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import type { BaseLayoutProps } from '@/shared/types/core';
+import Header from '../../entities/admin/ admin-main-layout/components/Header';
+import Navbar from '../../entities/admin/ admin-main-layout/components/Navbar';
+import { PropsWithChildren } from 'react';
 
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-
-export default function AdminPanelLayout({ children }: BaseLayoutProps) {
+export default function AdminPanelLayout({ children }: PropsWithChildren) {
     const [isNavbarOpen, { toggle }] = useDisclosure();
 
     return (

@@ -5,9 +5,11 @@ import {
 } from '@mantine/core';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
 import '@/shared/styles/reset.css';
+import type { BaseLayoutProps } from '@/shared/types/core';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -24,11 +26,7 @@ export const metadata: Metadata = {
     description: 'Вело майстерня VeloMax',
 };
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: BaseLayoutProps) {
     return (
         <html lang="en" {...mantineHtmlProps}>
             <head>

@@ -1,5 +1,5 @@
-const ADMIN_URL = '/admin';
 const BASE_URL = '/';
+const ADMIN_URL = `${BASE_URL}admin`;
 
 const adminPanel = {
     main: ADMIN_URL,
@@ -12,8 +12,8 @@ const adminPanel = {
 
 const website = {
     main: BASE_URL,
-    about: `${BASE_URL}/about`,
-    contact: `${BASE_URL}/contact`,
+    about: `${BASE_URL}about`,
+    contact: `${BASE_URL}contact`,
 };
 
 export const URLs = {

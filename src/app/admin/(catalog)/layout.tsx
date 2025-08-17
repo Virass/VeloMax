@@ -1,9 +1,9 @@
 'use client';
 
+import type { PropsWithChildren } from 'react';
+
 import { Stack } from '@mantine/core';
 import { useSelectedLayoutSegment } from 'next/navigation';
-
-import { PropsWithChildren } from 'react';
 
 export default function CatalogLayout({ children }: PropsWithChildren) {
     const catalog = useSelectedLayoutSegment();

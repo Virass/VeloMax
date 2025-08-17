@@ -1,4 +1,5 @@
 import { Group } from '@mantine/core';
+
 import { getProducts } from './services/products.service';
 
 export default async function Products() {

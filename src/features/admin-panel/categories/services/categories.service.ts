@@ -1,4 +1,4 @@
-import { type Category } from "@/shared/types/category";
+import { type Category } from '@/shared/types/category';
 
 export async function getCategories(): Promise<Category[]> {
     return new Promise((resolve) => {
@@ -6,7 +6,8 @@ export async function getCategories(): Promise<Category[]> {
             {
                 id: 1,
                 name: 'Road Bikes',
-                description: 'Lightweight bikes built for speed on paved roads.',
+                description:
+                    'Lightweight bikes built for speed on paved roads.',
             },
             {
                 id: 2,
@@ -21,7 +22,8 @@ export async function getCategories(): Promise<Category[]> {
             {
                 id: 4,
                 name: 'Hybrid Bikes',
-                description: 'Versatile bikes suitable for both road and light trails.',
+                description:
+                    'Versatile bikes suitable for both road and light trails.',
             },
             {
                 id: 5,

@@ -1,4 +1,4 @@
-import { URLs } from "@/shared/constants/urls";
+import { URLs } from '@/shared/constants/urls';
 
 export interface NavItem {
     label: string;

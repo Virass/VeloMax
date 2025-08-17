@@ -1,4 +1,5 @@
 import { Group } from '@mantine/core';
+
 import { getCategories } from './services/categories.service';
 
 export default async function Categories() {

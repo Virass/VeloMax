@@ -45,7 +45,7 @@ export default function SearchBar({
             size={size}
             w={width}
             leftSection={<SearchIcon />}
-            defaultValue={searchParams.get('query')?.toString()}
+            defaultValue={searchParams.get('query') ?? ''}
             {...rest}
         />
     );

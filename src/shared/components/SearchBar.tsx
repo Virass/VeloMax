@@ -1,16 +1,13 @@
 'use client';
 
-import {
-    type TextInputProps,
-    type MantineSize,
-    TextInput,
-} from '@mantine/core';
+import { type TextInputProps, type MantineSize } from '@mantine/core';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
+import { Input } from './Input';
 import { debounce } from '../lib/debounce';
 import SearchIcon from '../ui/icons/SearchIcon';
 
-interface Props extends Omit<TextInputProps, 'value' | 'onChange'> {
+interface Props extends TextInputProps {
     placeholder?: string;
     size?: MantineSize;
     width?: number | string;
@@ -20,7 +17,6 @@ export default function SearchBar({
     placeholder = 'Search...',
     size = 'sm',
     width = '100%',
-    ...rest
 }: Props) {
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -39,14 +35,13 @@ export default function SearchBar({
     }, 300);
 
     return (
-        <TextInput
+        <Input
             onChange={(e) => handleSearch(e.currentTarget.value)}
             placeholder={placeholder}
             size={size}
             w={width}
             leftSection={<SearchIcon />}
             defaultValue={searchParams.get('query') ?? ''}
-            {...rest}
         />
     );
 }

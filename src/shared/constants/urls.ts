@@ -2,7 +2,7 @@ const BASE_URL = '/';
 const ADMIN_URL = `${BASE_URL}admin`;
 
 const adminPanel = {
-    main: ADMIN_URL,
+    dashboard: ADMIN_URL,
     orders: `${ADMIN_URL}/orders`,
     categories: `${ADMIN_URL}/categories`,
     products: `${ADMIN_URL}/products`,

@@ -4,10 +4,14 @@ import { AppShell, NavLink, ScrollArea } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { navItems } from '../config/nav';
+import { URLs } from '@/shared/constants/urls';
 
 export default function Navbar() {
     const pathname = usePathname();
+    const navItems = Object.entries(URLs.admin).map(([label, link]) => ({
+        label,
+        link,
+    }));
 
     return (
         <AppShell.Navbar>
@@ -23,6 +27,7 @@ export default function Navbar() {
                             label={label}
                             active={isActive}
                             disabled={isActive}
+                            style={{ textTransform: 'capitalize' }}
                         />
                     );
                 })}

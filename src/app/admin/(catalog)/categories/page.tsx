@@ -1,5 +1,5 @@
 import { Categories } from '@/features/admin-panel/categories';
-import { getQuery } from '@/features/admin-panel/helpers';
+import { getQuery } from '@/shared/lib/getQuery';
 
 export default async function CategoriesPage({
     searchParams,

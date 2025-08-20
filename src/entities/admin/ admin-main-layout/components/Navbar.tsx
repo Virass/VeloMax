@@ -18,16 +18,16 @@ export default function Navbar() {
             <AppShell.Section grow my="md" component={ScrollArea} px="md">
                 {navItems.map(({ label, link }) => {
                     const isActive = link === pathname;
-                    const formattedLabel = `${label.charAt(0).toUpperCase()}${label.slice(1)}`;
 
                     return (
                         <NavLink
                             href={link}
                             key={link}
                             component={Link}
-                            label={formattedLabel}
+                            label={label}
                             active={isActive}
                             disabled={isActive}
+                            style={{ textTransform: 'capitalize' }}
                         />
                     );
                 })}

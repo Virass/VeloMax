@@ -1,5 +1,5 @@
-import { getQuery } from '@/features/admin-panel/helpers';
 import { Products } from '@/features/admin-panel/products';
+import { getQuery } from '@/shared/lib/getQuery';
 
 export default async function ProductsPage({
     searchParams,

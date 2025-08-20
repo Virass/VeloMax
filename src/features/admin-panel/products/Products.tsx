@@ -2,8 +2,8 @@ import { Group } from '@mantine/core';
 
 import type { Product } from '@/shared/types/product';
 
-import { filterByQuery } from '../helpers';
 import { getProducts } from './services/products.service';
+import { filterByQuery } from '@/shared/lib/filterByQuery';
 
 export default async function Products({ query }: { query: string }) {
     const products = await getProducts();

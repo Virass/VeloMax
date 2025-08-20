@@ -1,7 +1,13 @@
-import { Group, Stack, Text } from '@mantine/core';
-import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
-import type { MantineColor, MantineFontSize } from '@mantine/core';
+import {
+    Group,
+    type MantineColor,
+    type MantineFontSize,
+    Stack,
+    Text,
+} from '@mantine/core';
+
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
+import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
 
 type Props = {
     color?: MantineColor;
@@ -19,21 +25,18 @@ export const Phones = ({
     fontWeight = 400,
     align = 'flex-start',
     iconSize = 32,
-}: Props) => {
+}: Props) => (
+    <Group align={align} gap="xs">
+        <PhoneIcon width={iconSize} height={iconSize} color={color} />
 
-    return (
-        <Group align={align} gap="xs">
-            <PhoneIcon width={iconSize} height={iconSize} color={color} />
-
-            <Stack gap="0.3">
-                {phones.map((phone) => (
-                    <Group key={phone} gap="xs">
-                        <Text c={color} size={fontSize} fw={fontWeight}>
-                            {formatPhoneNumber(phone)}
-                        </Text>
-                    </Group>
-                ))}
-            </Stack>
-        </Group>
-    );
-};
+        <Stack gap="0.3">
+            {phones.map((phone) => (
+                <Group key={phone} gap="xs">
+                    <Text c={color} size={fontSize} fw={fontWeight}>
+                        {formatPhoneNumber(phone)}
+                    </Text>
+                </Group>
+            ))}
+        </Stack>
+    </Group>
+);

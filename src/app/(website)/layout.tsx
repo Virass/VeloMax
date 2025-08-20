@@ -1,8 +1,10 @@
 import React from 'react';
-import { Header } from '@/entities/website/Header';
-import { Footer } from '@/entities/website/Footer';
+
 import { Stack } from '@mantine/core';
 import { Roboto } from 'next/font/google';
+
+import { Footer } from '@/entities/website/Footer';
+import { Header } from '@/entities/website/Header';
 
 const roboto = Roboto({
     variable: '--font-roboto',
@@ -16,15 +18,15 @@ export default function WebsiteLayout({
 }) {
     return (
         <div className={roboto.className}>
-                <Stack
-                    mih="100dvh"
-                    px={{ base: 16, sm: 20, md: 24 }}
-                    py={{ base: 8, sm: 12, md: 16 }}
-                >
-                    <Header/>
-                    <main style={{ flex: 1 }}>{children}</main>
-                    <Footer />
-                </Stack>
+            <Stack
+                mih="100dvh"
+                px={{ base: 16, sm: 20, md: 24 }}
+                py={{ base: 8, sm: 12, md: 16 }}
+            >
+                <Header />
+                <main style={{ flex: 1 }}>{children}</main>
+                <Footer />
+            </Stack>
         </div>
     );
 }

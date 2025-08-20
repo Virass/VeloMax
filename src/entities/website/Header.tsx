@@ -1,20 +1,17 @@
 import React from 'react';
 import { Group, Container } from '@mantine/core';
+import { Phones } from '@/shared/components/Phones';
 
-type HeaderProps = {
-    left?: React.ReactNode;
-    center?: React.ReactNode;
-    right?: React.ReactNode;
-};
-
-export const Header = ({ left, center, right }: HeaderProps) => {
+export const Header = () => {
     return (
         <header>
             <Container size="xl">
                 <Group justify="space-between" align="center">
-                    <div>{left}</div>
-                    <nav>{center}</nav>
-                    <div>{right}</div>
+                    <div>
+                        <Phones align="center" />
+                    </div>
+                    <nav>center</nav>
+                    <div>right</div>
                 </Group>
             </Container>
         </header>

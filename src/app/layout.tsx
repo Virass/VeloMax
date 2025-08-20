@@ -6,7 +6,6 @@ import {
     mantineHtmlProps,
 } from '@mantine/core';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
@@ -23,7 +22,16 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <head>
                 <ColorSchemeScript />
             </head>
-            <body>{children}</body>
+            <body>
+                <MantineProvider
+                    theme={{
+                        fontFamily: 'var(--font-roboto), system-ui, sans-serif',
+                        headings: { fontFamily: 'var(--font-roboto)' },
+                    }}
+                >
+                    {children}
+                </MantineProvider>
+            </body>
         </html>
     );
 }

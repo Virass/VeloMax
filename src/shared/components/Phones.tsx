@@ -1,43 +1,25 @@
 import { Group, Stack, Text } from '@mantine/core';
 import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
 import type { MantineColor, MantineFontSize } from '@mantine/core';
+import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
 
 type Props = {
-    phones: string[];
-    color: MantineColor;
-    fontSize: MantineFontSize;
-    fontWeight: number;
+    color?: MantineColor;
+    fontSize?: MantineFontSize;
+    fontWeight?: number;
     align?: 'flex-start' | 'center' | 'flex-end';
-    iconSize: 12 | 24 | 32;
+    iconSize?: 12 | 24 | 32;
 };
 
+const phones = ['+380637476963', '+380679954177'];
+
 export const Phones = ({
-    phones,
-    color,
-    fontSize,
-    fontWeight,
+    color = '#000000',
+    fontSize = 'lg',
+    fontWeight = 400,
     align = 'flex-start',
-    iconSize,
+    iconSize = 32,
 }: Props) => {
-    const formatPhoneNumber = (phone: string): string => {
-        const digits = phone.replace(/\D/g, '');
-
-        if (digits.startsWith('380') && digits.length === 12) {
-            return digits.replace(
-                /^380(\d{2})(\d{3})(\d{2})(\d{2})$/,
-                '+380 $1 $2 $3 $4'
-            );
-        }
-
-        if (digits.startsWith('0') && digits.length === 10) {
-            return digits.replace(
-                /^0(\d{2})(\d{3})(\d{2})(\d{2})$/,
-                '+380 $1 $2 $3 $4'
-            );
-        }
-
-        return phone;
-    };
 
     return (
         <Group align={align} gap="xs">

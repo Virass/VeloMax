@@ -11,12 +11,14 @@ interface Props extends MantineButtonProps {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
     onClick?: () => void;
+    type?: 'button' | 'submit' | 'reset';
     children: ReactNode;
 }
 
 export function Button({
     leftIcon,
     rightIcon,
+    type = 'button',
     fullWidth,
     onClick,
     variant = 'default',
@@ -29,6 +31,7 @@ export function Button({
             variant={variant}
             onClick={onClick}
             justify={justify}
+            type={type}
             leftSection={leftIcon}
             rightSection={rightIcon}
             {...rest}

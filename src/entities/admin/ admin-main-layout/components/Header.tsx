@@ -17,7 +17,7 @@ export default function Header({ isNavbarOpen, toggle }: Props) {
                     hiddenFrom="sm"
                     size="sm"
                 />
-                Header
+                Admin Panel
             </Group>
         </AppShell.Header>
     );

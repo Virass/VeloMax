@@ -2,9 +2,11 @@
 
 import { type PropsWithChildren } from 'react';
 
-import { Stack } from '@mantine/core';
+import { Group, Stack } from '@mantine/core';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
+import { EntityCreateForm } from '@/features/admin-panel/entityCreateForm';
+import Drawer from '@/shared/components/Drawer';
 import SearchBar from '@/shared/components/SearchBar';
 
 export default function CatalogLayout({ children }: PropsWithChildren) {
@@ -14,16 +16,24 @@ export default function CatalogLayout({ children }: PropsWithChildren) {
 
     return (
         <Stack>
-            <SearchBar
-                placeholder={`Look for a specific ${catalogInSingular}`}
-                width={300}
-            />
+            <Group justify="space-between">
+                <SearchBar
+                    placeholder={`Look for a specific ${catalogInSingular}`}
+                    width={300}
+                />
+
+                <Drawer
+                    title={`New ${catalogInSingular}`}
+                    targetButtonTitle={`Create new ${catalogInSingular}`}
+                    position="right"
+                >
+                    <EntityCreateForm catalog={catalogInSingular} />
+                </Drawer>
+            </Group>
 
             <div>{catalog}</div>
 
             {children}
-
-            <button>Drawer</button>
         </Stack>
     );
 }

@@ -4,13 +4,14 @@ import type {
     ProductFormData,
 } from '@/shared/types/newEntityFormTypes';
 import type { Product } from '@/shared/types/product';
+import { SINGULAR_CATALOG_NAME } from '@/shared/types/urls';
 
 import { addCategory } from '../../categories/services/categories.service';
 import { addProduct } from '../../products/services/products.service';
 
 export async function addEntity(
     entity: ProductFormData | CategoryFormData,
-    catalog: 'product' | 'category'
+    catalog: SINGULAR_CATALOG_NAME
 ) {
     const prepareEntity = () => ({
         ...entity,
@@ -18,7 +19,7 @@ export async function addEntity(
     });
 
     try {
-        if (catalog === 'product') {
+        if (catalog === SINGULAR_CATALOG_NAME.PRODUCTS) {
             await addProduct(prepareEntity() as Product);
         } else {
             await addCategory(prepareEntity() as Category);

@@ -8,11 +8,15 @@ import { useSelectedLayoutSegment } from 'next/navigation';
 import { EntityCreateForm } from '@/features/admin-panel/entityCreateForm';
 import Drawer from '@/shared/components/Drawer';
 import SearchBar from '@/shared/components/SearchBar';
+import { AdminCatalogNameMap } from '@/shared/constants/urls';
+import { type AdminKey, SINGULAR_CATALOG_NAME } from '@/shared/types/urls';
 
 export default function CatalogLayout({ children }: PropsWithChildren) {
-    const catalog = useSelectedLayoutSegment();
+    const catalog = useSelectedLayoutSegment() as AdminKey | null;
 
-    const catalogInSingular = catalog === 'categories' ? 'category' : 'product';
+    const catalogInSingular = catalog
+        ? (AdminCatalogNameMap[catalog] as SINGULAR_CATALOG_NAME)
+        : SINGULAR_CATALOG_NAME.CATEGORIES;
 
     return (
         <Stack>

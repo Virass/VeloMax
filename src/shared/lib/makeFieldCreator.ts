@@ -1,10 +1,10 @@
 import type { HTMLInputTypeAttribute } from 'react';
 
-export function makeFieldCreator(catalog: string) {
+export function makeFieldCreator(title: string) {
     return function createEntityFormField(
         field: string,
         inputType: HTMLInputTypeAttribute = 'text'
     ) {
-        return { title: `${catalog} ${field}`, inputType };
+        return { title: `${title} ${field}`, inputType };
     };
 }

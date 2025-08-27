@@ -2,7 +2,7 @@ import type { FieldValues } from 'react-hook-form';
 
 import type { InputTypes, ValidationType } from '../types/adminFormTypes';
 
-export type FieldInput<T extends FieldValues> =
+type FieldInput<T extends FieldValues> =
     | string
     | {
           fieldName: string;

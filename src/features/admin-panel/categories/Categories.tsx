@@ -8,7 +8,7 @@ import { getCategories } from './services/categories.service';
 export default async function CategoriesPage({ query }: { query: string }) {
     const categories = await getCategories();
 
-    const filteredCategories = filterByQuery<Category>(
+    const categoriesMatchingQuery = filterByQuery<Category>(
         categories,
         query,
         (c) => c.name
@@ -16,7 +16,7 @@ export default async function CategoriesPage({ query }: { query: string }) {
 
     return (
         <Group grow>
-            {filteredCategories.map(({ id, name, description }) => (
+            {categoriesMatchingQuery.map(({ id, name, description }) => (
                 <div key={id}>
                     <h2>{name}</h2>
                     <p>{description}</p>

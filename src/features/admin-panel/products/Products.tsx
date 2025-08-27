@@ -8,7 +8,7 @@ import { getProducts } from './services/products.service';
 export default async function Products({ query }: { query: string }) {
     const products = await getProducts();
 
-    const filteredProducts = filterByQuery<Product>(
+    const productsMatchingQuery = filterByQuery<Product>(
         products,
         query,
         (p) => p.name
@@ -16,14 +16,16 @@ export default async function Products({ query }: { query: string }) {
 
     return (
         <Group grow>
-            {filteredProducts.map(({ id, name, brand, price, category }) => (
-                <div key={id}>
-                    <h2>{name}</h2>
-                    <p>Brand: {brand}</p>
-                    <p>Category: {category}</p>
-                    <p>Price: ${price}</p>
-                </div>
-            ))}
+            {productsMatchingQuery.map(
+                ({ id, name, brand, price, category }) => (
+                    <div key={id}>
+                        <h2>{name}</h2>
+                        <p>Brand: {brand}</p>
+                        <p>Category: {category}</p>
+                        <p>Price: ${price}</p>
+                    </div>
+                )
+            )}
         </Group>
     );
 }

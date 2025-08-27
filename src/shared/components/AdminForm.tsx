@@ -1,17 +1,19 @@
 'use client';
 
-import { Group, NumberInput, Select, Stack } from '@mantine/core';
+import { Group, Stack } from '@mantine/core';
 import {
     type Path,
     type SubmitHandler,
     type FieldValues,
     useForm,
-    Controller,
 } from 'react-hook-form';
 
 import { Button } from '@/shared/components/Button';
 import { Input } from '@/shared/components/Input';
 import type { FieldConfig, FormSchema } from '@/shared/types/adminFormTypes';
+
+import NumberInputField from './NumberInputField';
+import SelectInput from './SelectInput';
 
 interface Props<T> {
     schema: FormSchema<T>;
@@ -36,36 +38,23 @@ export function AdminForm<T extends FieldValues>({
                     ([fieldKey, config]) => {
                         if (config.inputType === 'select' && config.options) {
                             return (
-                                // create a global select input for this one
-                                <Controller
+                                <SelectInput
                                     key={fieldKey}
                                     name={fieldKey}
                                     control={control}
-                                    render={({ field }) => (
-                                        <Select
-                                            label={config.title}
-                                            placeholder={`Select ${config.title}`}
-                                            data={config.options}
-                                            {...field}
-                                        />
-                                    )}
+                                    label={config.title}
+                                    options={config.options}
                                 />
                             );
                         }
 
-                        // create a global number input for this one
                         if (config.inputType === 'number') {
                             return (
-                                <Controller
+                                <NumberInputField
                                     key={fieldKey}
                                     name={fieldKey}
                                     control={control}
-                                    render={({ field }) => (
-                                        <NumberInput
-                                            label={config.title}
-                                            {...field}
-                                        />
-                                    )}
+                                    label={config.title}
                                 />
                             );
                         }

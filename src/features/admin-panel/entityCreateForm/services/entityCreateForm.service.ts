@@ -24,7 +24,6 @@ export async function addEntity(
         } else {
             await addCategory(prepareEntity() as Category);
         }
-        console.log(`${catalog} successfully added!`);
     } catch (error) {
         console.error(`Failed to add ${catalog}:`, error);
     }

@@ -5,8 +5,8 @@ import type { PropsWithChildren } from 'react';
 import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import Header from '../../entities/admin/ admin-main-layout/components/Header';
-import Navbar from '../../entities/admin/ admin-main-layout/components/Navbar';
+import Header from '../../entities/admin/admin-main-layout/components/Header';
+import Navbar from '../../entities/admin/admin-main-layout/components/Navbar';
 
 export default function AdminPanelLayout({ children }: PropsWithChildren) {
     const [isNavbarOpen, { toggle }] = useDisclosure();

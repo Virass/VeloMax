@@ -10,7 +10,11 @@ import {
 
 import { Button } from '@/shared/components/Button';
 import { Input } from '@/shared/components/Input';
-import type { FieldConfig, FormSchema } from '@/shared/types/adminFormTypes';
+import type {
+    FieldConfig,
+    FormSchema,
+    ValidationType,
+} from '@/shared/types/adminFormTypes';
 
 import NumberInputField from './NumberInputField';
 import SelectInput from './SelectInput';
@@ -36,6 +40,9 @@ export function AdminForm<T extends FieldValues>({
             <Stack gap="sm">
                 {(Object.entries(schema) as [Path<T>, FieldConfig][]).map(
                     ([fieldKey, config]) => {
+                        const validation =
+                            config.validation as ValidationType<T>;
+
                         if (config.inputType === 'select' && config.options) {
                             return (
                                 <SelectInput
@@ -44,6 +51,7 @@ export function AdminForm<T extends FieldValues>({
                                     control={control}
                                     label={config.title}
                                     options={config.options}
+                                    validation={validation}
                                 />
                             );
                         }
@@ -55,6 +63,7 @@ export function AdminForm<T extends FieldValues>({
                                     name={fieldKey}
                                     control={control}
                                     label={config.title}
+                                    validation={validation}
                                 />
                             );
                         }
@@ -63,7 +72,12 @@ export function AdminForm<T extends FieldValues>({
                             <Input
                                 key={fieldKey}
                                 label={config.title}
-                                {...register(fieldKey)}
+                                {...register(fieldKey, validation)}
+                                error={
+                                    errors[fieldKey]?.message as
+                                        | string
+                                        | undefined
+                                }
                             />
                         );
                     }

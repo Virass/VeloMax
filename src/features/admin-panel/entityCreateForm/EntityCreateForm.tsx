@@ -21,11 +21,7 @@ interface Props {
 }
 
 export default function EntityCreateForm({ catalog }: Props) {
-    const {
-        data: categoriesNames,
-        loading,
-        error,
-    } = useFetch(async () => {
+    const { data: categoriesNames } = useFetch(async () => {
         if (catalog === SINGULAR_CATALOG_NAME.PRODUCTS) {
             const categories = await getCategories();
 
@@ -45,22 +41,45 @@ export default function EntityCreateForm({ catalog }: Props) {
         category: FormSchema<CategoryEntity>;
     } = {
         shared: {
-            name: field('name'),
+            name: field({
+                fieldName: 'name',
+                validation: { required: 'Name is required' },
+            }),
             description: field('description'),
             image: field('image'),
         },
         product: {
-            price: field('price', 'number'),
-            stock: field('stock', 'number'),
+            price: field({
+                fieldName: 'price',
+                inputType: 'number',
+                validation: {
+                    required: 'Price is required',
+                    min: { value: 0, message: 'Price must be positive' },
+                },
+            }),
+            stock: field({
+                fieldName: 'stock',
+                inputType: 'number',
+                validation: {
+                    min: { value: 0, message: 'Stock cannot be negative' },
+                },
+            }),
             category: {
-                ...field('category', 'select'),
+                ...field({
+                    fieldName: 'category',
+                    inputType: 'select',
+                    validation: { required: 'Select a category' },
+                }),
                 options: categoriesNames || [],
             },
             brand: field('brand'),
             material: field('material'),
         },
         category: {
-            slug: field('slug'),
+            slug: field({
+                fieldName: 'slug',
+                validation: { required: 'Slug is required' },
+            }),
         },
     };
 

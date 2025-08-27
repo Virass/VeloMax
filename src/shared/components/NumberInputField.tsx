@@ -17,19 +17,22 @@ export default function NumberInputField<T extends FieldValues>({
     min,
     max,
     step,
+    validation,
 }: Props<T>) {
     return (
         <Controller
             name={name}
             control={control}
-            render={({ field }) => (
+            rules={validation}
+            render={({ field, fieldState }) => (
                 <NumberInput
+                    {...field}
                     placeholder={placeholder}
                     min={min}
                     max={max}
                     step={step}
                     label={label}
-                    {...field}
+                    error={fieldState.error?.message}
                 />
             )}
         />

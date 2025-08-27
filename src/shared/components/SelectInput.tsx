@@ -13,17 +13,20 @@ export default function SelectInput<T extends FieldValues>({
     label,
     placeholder,
     options,
+    validation,
 }: Props<T>) {
     return (
         <Controller
             name={name}
             control={control}
-            render={({ field }) => (
+            rules={validation}
+            render={({ field, fieldState }) => (
                 <Select
                     label={label}
                     placeholder={placeholder ?? `Select ${label}`}
                     data={options}
                     {...field}
+                    error={fieldState.error?.message}
                 />
             )}
         />

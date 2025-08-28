@@ -1,4 +1,4 @@
-import { type Product } from '@/shared/types/product';
+import { type Product } from '@/shared/types/productType';
 
 export async function getProducts(): Promise<Product[]> {
     return new Promise((resolve) => {

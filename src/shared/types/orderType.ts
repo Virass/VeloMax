@@ -1,4 +1,9 @@
-export type OrderStatus = 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'canceled';
+export type OrderStatus =
+    | 'pending'
+    | 'confirmed'
+    | 'shipped'
+    | 'delivered'
+    | 'canceled';
 
 export type OrderItem = {
     type: 'product' | 'service';

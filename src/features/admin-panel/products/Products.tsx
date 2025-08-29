@@ -11,7 +11,7 @@ export default async function Products({ query }: { query: string }) {
     const filteredProducts = filterByQuery<Product>(
         products,
         query,
-        (p) => p.name
+        (product) => product.name
     );
 
     return (

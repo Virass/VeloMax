@@ -2,7 +2,7 @@ type UserRole = 'admin' | 'manager' | 'customer' | 'guest';
 
 type BasicUser = BasicEntity & {
     role: UserRole;
-}
+};
 
 type User = BasicUser & {
     email?: string;

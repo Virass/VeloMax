@@ -11,7 +11,7 @@ export default async function CategoriesPage({ query }: { query: string }) {
     const filteredCategories = filterByQuery<Category>(
         categories,
         query,
-        (c) => c.name
+        (category) => category.name
     );
 
     return (

@@ -11,6 +11,7 @@ export interface FieldConfig<T extends FieldValues = FieldValues> {
     inputType?: InputTypes;
     validation?: ValidationType<T>;
     options?: string[];
+    labelPosition?: 'left' | 'right';
     accept?: string;
     multiple?: boolean;
     min?: number;
@@ -21,8 +22,3 @@ export interface FieldConfig<T extends FieldValues = FieldValues> {
 }
 
 export type FormSchema<T> = { [K in keyof T]: FieldConfig };
-
-export interface BaseInputProps {
-    label: string;
-    placeholder?: string;
-}

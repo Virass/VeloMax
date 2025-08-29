@@ -46,6 +46,14 @@ export default function EntityCreateForm({ catalog }: Props) {
                 validation: { required: 'Name is required' },
             }),
             description: field('description'),
+            isActive: {
+                ...field({
+                    fieldName: 'active',
+                    inputType: 'checkbox',
+                }),
+
+                labelPosition: 'left',
+            },
         },
         product: {
             price: field({
@@ -73,7 +81,6 @@ export default function EntityCreateForm({ catalog }: Props) {
             },
             brand: field('brand'),
             article: field('article'),
-            isActive: field('isActive'),
         },
         category: {
             slug: field({
@@ -81,7 +88,6 @@ export default function EntityCreateForm({ catalog }: Props) {
                 validation: { required: 'Slug is required' },
             }),
             imageUrl: field('Image Url'),
-            isActive: field('isActive'),
         },
     };
 

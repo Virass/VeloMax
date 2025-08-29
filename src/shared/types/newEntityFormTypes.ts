@@ -1,7 +1,10 @@
 import type { Category } from './categoryType';
 import type { Product } from './productType';
 
-export type SharedEntity = Pick<Product & Category, 'name' | 'description'>;
+export type SharedEntity = Pick<
+    Product & Category,
+    'name' | 'description' | 'isActive'
+>;
 
 type CommonOmittedKeys = keyof SharedEntity | keyof BasicEntity;
 

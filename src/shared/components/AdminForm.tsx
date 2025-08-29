@@ -16,6 +16,7 @@ import type {
     ValidationType,
 } from '@/shared/types/adminFormTypes';
 
+import CheckboxField from './CheckboxInput';
 import ControlledInput from './ControlledInput';
 import NumberInputField from './NumberInputField';
 import SelectInput from './SelectInput';
@@ -39,16 +40,20 @@ export function AdminForm<T extends FieldValues>({
                         const validation =
                             config.validation as ValidationType<T>;
 
+                        const baseProps = {
+                            name: fieldKey,
+                            control,
+                            validation,
+                        };
+
                         if (config.inputType === 'select' && config.options) {
                             return (
                                 <ControlledInput
-                                    key={config.title}
-                                    name={fieldKey}
-                                    control={control}
-                                    validation={validation}
+                                    key={fieldKey}
+                                    {...baseProps}
                                     Input={SelectInput}
                                     inputProps={{
-                                        label: fieldKey,
+                                        label: config.title,
                                         placeholder: config.title,
                                         options: config.options,
                                     }}
@@ -59,12 +64,24 @@ export function AdminForm<T extends FieldValues>({
                         if (config.inputType === 'number') {
                             return (
                                 <ControlledInput
-                                    key={config.title}
-                                    name={fieldKey}
-                                    control={control}
-                                    validation={validation}
+                                    key={fieldKey}
+                                    {...baseProps}
                                     Input={NumberInputField}
                                     inputProps={{ label: config.title }}
+                                />
+                            );
+                        }
+
+                        if (config.inputType === 'checkbox') {
+                            return (
+                                <ControlledInput
+                                    key={fieldKey}
+                                    {...baseProps}
+                                    Input={CheckboxField}
+                                    inputProps={{
+                                        label: config.title,
+                                        labelPosition: config.labelPosition,
+                                    }}
                                 />
                             );
                         }
@@ -72,9 +89,7 @@ export function AdminForm<T extends FieldValues>({
                         return (
                             <ControlledInput
                                 key={fieldKey}
-                                name={fieldKey}
-                                control={control}
-                                validation={validation}
+                                {...baseProps}
                                 Input={Input}
                                 inputProps={{
                                     label: config.title,

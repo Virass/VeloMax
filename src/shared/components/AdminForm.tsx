@@ -16,6 +16,7 @@ import type {
     ValidationType,
 } from '@/shared/types/adminFormTypes';
 
+import ControlledInput from './ControlledInput';
 import NumberInputField from './NumberInputField';
 import SelectInput from './SelectInput';
 
@@ -28,12 +29,7 @@ export function AdminForm<T extends FieldValues>({
     schema,
     onSubmit,
 }: Props<T>) {
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-    } = useForm<T>();
+    const { handleSubmit, control } = useForm<T>();
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,39 +41,45 @@ export function AdminForm<T extends FieldValues>({
 
                         if (config.inputType === 'select' && config.options) {
                             return (
-                                <SelectInput
-                                    key={fieldKey}
+                                <ControlledInput
+                                    key={config.title}
                                     name={fieldKey}
                                     control={control}
-                                    label={config.title}
-                                    options={config.options}
                                     validation={validation}
+                                    Input={SelectInput}
+                                    inputProps={{
+                                        label: fieldKey,
+                                        placeholder: config.title,
+                                        options: config.options,
+                                    }}
                                 />
                             );
                         }
 
                         if (config.inputType === 'number') {
                             return (
-                                <NumberInputField
-                                    key={fieldKey}
+                                <ControlledInput
+                                    key={config.title}
                                     name={fieldKey}
                                     control={control}
-                                    label={config.title}
                                     validation={validation}
+                                    Input={NumberInputField}
+                                    inputProps={{ label: config.title }}
                                 />
                             );
                         }
 
                         return (
-                            <Input
+                            <ControlledInput
                                 key={fieldKey}
-                                label={config.title}
-                                {...register(fieldKey, validation)}
-                                error={
-                                    errors[fieldKey]?.message as
-                                        | string
-                                        | undefined
-                                }
+                                name={fieldKey}
+                                control={control}
+                                validation={validation}
+                                Input={Input}
+                                inputProps={{
+                                    label: config.title,
+                                    placeholder: config.title,
+                                }}
                             />
                         );
                     }

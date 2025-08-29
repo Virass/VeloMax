@@ -27,7 +27,7 @@ const auth = {
     main: AUTH_URL,
     signIn: `${AUTH_URL}/sign-in`,
     signUp: `${AUTH_URL}/sign-up`,
-}
+};
 
 export const URLs = {
     admin: adminPanel,

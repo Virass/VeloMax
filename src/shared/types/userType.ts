@@ -2,7 +2,7 @@ export enum USER_ROLES {
     ADMIN = 'admin',
     MANAGER = 'manager',
     CUSTOMER = 'customer',
-    GUEST = 'guest'
+    GUEST = 'guest',
 }
 
 export type BasicUser = BasicEntity & {

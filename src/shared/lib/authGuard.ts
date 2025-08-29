@@ -1,6 +1,7 @@
-import { redirect, RedirectType } from "next/navigation";
-import { URLs } from "../constants/urls";
-import { USER_ROLES } from "../types/userType";
+import { redirect, RedirectType } from 'next/navigation';
+
+import { URLs } from '../constants/urls';
+import { USER_ROLES } from '../types/userType';
 
 //? THIS is server side function
 //! Use only on the server side
@@ -21,13 +22,19 @@ export const authGuard = (requiredRole: USER_ROLES) => {
 
 const hasAccess = (userRole: USER_ROLES, requiredRole: USER_ROLES): boolean => {
     const roleHierarchy: Record<USER_ROLES, USER_ROLES[]> = {
-        [USER_ROLES.ADMIN]: [USER_ROLES.MANAGER, USER_ROLES.CUSTOMER, USER_ROLES.GUEST],
+        [USER_ROLES.ADMIN]: [
+            USER_ROLES.MANAGER,
+            USER_ROLES.CUSTOMER,
+            USER_ROLES.GUEST,
+        ],
         [USER_ROLES.MANAGER]: [USER_ROLES.CUSTOMER, USER_ROLES.GUEST],
         [USER_ROLES.CUSTOMER]: [USER_ROLES.GUEST],
-        [USER_ROLES.GUEST]: []
+        [USER_ROLES.GUEST]: [],
     };
 
-    if (userRole === requiredRole) return true;
+    if (userRole === requiredRole) {
+        return true;
+    }
     return roleHierarchy[userRole]?.includes(requiredRole) ?? false;
 };
 

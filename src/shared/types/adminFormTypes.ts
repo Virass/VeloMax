@@ -1,11 +1,6 @@
 import type { HTMLInputTypeAttribute } from 'react';
 
-import type {
-    Control,
-    FieldValues,
-    Path,
-    RegisterOptions,
-} from 'react-hook-form';
+import type { FieldValues, Path, RegisterOptions } from 'react-hook-form';
 
 export type InputTypes = HTMLInputTypeAttribute | 'select' | 'file' | 'image';
 
@@ -27,10 +22,7 @@ export interface FieldConfig<T extends FieldValues = FieldValues> {
 
 export type FormSchema<T> = { [K in keyof T]: FieldConfig };
 
-export interface BaseInputProps<T extends FieldValues> {
-    name: Path<T>;
-    control: Control<T>;
+export interface BaseInputProps {
     label: string;
     placeholder?: string;
-    validation?: ValidationType<T>;
 }

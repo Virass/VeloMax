@@ -1,4 +1,4 @@
-import { type Category } from '@/shared/types/category';
+import { type Category } from '@/shared/types/categoryType';
 
 export async function getCategories(): Promise<Category[]> {
     return new Promise((resolve) => {

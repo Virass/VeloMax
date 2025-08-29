@@ -1,7 +1,7 @@
 import { Group } from '@mantine/core';
 
 import { filterByQuery } from '@/shared/lib/filterByQuery';
-import type { Product } from '@/shared/types/product';
+import type { Product } from '@/shared/types/productType';
 
 import { getProducts } from './services/products.service';
 
@@ -16,11 +16,11 @@ export default async function Products({ query }: { query: string }) {
 
     return (
         <Group grow>
-            {filteredProducts.map(({ id, name, brand, price, category }) => (
+            {filteredProducts.map(({ id, name, brand, price, categoryId }) => (
                 <div key={id}>
                     <h2>{name}</h2>
                     <p>Brand: {brand}</p>
-                    <p>Category: {category}</p>
+                    <p>Category ID: {categoryId}</p>
                     <p>Price: ${price}</p>
                 </div>
             ))}

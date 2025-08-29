@@ -1,7 +1,7 @@
 import { Group } from '@mantine/core';
 
 import { filterByQuery } from '@/shared/lib/filterByQuery';
-import type { Category } from '@/shared/types/category';
+import type { Category } from '@/shared/types/categoryType';
 
 import { getCategories } from './services/categories.service';
 

@@ -20,5 +20,5 @@ export type OrderEntity = BasicEntity & {
     note?: string;
     shippingAddress?: string;
     phoneNumber?: string;
-    completedAt?: Date;
+    completedAt: Date;
 };

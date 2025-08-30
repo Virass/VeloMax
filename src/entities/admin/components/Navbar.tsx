@@ -6,12 +6,18 @@ import { usePathname } from 'next/navigation';
 
 import { URLs } from '@/shared/constants/urls';
 
+const navItems = [
+    { label: 'Аналітика', link: URLs.admin.dashboard },
+    { label: 'Замовлення', link: URLs.admin.orders },
+    { label: 'Категорії', link: URLs.admin.categories },
+    { label: 'Продукти', link: URLs.admin.products },
+    { label: 'Послуги', link: URLs.admin.services },
+    { label: 'Клієнти', link: URLs.admin.customers },
+    { label: 'Налаштування', link: URLs.admin.settings },
+];
+
 export default function Navbar() {
     const pathname = usePathname();
-    const navItems = Object.entries(URLs.admin).map(([label, link]) => ({
-        label,
-        link,
-    }));
 
     return (
         <AppShell.Navbar>

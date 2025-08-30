@@ -14,6 +14,7 @@ export const adminPanel = {
     products: `${ADMIN_URL}/products`,
     services: `${ADMIN_URL}/services`,
     customers: `${ADMIN_URL}/customers`,
+    settings: `${ADMIN_URL}/settings`,
 } as const;
 
 export const website = {
@@ -21,6 +22,7 @@ export const website = {
     about: `${BASE_URL}about`,
     contact: `${BASE_URL}contact`,
     forbidden: `${BASE_URL}forbidden`,
+    notFound: `${BASE_URL}404`,
 } as const;
 
 const auth = {

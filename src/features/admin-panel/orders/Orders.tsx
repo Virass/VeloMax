@@ -48,6 +48,3 @@ export default async function Orders() {
 
     return <Table columns={ordersTableColumns} data={orders} />;
 }
-
-// add styling
-// add drawer on each table row click

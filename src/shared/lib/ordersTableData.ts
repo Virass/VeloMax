@@ -35,6 +35,7 @@ export function calculateOrderRevenue(
                 item.type === 'product'
                     ? productsMap[item.itemId]
                     : servicesMap[item.itemId];
+
             return currentItem ? sum + currentItem.price : sum;
         }, 0)
         .toString();

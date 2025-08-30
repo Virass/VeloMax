@@ -11,14 +11,23 @@ import {
 
 import type { TableColumn, TableProps } from '../types/tableTypes';
 
-export default function Table<T>({ columns, data }: TableProps<T>) {
+export default function Table<T>({ columns, data, ...rest }: TableProps<T>) {
     const columnsEntries = Object.entries(columns) as [
         keyof T,
         TableColumn<T>,
     ][];
 
     return (
-        <MantineTable>
+        <MantineTable
+            striped
+            highlightOnHover
+            withColumnBorders
+            verticalSpacing="md"
+            horizontalSpacing="lg"
+            withTableBorder
+            withRowBorders
+            {...rest}
+        >
             <TableThead>
                 <TableTr>
                     {columnsEntries.map(([columnName, columnValue]) => (

@@ -222,6 +222,7 @@ export const ordersExample: OrderEntity[] = [
         items: [
             { type: 'product', itemId: 'prod_02', quantity: 1 },
             { type: 'product', itemId: 'prod_03', quantity: 5 },
+            { type: 'product', itemId: 'prod_01', quantity: 2 },
         ],
         shippingAddress: '456 Elm St, Shelbyville',
         phoneNumber: '+0987654321',

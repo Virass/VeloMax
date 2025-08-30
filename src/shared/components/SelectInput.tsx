@@ -1,8 +1,6 @@
-import { Select } from '@mantine/core';
+import { type SelectProps, Select } from '@mantine/core';
 
-import type { BaseInputProps } from '../types/adminFormTypes';
-
-interface Props extends BaseInputProps {
+interface Props extends SelectProps {
     options?: string[];
 }
 

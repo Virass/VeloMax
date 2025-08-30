@@ -1,10 +1,15 @@
-type UserRole = 'admin' | 'manager' | 'customer' | 'guest';
+export enum USER_ROLES {
+    ADMIN = 'admin',
+    MANAGER = 'manager',
+    CUSTOMER = 'customer',
+    GUEST = 'guest',
+}
 
-type BasicUser = BasicEntity & {
-    role: UserRole;
+export type BasicUser = BasicEntity & {
+    role: USER_ROLES;
 };
 
-type User = BasicUser & {
+export type User = BasicUser & {
     email?: string;
     password: string;
     name: string;

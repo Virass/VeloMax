@@ -7,7 +7,7 @@
         "build": "next build",
         "prepare": "husky install",
         "start": "next start",
-        "lint": "eslint src/**/*.{js,jsx,ts,tsx}"
+        "lint": "eslint --fix src/**/*.{ts,tsx}"
     },
     "dependencies": {
         "@auth/supabase-adapter": "^1.10.0",
@@ -16,7 +16,8 @@
         "@mantine/core": "^8.2.2",
         "@mantine/dates": "^8.2.2",
         "@mantine/hooks": "^8.2.2",
-        "@supabase/supabase-js": "^2.53.0",
+        "@supabase/ssr": "^0.7.0",
+        "@supabase/supabase-js": "^2.56.1",
         "dayjs": "^1.11.13",
         "embla-carousel": "^8.6.0",
         "embla-carousel-react": "^8.6.0",

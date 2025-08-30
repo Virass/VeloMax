@@ -7,7 +7,7 @@
         "build": "next build",
         "prepare": "husky install",
         "start": "next start",
-        "lint": "eslint src/**/*.{js,jsx,ts,tsx}"
+        "lint": "eslint --fix src/**/*.{ts,tsx}"
     },
     "dependencies": {
         "@auth/supabase-adapter": "^1.10.0",

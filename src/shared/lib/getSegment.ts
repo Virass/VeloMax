@@ -1,3 +1,4 @@
+//TODO Delete this function after Vlad gives a response
 export function getSegment(
     path: string,
     options: {

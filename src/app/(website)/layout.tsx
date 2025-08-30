@@ -3,8 +3,8 @@ import React from 'react';
 import { Stack } from '@mantine/core';
 import { Roboto } from 'next/font/google';
 
-import { Footer } from '@/entities/website/Footer';
-import { Header } from '@/entities/website/Header';
+import { Footer } from '@/entities/website/components/Footer';
+import { Header } from '@/entities/website/components/Header';
 
 const roboto = Roboto({
     variable: '--font-roboto',

@@ -44,3 +44,8 @@ next-env.d.ts
 # IDEs
 .idea/
 .vscode/
+
+# AI
+.github/instructions/
+.github/prompts/
+.github/copilot-instructions.md

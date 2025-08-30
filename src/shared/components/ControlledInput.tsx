@@ -13,6 +13,7 @@ import type { ValidationType } from '../types/adminFormTypes';
 
 type InputProps<T extends FieldValues> = ControllerRenderProps<T> & {
     error?: string;
+    labelPosition?: 'left' | 'right';
 };
 
 interface Props<T extends FieldValues, ExtraProps> {

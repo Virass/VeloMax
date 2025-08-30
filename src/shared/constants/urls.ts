@@ -4,6 +4,7 @@ import {
 } from '../types/urls';
 
 const BASE_URL = '/';
+const AUTH_URL = `${BASE_URL}auth`;
 const ADMIN_URL = `${BASE_URL}admin`;
 
 export const adminPanel = {
@@ -19,11 +20,19 @@ export const website = {
     main: BASE_URL,
     about: `${BASE_URL}about`,
     contact: `${BASE_URL}contact`,
+    forbidden: `${BASE_URL}forbidden`,
 } as const;
+
+const auth = {
+    main: AUTH_URL,
+    signIn: `${AUTH_URL}/sign-in`,
+    signUp: `${AUTH_URL}/sign-up`,
+};
 
 export const URLs = {
     admin: adminPanel,
     website: website,
+    auth: auth,
 };
 
 export const AdminCatalogNameMap: AdminCatalogNameMapping = {

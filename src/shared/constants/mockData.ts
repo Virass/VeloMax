@@ -1,9 +1,11 @@
 import type { Category } from '../types/categoryType';
+import type { OrderEntity } from '../types/orderType';
 import type { Product } from '../types/productType';
+import type { Service } from '../types/serviceType';
 
 export const productsExample: Product[] = [
     {
-        id: '1',
+        id: 'prod_01',
         name: 'Roadster 2000',
         categoryId: 'Road Bike',
         article: 'road-2000',
@@ -15,7 +17,7 @@ export const productsExample: Product[] = [
         updatedAt: new Date(2024, 11, 8),
     },
     {
-        id: '2',
+        id: 'prod_02',
         name: 'Mountain King',
         categoryId: 'Mountain Bike',
         article: 'mountain-king',
@@ -27,7 +29,7 @@ export const productsExample: Product[] = [
         updatedAt: new Date(2024, 11, 8),
     },
     {
-        id: '3',
+        id: 'prod_03',
         name: 'City Cruiser',
         categoryId: 'City Bike',
         article: 'city-cruiser',
@@ -39,7 +41,7 @@ export const productsExample: Product[] = [
         updatedAt: new Date(2024, 11, 8),
     },
     {
-        id: '4',
+        id: 'prod_04',
         name: 'Speed Demon',
         categoryId: 'Road Bike',
         article: 'speed-demon',
@@ -51,7 +53,7 @@ export const productsExample: Product[] = [
         updatedAt: new Date(2024, 11, 8),
     },
     {
-        id: '5',
+        id: 'prod_05',
         name: 'Trail Blazer',
         categoryId: 'Mountain Bike',
         article: 'asdasdasd',
@@ -61,6 +63,81 @@ export const productsExample: Product[] = [
         amount: 'unlimited',
         createdAt: new Date(2024, 11, 8),
         updatedAt: new Date(2024, 11, 8),
+    },
+];
+
+export const servicesExample: Service[] = [
+    {
+        id: 'svc_01',
+        createdAt: new Date(2025, 0, 10),
+        updatedAt: new Date(2025, 7, 1),
+        name: 'Full Body Massage',
+        description: 'Relaxing 60-minute full body massage.',
+        price: 80,
+        discountPrice: 65,
+        durationInMinutes: 60,
+        isActive: true,
+        coverImageUrl: 'https://example.com/images/massage1.jpg',
+        imagesUrls: [
+            'https://example.com/images/massage1.jpg',
+            'https://example.com/images/massage2.jpg',
+        ],
+    },
+    {
+        id: 'svc_02',
+        createdAt: new Date(2025, 1, 15),
+        updatedAt: new Date(2025, 7, 5),
+        name: 'Haircut',
+        price: 25,
+        durationInMinutes: 30,
+        isActive: true,
+        coverImageUrl: 'https://example.com/images/haircut1.jpg',
+        imagesUrls: ['https://example.com/images/haircut1.jpg'],
+    },
+    {
+        id: 'svc_03',
+        createdAt: new Date(2025, 2, 1),
+        updatedAt: new Date(2025, 7, 10),
+        name: 'Manicure',
+        description: 'Classic manicure with nail shaping and polish.',
+        price: 35,
+        discountPrice: 30,
+        durationInMinutes: 45,
+        isActive: false,
+        coverImageUrl: 'https://example.com/images/manicure1.jpg',
+    },
+    {
+        id: 'svc_04',
+        createdAt: new Date(2025, 3, 20),
+        updatedAt: new Date(2025, 7, 15),
+        name: 'Facial Treatment',
+        description: 'Refreshing facial treatment with natural products.',
+        price: 50,
+        durationInMinutes: 50,
+        isActive: true,
+        coverImageUrl: 'https://example.com/images/facial1.jpg',
+        imagesUrls: [
+            'https://example.com/images/facial1.jpg',
+            'https://example.com/images/facial2.jpg',
+        ],
+    },
+    {
+        id: 'svc_05',
+        createdAt: new Date(2025, 4, 5),
+        updatedAt: new Date(2025, 7, 20),
+        name: 'Spa Package',
+        description:
+            'Combination of massage, facial, and manicure for ultimate relaxation.',
+        price: 150,
+        discountPrice: 120,
+        durationInMinutes: 180,
+        isActive: true,
+        coverImageUrl: 'https://example.com/images/spa1.jpg',
+        imagesUrls: [
+            'https://example.com/images/spa1.jpg',
+            'https://example.com/images/spa2.jpg',
+            'https://example.com/images/spa3.jpg',
+        ],
     },
 ];
 
@@ -114,5 +191,65 @@ export const categoriesExample: Category[] = [
         createdAt: new Date(2024, 11, 8),
         updatedAt: new Date(2024, 11, 8),
         isActive: false,
+    },
+];
+
+export const ordersExample: OrderEntity[] = [
+    {
+        id: '1',
+        createdAt: new Date(2025, 7, 28),
+        updatedAt: new Date(2025, 7, 28),
+        orderNumber: 1001,
+        userId: 'user_001',
+        status: 'pending',
+        items: [
+            { type: 'product', itemId: 'prod_01', quantity: 2 },
+            { type: 'service', itemId: 'svc_01', quantity: 1 },
+        ],
+        promoCodeId: 'PROMO10',
+        note: 'Please deliver between 9am-5pm',
+        shippingAddress: '123 Main St, Springfield',
+        phoneNumber: '+1234567890',
+        completedAt: new Date(2024, 7, 28),
+    },
+    {
+        id: '2',
+        createdAt: new Date(2025, 7, 27),
+        updatedAt: new Date(2025, 7, 27),
+        orderNumber: 1002,
+        userId: 'user_002',
+        status: 'shipped',
+        items: [
+            { type: 'product', itemId: 'prod_02', quantity: 1 },
+            { type: 'product', itemId: 'prod_03', quantity: 5 },
+            { type: 'product', itemId: 'prod_01', quantity: 2 },
+        ],
+        shippingAddress: '456 Elm St, Shelbyville',
+        phoneNumber: '+0987654321',
+        completedAt: new Date(2025, 2, 1),
+    },
+    {
+        id: '3',
+        createdAt: new Date(2025, 7, 26),
+        updatedAt: new Date(2025, 7, 28),
+        orderNumber: 1003,
+        userId: 'user_003',
+        status: 'delivered',
+        items: [{ type: 'service', itemId: 'svc_02', quantity: 1 }],
+        note: 'Gift wrap the package',
+        shippingAddress: '789 Oak Ave, Capital City',
+        phoneNumber: '+1122334455',
+        completedAt: new Date(2025, 7, 28),
+    },
+    {
+        id: '4',
+        createdAt: new Date(2025, 7, 25),
+        updatedAt: new Date(2025, 7, 25),
+        orderNumber: 1004,
+        userId: 'user_004',
+        status: 'canceled',
+        items: [{ type: 'product', itemId: 'prod_04', quantity: 3 }],
+        promoCodeId: 'SUMMER20',
+        completedAt: new Date(2025, 7, 30),
     },
 ];

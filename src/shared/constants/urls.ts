@@ -22,7 +22,35 @@ export const website = {
     about: `${BASE_URL}about`,
     contact: `${BASE_URL}contact`,
     forbidden: `${BASE_URL}forbidden`,
+    categories: `${BASE_URL}categories`,
+    products: `${BASE_URL}products`,
+    services: `${BASE_URL}services`,
+    reviews: `${BASE_URL}reviews`,
+    faq: `${BASE_URL}faq`,
+    cart: `${BASE_URL}cart`,
+    profile: `${BASE_URL}profile`,
     notFound: `${BASE_URL}404`,
+} as const;
+
+export const websiteSections: Partial<Record<keyof typeof website, string>> = {
+    main: 'головна',
+    categories: 'категорії',
+    services: 'послуги',
+    about: 'про нас',
+    reviews: 'відгуки',
+    faq: 'часті запитання',
+    profile: 'особистий кабінет',
+    cart: 'кошик',
+};
+
+export const NAV_LINKS = {
+    main: { href: '/', label: websiteSections.main },
+    categories: { href: '/categories', label: websiteSections.categories },
+    services: { href: '/services', label: websiteSections.services },
+    about: { href: '/about', label: websiteSections.about },
+    reviews: { href: '/reviews', label: websiteSections.reviews },
+    cart: { href: '/cart', label: websiteSections.cart },
+    profile: { href: '/profile', label: websiteSections.profile },
 } as const;
 
 const auth = {

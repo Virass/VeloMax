@@ -413,6 +413,69 @@ ESLint налаштований з урахуванням специфіки Nex
     - **import/order** — Впорядкування імпортів за групами (вбудовані, зовнішні, внутрішні, відносні). Імпорти мають бути організовані у певному порядку, щоб код був структурованим і легким для навігації. Це особливо корисно у великих файлах з багатьма залежностями.
     - **import/order (react first)** — Імпорт `react` завжди перший серед зовнішніх. Це правило допомагає швидко знаходити основну бібліотеку у списку імпортів. Також це відповідає загальноприйнятим стандартам у спільноті React.
     - **import/no-unresolved, import/no-duplicates** — Заборонено невирішені та дубльовані імпорти. Всі імпорти мають бути коректними, а дублювання — відсутнє. Це зменшує кількість помилок при запуску та полегшує підтримку коду.
+  - **Експорти:**
+    - **export default** — Використовуємо для React компонентів, Next.js сторінок та основних модулів. Це спрощує імпорти та забезпечує стандартний підхід для компонентів. Приклад: `export default function HomePage() {}`
+    - **named exports** — Використовуємо для утиліт, хуків, констант, типів та допоміжних функцій. Це дозволяє експортувати кілька елементів з одного файлу та робить імпорти більш явними. Приклад: `export const API_URLS = {}`
+    - **export type** — Для TypeScript типів завжди використовуємо `export type`. Це допомагає розрізняти типи від звичайних експортів та покращує tree-shaking
+    - **Не змішуємо** default та named експорти в одному файлі без вагомої причини — це може створювати плутанину
+
+  - **Функції:**
+    - **Компоненти React** — Завжди function declarations для кращої читабельності та hoisting:
+    ```typescript
+    function UserProfile() {
+      return <div>Profile</div>;
+    }
+    export default UserProfile;
+    ```
+    
+    - **Next.js сторінки та API routes** — Function declarations для консистентності:
+    ```typescript
+    function HomePage() {
+      return <div>Home</div>;
+    }
+    
+    export default function handler(req, res) {
+      // API logic
+    }
+    ```
+    
+    - **Хуки (custom hooks)** — Arrow functions з const для явного позначення, що це функції:
+    ```typescript
+    const useUserProfile = () => {
+      const [user, setUser] = useState(null);
+      return { user, setUser };
+    };
+    ```
+    
+    - **Утилітарні функції** — Arrow functions з const для функціонального стилю:
+    ```typescript
+    const formatDate = (date: Date) => {
+      return date.toLocaleDateString();
+    };
+    
+    const validateEmail = (email: string) => email.includes('@');
+    ```
+    
+    - **Константи та конфігурація** — Звичайні константи з UPPER_CASE для глобальних значень:
+    ```typescript
+    const API_BASE_URL = 'https://api.example.com';
+    const DEFAULT_PAGINATION_SIZE = 10;
+    ```
+    
+    - **Обробники подій** — Arrow functions для зв'язування контексту:
+    ```typescript
+    const handleSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      // logic
+    };
+    ```
+
+  - **Найменування файлів:**
+    - **Компоненти** — PascalCase: `UserProfile.tsx`, `LoginForm.tsx`
+    - **Хуки** — camelCase з префіксом "use": `useAuth.ts`, `useLocalStorage.ts`
+    - **Утиліти** — camelCase: `dateUtils.ts`, `apiHelpers.ts`
+    - **Типи** — camelCase: `userTypes.ts`, `apiTypes.ts`
+    - **Константи** — camelCase: `apiConstants.ts`, `appConfig.ts`
 
 - **Доступність:**
     - **jsx-a11y/alt-text** — Попередження, якщо не вказано alt-текст для зображень. Для всіх зображень необхідно вказувати опис через атрибут `alt`. Це важливо для користувачів з обмеженими можливостями та для SEO.

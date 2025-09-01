@@ -5,7 +5,6 @@ import { BoxProps, MantineBreakpoint } from '@mantine/core';
 import { Phones } from '@/shared/components/Phones';
 import { NAV_LINKS } from '@/shared/constants/urls';
 import Link from 'next/link';
-import { capitalize } from '@/features/website/header/model/capitalize';
 import { usePathname } from 'next/navigation';
 import { useMediaQuery } from '@mantine/hooks';
 import { BREAKPOINTS } from '@/shared/config/breakpoints';
@@ -23,16 +22,16 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
         <Box
             visibleFrom={visibleFrom}
             w="100%"
-            h={65}
+            h="6vh"
             display="flex"
             align="center"
             justify="center"
         >
             <Group
-                h={45}
+                h="100%"
                 w="100%"
                 px={{ md: 20, lg: 93 }}
-                py="1vh"
+                py="0.5vh"
                 justify="space-between"
                 align="center"
             >
@@ -46,7 +45,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     {Object.values(NAV_LINKS).map((l) => {
                         const isCartLink =
                             l.href === '/cart' && cartItemCount > 0;
-                        const linkText = capitalize(l.label);
+
                         return (
                             <Link
                                 key={l.href}
@@ -60,9 +59,12 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                                         fw={pathname === l.href ? 600 : 400}
                                         size={isXl ? 'xl' : 'md'}
                                         c="#212529"
-                                        style={{ textAlign: 'center' }}
+                                        style={{
+                                            textAlign: 'center',
+                                            textTransform: 'capitalize',
+                                        }}
                                     >
-                                        {linkText}
+                                        {l.label}
                                     </Text>
                                     {isCartLink && (
                                         <Badge

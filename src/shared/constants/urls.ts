@@ -53,17 +53,6 @@ export const NAV_LINKS = {
     profile: { href: '/profile', label: websiteSections.profile },
 } as const;
 
-export const websiteSections: Partial<Record<keyof typeof website, string>> = {
-    main: 'головна',
-    categories: 'категорії',
-    services: 'послуги',
-    about: 'про нас',
-    reviews: 'відгуки',
-    faq: 'часті запитання',
-    profile: 'особистий кабінет',
-    cart: 'кошик',
-};
-
 const auth = {
     main: AUTH_URL,
     signIn: `${AUTH_URL}/sign-in`,

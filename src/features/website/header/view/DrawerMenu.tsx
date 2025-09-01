@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Drawer, Stack, Text } from '@mantine/core';
 import { NAV_LINKS } from '@/shared/constants/urls';
 import { Phones } from '@/shared/components/Phones';
-import { capitalize } from '@/features/website/header/model/capitalize';
 import { usePathname } from 'next/navigation';
 
 type Props = { opened: boolean; onClose: () => void };
@@ -66,9 +65,10 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
                             c="#212529"
                             style={{
                                 textAlign: 'center',
+                                textTransform: 'capitalize',
                             }}
                         >
-                            {capitalize(l.label)}
+                            {l.label}
                         </Text>
                     </Link>
                 ))}

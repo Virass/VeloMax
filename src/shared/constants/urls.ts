@@ -22,8 +22,26 @@ export const website = {
     about: `${BASE_URL}about`,
     contact: `${BASE_URL}contact`,
     forbidden: `${BASE_URL}forbidden`,
+    categories: `${BASE_URL}categories`,
+    products: `${BASE_URL}products`,
+    services: `${BASE_URL}services`,
+    reviews: `${BASE_URL}reviews`,
+    faq: `${BASE_URL}faq`,
+    cart: `${BASE_URL}cart`,
+    profile: `${BASE_URL}profile`,
     notFound: `${BASE_URL}404`,
 } as const;
+
+export const websiteSections: Partial<Record<keyof typeof website, string>> = {
+    main: 'головна',
+    categories: 'категорії',
+    services: 'послуги',
+    about: 'про нас',
+    reviews: 'відгуки',
+    faq: 'часті запитання',
+    profile: 'особистий кабінет',
+    cart: 'кошик',
+};
 
 const auth = {
     main: AUTH_URL,

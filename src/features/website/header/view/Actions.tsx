@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { ActionIcon, Group } from '@mantine/core';
 import Link from 'next/link';
+
 import { NAV_LINKS } from '@/shared/constants/urls';
 import { ShoppingBagIcon } from '@/shared/ui/icons/ShoppingBagIcon';
 import { UserIcon } from '@/shared/ui/icons/UserIcon';

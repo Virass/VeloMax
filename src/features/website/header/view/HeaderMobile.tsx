@@ -1,18 +1,20 @@
 'use client';
 
-import {
+import { useCallback, useEffect, useState } from 'react';
+
+import type {
+    MantineBreakpoint,
     Box,
     Group,
     Burger,
     type BoxProps,
-    MantineBreakpoint,
 } from '@mantine/core';
-import { useCallback, useEffect, useState } from 'react';
-import { DrawerMenu } from '@/features/website/header/view/DrawerMenu';
-import { Actions } from '@/features/website/header/view/Actions';
-import { Brand } from '@/shared/ui/Brand';
 import { useMediaQuery } from '@mantine/hooks';
+
+import { Actions } from '@/features/website/header/view/Actions';
+import { DrawerMenu } from '@/features/website/header/view/DrawerMenu';
 import { BREAKPOINTS } from '@/shared/config/breakpoints';
+import { Brand } from '@/shared/ui/Brand';
 
 interface HeaderMobileProps extends BoxProps {
     hiddenFrom: MantineBreakpoint;

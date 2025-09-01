@@ -1,13 +1,20 @@
 'use client';
 
-import { Box, Group, Text, Badge } from '@mantine/core';
-import { BoxProps, MantineBreakpoint } from '@mantine/core';
-import { Phones } from '@/shared/components/Phones';
-import { NAV_LINKS } from '@/shared/constants/urls';
+import {
+    type BoxProps,
+    type MantineBreakpoint,
+    Box,
+    Group,
+    Text,
+    Badge,
+} from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useMediaQuery } from '@mantine/hooks';
+
+import { Phones } from '@/shared/components/Phones';
 import { BREAKPOINTS } from '@/shared/config/breakpoints';
+import { NAV_LINKS } from '@/shared/constants/urls';
 
 interface HeaderDesktopProps extends BoxProps {
     visibleFrom?: MantineBreakpoint;

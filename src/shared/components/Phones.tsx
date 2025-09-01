@@ -6,9 +6,9 @@ import {
     Text,
 } from '@mantine/core';
 
+import { phonesExample } from '@/shared/constants/mockData';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
 import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
-import { phonesExample } from '@/shared/constants/mockData';
 
 type Props = {
     color?: MantineColor;

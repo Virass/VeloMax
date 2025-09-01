@@ -1,6 +1,7 @@
 import { Button, Container, Group, Text, Title } from '@mantine/core';
-import classes from '@/shared/styles/not-found.module.css';
 import Link from 'next/link';
+
+import classes from '@/shared/styles/not-found.module.css';
 
 export default function NotFoundPage() {
     return (
@@ -15,7 +16,8 @@ export default function NotFoundPage() {
                 ta="center"
                 className={classes.description}
             >
-                На жаль сторінку не знайдено. Ви могли помилитися в адресі або сторінка була переміщена на іншу URL-адресу.
+                На жаль сторінку не знайдено. Ви могли помилитися в адресі або
+                сторінка була переміщена на іншу URL-адресу.
             </Text>
             <Group justify="center">
                 <Link href="/">

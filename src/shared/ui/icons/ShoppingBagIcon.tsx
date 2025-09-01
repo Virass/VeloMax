@@ -1,4 +1,5 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
+
 import Icon from '@/shared/components/Icon';
 
 type Props = {

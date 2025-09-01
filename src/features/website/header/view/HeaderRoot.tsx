@@ -1,5 +1,6 @@
-import { Box, Container } from '@mantine/core';
 import { type PropsWithChildren } from 'react';
+
+import { Box } from '@mantine/core';
 
 export function HeaderRoot({ children }: PropsWithChildren) {
     return (

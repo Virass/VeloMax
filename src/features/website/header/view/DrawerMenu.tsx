@@ -1,8 +1,9 @@
-import Link from 'next/link';
 import { Drawer, Stack, Text } from '@mantine/core';
-import { NAV_LINKS } from '@/shared/constants/urls';
-import { Phones } from '@/shared/components/Phones';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { Phones } from '@/shared/components/Phones';
+import { NAV_LINKS } from '@/shared/constants/urls';
 
 type Props = { opened: boolean; onClose: () => void };
 

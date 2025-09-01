@@ -6,12 +6,12 @@ import {
     mantineHtmlProps,
 } from '@mantine/core';
 import type { Metadata } from 'next';
-
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
 import '@/shared/styles/reset.css';
-import { BREAKPOINTS } from '@/shared/config/breakpoints';
 import { Roboto } from 'next/font/google';
+
+import { BREAKPOINTS } from '@/shared/config/breakpoints';
 
 export const metadata: Metadata = {
     title: 'VeloMax',

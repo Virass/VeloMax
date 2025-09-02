@@ -43,6 +43,16 @@ export const websiteSections: Partial<Record<keyof typeof website, string>> = {
     cart: 'кошик',
 };
 
+export const NAV_LINKS = {
+    main: { href: '/', label: websiteSections.main },
+    categories: { href: '/categories', label: websiteSections.categories },
+    services: { href: '/services', label: websiteSections.services },
+    about: { href: '/about', label: websiteSections.about },
+    reviews: { href: '/reviews', label: websiteSections.reviews },
+    cart: { href: '/cart', label: websiteSections.cart },
+    profile: { href: '/profile', label: websiteSections.profile },
+} as const;
+
 const auth = {
     main: AUTH_URL,
     signIn: `${AUTH_URL}/sign-in`,

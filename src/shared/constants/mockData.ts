@@ -253,3 +253,5 @@ export const ordersExample: OrderEntity[] = [
         completedAt: new Date(2025, 7, 30),
     },
 ];
+
+export const phonesExample = ['+380637476963', '+380679954177'];

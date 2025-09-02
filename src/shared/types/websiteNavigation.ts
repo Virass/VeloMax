@@ -1,4 +1,4 @@
-type Sections =
+export type WebsiteNavigationSections =
     | 'головна'
     | 'категорії'
     | 'послуги'
@@ -7,5 +7,3 @@ type Sections =
     | 'часті питання'
     | 'особистий кабінет'
     | 'кошик';
-
-export type WebsiteNavigation = Record<Sections, string>;

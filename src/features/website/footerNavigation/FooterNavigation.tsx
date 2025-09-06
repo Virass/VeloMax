@@ -1,29 +1,35 @@
-import { Group, Stack, Text } from '@mantine/core';
-import Link from 'next/link';
+import { Flex, Group } from '@mantine/core';
 
+import FooterNavigationSection from '@/shared/components/FooterNavigationSection';
 import { websiteSections } from '@/shared/constants/urls';
 import styles from '@/shared/styles/website-footer.module.css';
 
 export default function FooterNavigation() {
-    const columns = [websiteSections.slice(0, 4), websiteSections.slice(4)];
-
     return (
-        <Group justify="space-between" align="flex-start">
-            {columns.map((column, columnIndex) => (
-                <Stack key={columnIndex}>
-                    {column.map(({ label, link }) => (
-                        <Link
-                            key={label}
-                            href={link}
-                            className={styles.navigationItem}
-                        >
-                            <Text tt="capitalize" c="gray.0">
-                                {label}
-                            </Text>
-                        </Link>
-                    ))}
-                </Stack>
-            ))}
+        <Group
+            justify="space-between"
+            align="flex-start"
+            className={styles.footerNavigationContainer}
+        >
+            <Flex className={styles.footerNavigationItems}>
+                {websiteSections.slice(0, 4).map(({ label, link }) => (
+                    <FooterNavigationSection
+                        key={label}
+                        label={label}
+                        link={link}
+                    />
+                ))}
+            </Flex>
+
+            <Flex className={styles.footerNavigationItems}>
+                {websiteSections.slice(4).map(({ label, link }) => (
+                    <FooterNavigationSection
+                        key={label}
+                        label={label}
+                        link={link}
+                    />
+                ))}
+            </Flex>
         </Group>
     );
 }

@@ -1,18 +1,25 @@
 import { Stack, Text } from '@mantine/core';
+import Link from 'next/link';
 
-const policy = [
-    'Згода на обробку персональних даних',
-    'Політика конфіденційності',
-    'Всі права захищені, © 2025',
-];
+import styles from '@/shared/styles/website-footer.module.css';
 
-export default function FooterPolicy() {
+import { getPolicies } from './services/footerPolicy.service';
+
+export default async function FooterPolicy() {
+    const policies = await getPolicies();
+
     return (
         <Stack justify="center" align="center" gap="xs">
-            {policy.map((text) => (
-                <Text key={text} size="xs">
-                    {text}
-                </Text>
+            {policies.map(({ label, link }) => (
+                <Link
+                    key={label}
+                    href={link}
+                    className={styles.footerNavigationItem}
+                >
+                    <Text size="xs" c="gray.0">
+                        {label}
+                    </Text>
+                </Link>
             ))}
         </Stack>
     );

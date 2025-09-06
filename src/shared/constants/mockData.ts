@@ -2,6 +2,7 @@ import type { Category } from '../types/categoryType';
 import type { OrderEntity } from '../types/orderType';
 import type { Product } from '../types/productType';
 import type { Service } from '../types/serviceType';
+import type { SocialMedia } from '../types/socialMediaType';
 
 export const productsExample: Product[] = [
     {
@@ -251,5 +252,35 @@ export const ordersExample: OrderEntity[] = [
         items: [{ type: 'product', itemId: 'prod_04', quantity: 3 }],
         promoCodeId: 'SUMMER20',
         completedAt: new Date(2025, 7, 30),
+    },
+];
+
+export const socialMediaLinks: SocialMedia[] = [
+    {
+        platform: 'instagram',
+        link: 'instagram',
+    },
+    {
+        platform: 'facebook',
+        link: 'facebook',
+    },
+    {
+        platform: 'telegram',
+        link: 'telegram',
+    },
+];
+
+export const policies = [
+    {
+        label: 'Згода на обробку персональних даних',
+        link: '',
+    },
+    {
+        label: 'Політика конфіденційності',
+        link: '',
+    },
+    {
+        label: 'Всі права захищені, © 2025',
+        link: '',
     },
 ];

@@ -10,10 +10,10 @@ import styles from '@/shared/styles/website-footer.module.css';
 export default function Footer() {
     return (
         <Box component="footer">
-            <Stack gap="xs" hiddenFrom="lg">
+            <Stack gap="4px" hiddenFrom="lg">
                 <FooterFeedbackForm />
 
-                <Stack className={styles.footerBlock} gap="lg">
+                <Stack className={styles.footerContainer} gap="2rem">
                     <FooterNavigation />
 
                     <FooterContacts />
@@ -24,30 +24,28 @@ export default function Footer() {
                 </Stack>
             </Stack>
 
-            <Group
-                justify="space-between"
-                visibleFrom="lg"
-                className={styles.footerBlock}
-            >
-                <Stack>
-                    <FooterLogoAndSocialsSection />
-                    <FooterPolicy />
-                </Stack>
-
-                <Group>
+            <Box className={styles.footerContainer} visibleFrom="lg">
+                <Group justify="space-between" className={styles.footerBlock}>
                     <Stack>
-                        <FooterFeedbackForm />
-                        <FooterNavigation />
+                        <FooterLogoAndSocialsSection />
+                        <FooterPolicy />
                     </Stack>
 
-                    <Stack>
-                        <FooterContacts />
-                        <Text>
-                            Консультації і замовлення з 09:00 до 21:00 щодня
-                        </Text>
-                    </Stack>
+                    <Group className={styles.footerDesktopRightSide}>
+                        <Stack>
+                            <FooterFeedbackForm />
+                            <FooterNavigation />
+                        </Stack>
+
+                        <Stack>
+                            <FooterContacts />
+                            <Text>
+                                Консультації і замовлення з 09:00 до 21:00 щодня
+                            </Text>
+                        </Stack>
+                    </Group>
                 </Group>
-            </Group>
+            </Box>
         </Box>
     );
 }

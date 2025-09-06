@@ -1,7 +1,8 @@
-import { Stack } from '@mantine/core';
+import { Flex } from '@mantine/core';
 
 import ContactDetail from '@/shared/components/ContactDetail';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
+import styles from '@/shared/styles/website-footer.module.css';
 import Clock from '@/shared/ui/icons/ClockIcon';
 import MapPinIcon from '@/shared/ui/icons/MapPinIcon';
 import PhoneIcon from '@/shared/ui/icons/PhoneIcon';
@@ -26,7 +27,7 @@ const contacts = [
 
 export default function FooterContacts() {
     return (
-        <Stack>
+        <Flex className={styles.footerContacts}>
             {contacts.map(({ icon, contactInfo }, index) => (
                 <ContactDetail
                     key={index}
@@ -34,6 +35,6 @@ export default function FooterContacts() {
                     contactInfo={contactInfo}
                 />
             ))}
-        </Stack>
+        </Flex>
     );
 }

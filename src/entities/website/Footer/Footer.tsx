@@ -1,4 +1,4 @@
-import { Box, Group, Stack, Text } from '@mantine/core';
+import { Box, Container, Group, Stack, Text } from '@mantine/core';
 
 import { FooterContacts } from '@/entities/website/Footer/Contacts';
 import { FooterFeedbackForm } from '@/entities/website/Footer/FeedbackForm';
@@ -12,36 +12,37 @@ export default function Footer() {
         <Box component="footer">
             <Stack gap="4px" hiddenFrom="lg">
                 <FooterFeedbackForm />
-
                 <Stack className={styles.footerContainer} gap="2rem">
                     <FooterNavigation />
-
                     <FooterContacts />
-
                     <FooterLogoAndSocialsSection />
-
                     <FooterPolicy />
                 </Stack>
             </Stack>
 
             <Box className={styles.footerContainer} visibleFrom="lg">
-                <Group justify="space-between" className={styles.footerBlock}>
-                    <Stack>
-                        <FooterLogoAndSocialsSection />
-                        <FooterPolicy />
-                    </Stack>
-                    <Stack>
-                        <FooterFeedbackForm />
-                        <FooterNavigation />
-                    </Stack>
+                <Container size={'xl'}>
+                    <Group
+                        justify="space-between"
+                        className={styles.footerBlock}
+                    >
+                        <Stack>
+                            <FooterLogoAndSocialsSection />
+                            <FooterPolicy />
+                        </Stack>
+                        <Stack>
+                            <FooterFeedbackForm />
+                            <FooterNavigation />
+                        </Stack>
 
-                    <Stack>
-                        <FooterContacts />
-                        <Text>
-                            Консультації і замовлення з 09:00 до 21:00 щодня
-                        </Text>
-                    </Stack>
-                </Group>
+                        <Stack>
+                            <FooterContacts />
+                            <Text>
+                                Консультації і замовлення з 09:00 до 21:00 щодня
+                            </Text>
+                        </Stack>
+                    </Group>
+                </Container>
             </Box>
         </Box>
     );

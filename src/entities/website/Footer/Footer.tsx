@@ -12,7 +12,7 @@ export default function Footer() {
         <Box component="footer">
             <Stack gap="4px" hiddenFrom="lg">
                 <FooterFeedbackForm />
-                <Stack className={styles.footerContainer} gap="2rem">
+                <Stack className={styles.footerContainer} gap="1rem">
                     <FooterNavigation />
                     <FooterContacts />
                     <FooterLogoAndSocialsSection />

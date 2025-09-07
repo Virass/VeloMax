@@ -68,11 +68,14 @@ export default function ProductCard({
                         <CardPrice price={price} />
                     </Group>
 
-                    <Text
-                        c={`${availability ? 'gray' : 'red'}.6`}
-                    >{`${availability ? 'є' : 'немає'} в наявності`}</Text>
+                    <Text c="gray.6">{`${availability ? 'є' : 'немає'} в наявності`}</Text>
 
-                    <Button radius="lg" bg="gray.9" c="white">
+                    <Button
+                        radius="lg"
+                        bg={`gray.${availability ? '9' : '2'}`}
+                        disabled={!availability}
+                        c={availability ? 'white' : 'gray.5'}
+                    >
                         Додати до кошика
                     </Button>
                 </Stack>

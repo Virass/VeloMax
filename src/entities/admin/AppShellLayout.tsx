@@ -1,8 +1,10 @@
 'use client';
 
 import type { PropsWithChildren } from 'react';
+
 import { AppShell } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 

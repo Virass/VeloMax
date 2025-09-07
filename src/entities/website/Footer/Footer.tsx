@@ -21,28 +21,28 @@ export default function Footer() {
             </Stack>
 
             <Box className={styles.footerContainer} visibleFrom="lg">
-                <Container size={'xl'}>
-                    <Group
-                        justify="space-between"
-                        className={styles.footerBlock}
-                    >
-                        <Stack>
-                            <FooterLogoAndSocialsSection />
-                            <FooterPolicy />
-                        </Stack>
-                        <Stack>
-                            <FooterFeedbackForm />
-                            <FooterNavigation />
-                        </Stack>
+                <Group
+                    justify="space-between"
+                    m={'0 auto'}
+                    w={'100%'}
+                    maw={'1280px'}
+                >
+                    <Stack>
+                        <FooterLogoAndSocialsSection />
+                        <FooterPolicy />
+                    </Stack>
+                    <Stack>
+                        <FooterFeedbackForm />
+                        <FooterNavigation />
+                    </Stack>
 
-                        <Stack>
-                            <FooterContacts />
-                            <Text>
-                                Консультації і замовлення з 09:00 до 21:00 щодня
-                            </Text>
-                        </Stack>
-                    </Group>
-                </Container>
+                    <Stack>
+                        <FooterContacts />
+                        <Text>
+                            Консультації і замовлення з 09:00 до 21:00 щодня
+                        </Text>
+                    </Stack>
+                </Group>
             </Box>
         </Box>
     );

@@ -5,7 +5,7 @@ import { FooterFeedbackForm } from '@/entities/website/Footer/FeedbackForm';
 import { FooterLogoAndSocialsSection } from '@/entities/website/Footer/LogoAndSocialsSection';
 import { FooterNavigation } from '@/entities/website/Footer/Navigation';
 import { FooterPolicy } from '@/entities/website/Footer/Policy';
-import styles from '@/shared/styles/website-footer.module.css';
+import styles from './styles/website-footer.module.css';
 
 export default function Footer() {
     return (

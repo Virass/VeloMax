@@ -2,7 +2,8 @@ import { Flex } from '@mantine/core';
 
 import ContactDetail from '@/shared/components/ContactDetail';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
-import styles from '@/shared/styles/website-footer.module.css';
+// import styles from '@/entities/website/Footer/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.css';
 import Clock from '@/shared/ui/icons/ClockIcon';
 import MapPinIcon from '@/shared/ui/icons/MapPinIcon';
 import PhoneIcon from '@/shared/ui/icons/PhoneIcon';

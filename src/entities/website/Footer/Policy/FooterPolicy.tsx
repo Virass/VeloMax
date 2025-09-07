@@ -1,7 +1,7 @@
 import { Stack, Text } from '@mantine/core';
 import Link from 'next/link';
 
-import styles from '@/shared/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.css';
 
 import { getPolicies } from './services/footerPolicy.service';
 

@@ -2,7 +2,7 @@ import { Flex, Group } from '@mantine/core';
 
 import FooterNavigationSection from '@/shared/components/FooterNavigationSection';
 import { websiteSections } from '@/shared/constants/urls';
-import styles from '@/shared/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.css';
 
 export default function FooterNavigation() {
     return (

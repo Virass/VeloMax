@@ -6,7 +6,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '@/shared/components/Button';
 import { Input } from '@/shared/components/Input';
 import InputError from '@/shared/components/InputError';
-import styles from '@/shared/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.css';
 import RightArrowIcon from '@/shared/ui/icons/RightArrowIcon';
 
 export default function FooterFeedbackForm() {

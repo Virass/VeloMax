@@ -6,7 +6,7 @@ interface Props {
     link: string;
 }
 
-import styles from '@/shared/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.css';
 
 export default function FooterNavigationSection({ label, link }: Props) {
     return (

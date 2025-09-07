@@ -1,11 +1,11 @@
-import { Box, Container, Group, Stack, Text } from '@mantine/core';
+import { Box, Group, Stack, Text } from '@mantine/core';
 
 import { FooterContacts } from '@/entities/website/Footer/Contacts';
 import { FooterFeedbackForm } from '@/entities/website/Footer/FeedbackForm';
 import { FooterLogoAndSocialsSection } from '@/entities/website/Footer/LogoAndSocialsSection';
 import { FooterNavigation } from '@/entities/website/Footer/Navigation';
 import { FooterPolicy } from '@/entities/website/Footer/Policy';
-import styles from './styles/website-footer.module.css';
+import styles from './styles/website-footer.module.scss';
 
 export default function Footer() {
     return (

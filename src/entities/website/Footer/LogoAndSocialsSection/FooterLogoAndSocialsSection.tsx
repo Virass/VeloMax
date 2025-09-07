@@ -2,7 +2,7 @@ import { Group, Stack } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import styles from '@/entities/website/Footer/styles/website-footer.module.css';
+import styles from '@/entities/website/Footer/styles/website-footer.module.scss';
 import FacebookIcon from '@/shared/ui/icons/FacebookIcon';
 import InstagramIcon from '@/shared/ui/icons/InstagramIcon';
 import TelegramIcon from '@/shared/ui/icons/TelegramIcon';

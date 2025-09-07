@@ -99,19 +99,11 @@
         justify-content: space-between;
         width: 100%;
     }
-
-    .footerDesktopRightSide {
-        gap: 2rem;
-    }
 }
 
 @media (min-width: $mantine-breakpoint-xl) {
     .footerFeedBack {
         width: 350px;
-    }
-
-    .footerDesktopRightSide {
-        gap: 10rem;
     }
 }
 
@@ -126,9 +118,5 @@
 
     .footerFeedBack {
         width: 450px;
-    }
-
-    .footerDesktopRightSide {
-        gap: 15rem;
     }
 }

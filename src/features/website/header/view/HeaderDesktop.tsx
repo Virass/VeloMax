@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
-import { BREAKPOINTS } from '@/shared/config/breakpoints';
+import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { NAV_LINKS } from '@/shared/constants/urls';
 
 interface HeaderDesktopProps extends BoxProps {

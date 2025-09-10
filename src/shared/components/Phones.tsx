@@ -6,7 +6,7 @@ import {
     Text,
 } from '@mantine/core';
 
-import { phonesExample } from '@/shared/constants/mockData';
+import { phonesExample } from '@/shared/constants/mockData/mockData';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
 import PhoneIcon from '@/shared/ui/icons/PhoneIcon';
 

@@ -1,13 +1,13 @@
 import { simulateCrud } from '@/core/config/api';
-import { policies } from '@/shared/constants/mockData';
+import { policies } from '@/shared/constants/mockData/mockData';
 
 export const getPolicies = async () =>
-    // TODO Add caching here later. Example:
+  // TODO Add caching here later. Example:
 
-    /*
-      const res = await fetch(`${process.env.API_URL}/socials`, {
-        cache: 'force-cache',
-      });
-    */
+  /*
+    const res = await fetch(`${process.env.API_URL}/socials`, {
+      cache: 'force-cache',
+    });
+  */
 
-    simulateCrud(policies, 1500);
+  simulateCrud(policies, 1500);

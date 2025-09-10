@@ -11,7 +11,7 @@ import '@mantine/core/styles.css';
 import '@/shared/styles/reset.css';
 import { Roboto } from 'next/font/google';
 
-import { BREAKPOINTS } from '@/shared/config/breakpoints';
+import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 
 export const metadata: Metadata = {
     title: 'VeloMax',

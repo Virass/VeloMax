@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { simulateCrud } from '@/core/config/api';
-import { productsExample } from '@/shared/constants/mockData';
+import { productsExample } from '@/shared/constants/mockData/mockData';
 import type { Product } from '@/shared/types/productType';
 
 export async function getProducts(): Promise<Product[]> {

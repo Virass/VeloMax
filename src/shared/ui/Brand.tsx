@@ -1,7 +1,7 @@
 import { Text } from '@mantine/core';
 import Link from 'next/link';
 
-import { SITE_NAME } from '@/shared/constants/branding';
+import { SITE_NAME } from '@/shared/constants/mockData/branding';
 import { NAV_LINKS } from '@/shared/constants/urls';
 
 export const Brand = () => {

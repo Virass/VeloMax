@@ -1,8 +1,8 @@
-import type { Category } from '../types/categoryType';
-import type { OrderEntity } from '../types/orderType';
-import type { Product } from '../types/productType';
-import type { Service } from '../types/serviceType';
-import type { SocialMedia } from '../types/socialMediaType';
+import type { Category } from '../../types/categoryType';
+import type { OrderEntity } from '../../types/orderType';
+import type { Product } from '../../types/productType';
+import type { Service } from '../../types/serviceType';
+import type { SocialMedia } from '../../types/socialMediaType';
 
 export const productsExample: Product[] = [
     {

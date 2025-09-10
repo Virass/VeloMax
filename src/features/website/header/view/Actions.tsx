@@ -15,12 +15,14 @@ interface Action {
 
 const actions: Action[] = [
     {
-        href: NAV_LINKS.cart.href,
+        href: NAV_LINKS.find((link) => link.label === 'кошик')?.href || '/cart',
         ariaLabel: 'Кошик',
         icon: <ShoppingBagIcon />,
     },
     {
-        href: NAV_LINKS.profile.href,
+        href:
+            NAV_LINKS.find((link) => link.label === 'особистий кабінет')
+                ?.href || '/profile',
         ariaLabel: 'Особистий кабінет',
         icon: <UserIcon />,
     },

@@ -1,14 +1,15 @@
+const BREAKPOINTS = require('./src/shared/constants/breakpoints.json');
+
 module.exports = {
     plugins: {
         'postcss-preset-mantine': {},
         'postcss-simple-vars': {
             variables: {
-                'mantine-breakpoint-xs': '36rem',
-                'mantine-breakpoint-sm': '48rem',
-                'mantine-breakpoint-md': '62rem',
-                'mantine-breakpoint-lg': '75rem',
-                'mantine-breakpoint-xl': '88rem',
-                'mantine-breakpoint-xxl': '101rem',
+                'mantine-breakpoint-xs': BREAKPOINTS.xs,
+                'mantine-breakpoint-sm': BREAKPOINTS.sm,
+                'mantine-breakpoint-md': BREAKPOINTS.md,
+                'mantine-breakpoint-lg': BREAKPOINTS.lg,
+                'mantine-breakpoint-xl': BREAKPOINTS.xl,
             },
         },
     },

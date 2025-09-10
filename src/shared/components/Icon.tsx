@@ -12,6 +12,7 @@ export default function Icon({
     height = 24,
     color = 'white',
     mode = 'fill',
+    viewBox = '0 0 17.3395 20',
     path,
     ...rest
 }: Props) {

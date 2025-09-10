@@ -44,6 +44,16 @@ export const websiteSections = [
     { label: 'кошик', link: website.cart },
 ];
 
+export const NAV_LINKS = [
+    { label: 'головна', href: website.main },
+    { label: 'категорії', href: website.categories },
+    { label: 'послуги', href: website.services },
+    { label: 'про нас', href: website.about },
+    { label: 'відгуки', href: website.reviews },
+    { label: 'кошик', href: website.cart },
+    { label: 'особистий кабінет', href: website.profile },
+] as const;
+
 const auth = {
     main: AUTH_URL,
     signIn: `${AUTH_URL}/sign-in`,

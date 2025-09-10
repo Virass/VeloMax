@@ -6,6 +6,7 @@ import {
     Text,
 } from '@mantine/core';
 
+import { phonesExample } from '@/shared/constants/mockData/mockData';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
 import PhoneIcon from '@/shared/ui/icons/PhoneIcon';
 
@@ -16,8 +17,6 @@ type Props = {
     align?: 'flex-start' | 'center' | 'flex-end';
     iconSize?: 12 | 24 | 32;
 };
-
-const phones = ['+380637476963', '+380679954177'];
 
 export const Phones = ({
     color = '#000000',
@@ -30,11 +29,16 @@ export const Phones = ({
         <PhoneIcon width={iconSize} height={iconSize} color={color} />
 
         <Stack gap="0.3">
-            {phones.map((phone) => (
+            {phonesExample.map((phone) => (
                 <Group key={phone} gap="xs">
-                    <Text c={color} size={fontSize} fw={fontWeight}>
-                        {formatPhoneNumber(phone)}
-                    </Text>
+                    <a
+                        href={`tel:${phone}`}
+                        style={{ textDecoration: 'none', outline: 'none' }}
+                    >
+                        <Text c={color} size={fontSize} fw={fontWeight}>
+                            {formatPhoneNumber(phone)}
+                        </Text>
+                    </a>
                 </Group>
             ))}
         </Stack>

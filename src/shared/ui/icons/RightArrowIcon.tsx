@@ -1,12 +1,13 @@
+import * as React from 'react';
+
 import Icon from '@/shared/components/Icon';
 import type { IconProps } from '@/shared/types/icon';
 
-export default function PhoneIcon({
+export default function RightArrowIcon({
     width,
     height,
     color,
-    mode = 'stroke',
-    ...rest
+    mode,
 }: IconProps) {
     return (
         <Icon
@@ -14,11 +15,9 @@ export default function PhoneIcon({
             height={height}
             color={color}
             mode={mode}
-            strokeWidth={2}
             path={
-                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+                <path d="M11.91 6.077a.833.833 0 0 1 1.18 0l3.333 3.334a.833.833 0 0 1 0 1.178l-3.334 3.333a.833.833 0 0 1-1.178-1.178l1.91-1.91H4.168a.833.833 0 0 1 0-1.667h9.654l-1.91-1.911a.833.833 0 0 1 0-1.179Z" />
             }
-            {...rest}
         />
     );
 }

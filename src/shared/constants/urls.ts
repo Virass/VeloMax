@@ -2,6 +2,7 @@ import {
     type AdminCatalogNameMapping,
     SINGULAR_CATALOG_NAME,
 } from '../types/urls';
+import type { WebsiteNavigationSections } from '../types/websiteNavigation';
 
 const BASE_URL = '/';
 const AUTH_URL = `${BASE_URL}auth`;
@@ -32,16 +33,16 @@ export const website = {
     notFound: `${BASE_URL}404`,
 } as const;
 
-export const websiteSections: Partial<Record<keyof typeof website, string>> = {
-    main: 'головна',
-    categories: 'категорії',
-    services: 'послуги',
-    about: 'про нас',
-    reviews: 'відгуки',
-    faq: 'часті запитання',
-    profile: 'особистий кабінет',
-    cart: 'кошик',
-};
+export const websiteSections = [
+    { label: 'головна', link: website.main },
+    { label: 'категорії', link: website.categories },
+    { label: 'послуги', link: website.services },
+    { label: 'про нас', link: website.about },
+    { label: 'відгуки', link: website.reviews },
+    { label: 'часті питання', link: website.faq },
+    { label: 'особистий кабінет', link: website.profile },
+    { label: 'кошик', link: website.cart },
+];
 
 export const NAV_LINKS = {
     main: { href: '/', label: websiteSections.main },

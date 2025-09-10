@@ -8,7 +8,7 @@ import {
 
 import { phonesExample } from '@/shared/constants/mockData';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
-import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
+import PhoneIcon from '@/shared/ui/icons/PhoneIcon';
 
 type Props = {
     color?: MantineColor;

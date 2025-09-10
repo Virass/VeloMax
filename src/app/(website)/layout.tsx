@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Stack } from '@mantine/core';
 
-import { Footer } from '@/entities/website/components/Footer';
 import { Header } from '@/features/website/header';
+import Footer from '@/entities/website/Footer/Footer';
 
 export default function WebsiteLayout({
     children,

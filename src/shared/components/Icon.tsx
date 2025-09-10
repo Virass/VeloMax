@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { resolveMantineColor } from '../lib/resolveMantineColor';
 import type { IconProps } from '../types/icon';
 
 interface Props extends IconProps {
@@ -9,22 +10,19 @@ interface Props extends IconProps {
 export default function Icon({
     width = 24,
     height = 24,
-    color = 'currentColor',
+    color = 'white',
     mode = 'fill',
     viewBox = '0 0 17.3395 20',
     path,
     ...rest
 }: Props) {
-    const svgStyle =
-        mode === 'stroke' ? { stroke: color } : { fill: 'none' as const };
+    const resolvedColor = resolveMantineColor(color);
 
     return (
         <svg
             width={width}
             height={height}
-            viewBox={viewBox}
-            xmlns="http://www.w3.org/2000/svg"
-            {...svgStyle}
+            {...{ [mode]: resolvedColor }}
             {...rest}
         >
             {path}

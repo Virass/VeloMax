@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
-import type {
+import {
     MantineBreakpoint,
     Box,
     Group,
@@ -39,9 +39,9 @@ export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
                 w="100%"
                 h="5vh"
                 display="flex"
-                direction="column"
-                align="center"
-                justify="space-between"
+                // direction="column"
+                // align="center"
+                // justify="space-between"
                 ff="inherit"
             >
                 <Group h="100%" w="100%" px={16} justify="space-between">

@@ -1,8 +1,10 @@
-import { Group, Stack, Text } from '@mantine/core';
+import { Group, Stack } from '@mantine/core';
 
 import { getFilteredProducts } from '@/features/admin-panel/products/services/products.service';
 
 import { FilteredProducts } from './FilteredProducts';
+import { SideBar } from './SideBar';
+import { TopBar } from './TopBar';
 
 interface Props {
     filters?: Record<string, string>;
@@ -16,14 +18,10 @@ export default async function Categories({ filters }: Props) {
 
     return (
         <Group>
-            <Stack visibleFrom="lg">
-                <Text>Категорії</Text>
-
-                <div>filters...</div>
-            </Stack>
+            <SideBar />
 
             <Stack>
-                <div>top component</div>
+                <TopBar />
 
                 <FilteredProducts
                     initialProducts={filteredProducts}

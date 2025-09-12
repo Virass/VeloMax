@@ -288,7 +288,7 @@ export const policies = [
 ];
 
 export const filters: Filter[] = [
-    { name: 'Ціна', type: 'range', options: [100, 10000] },
+    { name: 'Ціна', type: 'range', options: [50, 15000] },
     {
         name: 'Наявність',
         type: 'checkbox',

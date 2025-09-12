@@ -1,3 +1,5 @@
+import type { Filter } from '@/entities/website/Categories/types/filters';
+
 import type { Category } from '../types/categoryType';
 import type { OrderEntity } from '../types/orderType';
 import type { Product } from '../types/productType';
@@ -251,5 +253,37 @@ export const ordersExample: OrderEntity[] = [
         items: [{ type: 'product', itemId: 'prod_04', quantity: 3 }],
         promoCodeId: 'SUMMER20',
         completedAt: new Date(2025, 7, 30),
+    },
+];
+
+export const filters: Filter[] = [
+    { name: 'Ціна', type: 'range', options: [100, 10000] },
+    {
+        name: 'Наявність',
+        type: 'checkbox',
+        options: ['Є в наявності', 'Немає в наявності', 'Очікується'],
+    },
+    {
+        name: 'Група товару',
+        type: 'checkbox',
+        options: [
+            'Вилки',
+            'Трансмісії',
+            'Перемикачі',
+            'Підвіски',
+            'Колеса',
+            'Гальма',
+            'Рульові механізми',
+        ],
+    },
+    {
+        name: 'Виробник',
+        type: 'checkbox',
+        options: ['Brand1', 'Brand2', 'Brand3', 'Brand4', 'Brand5'],
+    },
+    {
+        name: 'Колір',
+        type: 'checkbox',
+        options: ['Білий', 'Чорний', 'Червоний', 'Синій', 'Зелений', 'Жовтий'],
     },
 ];

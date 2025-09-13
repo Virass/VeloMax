@@ -2,12 +2,15 @@
 
 import { useState } from 'react';
 
-import { Group, rem, Stack, Text } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Box, Group, Stack, Text } from '@mantine/core';
 
 import LoadMore from '@/features/website/loadMoreContainer/LoadMoreContainer';
-import ProductCard from '@/shared/components/ProductCard';
 import type { Product } from '@/shared/types/productType';
+import GridDisplayDataIcon from '@/shared/ui/icons/GridDisplayDataIcon';
+import RowDisplayDataIcon from '@/shared/ui/icons/RowDisplayDataIcon';
+
+import { ProductItem } from '../ProductItem';
+import styles from '../styles/filteredProducts.module.scss';
 
 interface Props {
     initialProducts: Product[];
@@ -19,41 +22,71 @@ export default function FilteredProducts({ initialProducts, total }: Props) {
     const [productsDisplayMode, setProductsDisplayMode] = useState<
         'flex' | 'grid'
     >('flex');
-    const isMobile = useMediaQuery(`(max-width: ${rem(750)})`);
 
     const loadMore = () => {
         // implement this fucntion that will load more items and update products as well as total
     };
 
-    return (
-        <Stack>
-            <Group justify="space-between">
-                <Text>{`${products.length} з ${total} результатів`}</Text>
+    const icons = [
+        {
+            mode: 'flex',
+            icon: (
+                <RowDisplayDataIcon
+                    color={productsDisplayMode === 'flex' ? 'black' : 'gray.6'}
+                />
+            ),
+        },
+        {
+            mode: 'grid',
+            icon: (
+                <GridDisplayDataIcon
+                    color={productsDisplayMode === 'grid' ? 'black' : 'gray.6'}
+                />
+            ),
+        },
+    ];
 
-                {!isMobile && (
-                    <Group>
-                        <div onClick={() => setProductsDisplayMode('flex')}>
-                            icon 1
-                        </div>
-                        <div onClick={() => setProductsDisplayMode('grid')}>
-                            icon 2
-                        </div>
-                    </Group>
-                )}
+    return (
+        <Stack className={styles.filteredProductsContainer}>
+            <Group justify="space-between">
+                <Text
+                    className={styles.remainingItemsText}
+                >{`${products.length} з ${total} результатів`}</Text>
+
+                <Group gap="64px" className={styles.positioningModeIcons}>
+                    {icons.map(({ mode, icon }) => (
+                        <Box
+                            key={mode}
+                            onClick={() =>
+                                setProductsDisplayMode(mode as 'flex' | 'grid')
+                            }
+                        >
+                            {icon}
+                        </Box>
+                    ))}
+                </Group>
             </Group>
 
             <LoadMore hasMore={true} loadMore={() => {}}>
-                {/* Here, based on productsDisplayMode render data either using flexbox or grid */}
-
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        cardDirection={isMobile ? 'column' : 'row'}
-                        title={product.name}
-                        price={product.price}
-                        availability={Number(product.amount) > 0}
-                    />
-                ))}
+                <Box
+                    className={
+                        productsDisplayMode === 'flex'
+                            ? styles.flexContainer
+                            : styles.gridContainer
+                    }
+                >
+                    {products.map((product) => (
+                        <ProductItem
+                            key={product.id}
+                            product={product}
+                            customDirection={
+                                productsDisplayMode === 'grid'
+                                    ? 'column'
+                                    : 'row'
+                            }
+                        />
+                    ))}
+                </Box>
             </LoadMore>
         </Stack>
     );

@@ -2,7 +2,6 @@ import {
     type AdminCatalogNameMapping,
     SINGULAR_CATALOG_NAME,
 } from '../types/urls';
-import type { WebsiteNavigationSections } from '../types/websiteNavigation';
 
 const BASE_URL = '/';
 const AUTH_URL = `${BASE_URL}auth`;

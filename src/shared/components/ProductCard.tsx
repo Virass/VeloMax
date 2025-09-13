@@ -12,22 +12,6 @@ import { Button } from './Button';
 import CardPrice from './ProductCardPrice';
 
 interface Props {
-    /*  Please REMOVE THIS comment once you start working with this component
-
-        Note: This component is not adaptive by default.
-        Some parts of the application require rendering in a column layout on both mobile and desktop.
-        To add responsiveness, handle it inside specific components. For example:
-
-        const isMobile = useResponsive();
-
-        <Card
-          title="Колесо"
-          price={100}
-          availability={false}
-          cardDirection={isMobile ? "column" : "row"}
-        />
-    */
-
     cardDirection?: 'row' | 'column';
     image?: string; // should be mandatory once images are ready
     title: string;

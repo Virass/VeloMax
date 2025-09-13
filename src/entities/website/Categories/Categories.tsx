@@ -1,4 +1,4 @@
-import { Group, Stack } from '@mantine/core';
+import { Container, Group, Stack } from '@mantine/core';
 
 import { getFilteredProducts } from '@/features/admin-panel/products/services/products.service';
 
@@ -17,10 +17,10 @@ export default async function Categories({ filters }: Props) {
     });
 
     return (
-        <Group>
+        <Group align="start">
             <SideBar />
 
-            <Stack>
+            <Stack flex={1} maw="1000px">
                 <TopBar />
 
                 <FilteredProducts

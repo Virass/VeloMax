@@ -11,7 +11,7 @@ interface Props {
 export default function ProductItem({ product, customDirection }: Props) {
     const sharedProps = {
         title: product.name,
-        availability: Number(product.amount) > 0,
+        availability: product.isActive,
         price: product.price,
     };
 

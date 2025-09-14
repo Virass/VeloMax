@@ -26,7 +26,6 @@ export const getFilteredProducts = async (
 ): Promise<{ filteredProducts: Product[]; total: number }> => {
     const { limit = 8, offset = 0 } = options ?? {};
 
-    // If no filters, just return all products with pagination
     const filteredProducts = filters
         ? productsExample.filter((product) =>
               Object.entries(filters).every(([key, value]) => {
@@ -48,7 +47,6 @@ export const getFilteredProducts = async (
 
     const paginatedProducts = filteredProducts.slice(offset, offset + limit);
 
-    // Apply pagination
     return {
         filteredProducts: paginatedProducts,
         total: filteredProducts.length,

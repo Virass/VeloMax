@@ -17,17 +17,19 @@ export default async function Categories({ filters }: Props) {
     });
 
     return (
-        <Group align="start">
-            <SideBar />
+        <Container size="xl">
+            <Group align="start">
+                <SideBar />
 
-            <Stack flex={1} maw="1000px">
-                <TopBar />
+                <Stack flex={1}>
+                    <TopBar />
 
-                <FilteredProducts
-                    initialProducts={filteredProducts}
-                    total={total}
-                />
-            </Stack>
-        </Group>
+                    <FilteredProducts
+                        initialProducts={filteredProducts}
+                        total={total}
+                    />
+                </Stack>
+            </Group>
+        </Container>
     );
 }

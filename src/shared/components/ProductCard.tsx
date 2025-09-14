@@ -35,6 +35,7 @@ export default function ProductCard({
                     cardDirection === 'row' ? 'space-between' : 'flex-start'
                 }
                 gap={cardDirection === 'row' ? undefined : 'lg'}
+                align={cardDirection === 'column' ? 'center' : 'flex-start'}
             >
                 <Box mx={cardDirection === 'column' ? 'auto' : undefined}>
                     <Image
@@ -45,7 +46,7 @@ export default function ProductCard({
                     />
                 </Box>
 
-                <Stack>
+                <Stack w={306}>
                     <Group justify="space-between">
                         <Text fw="bold">{title}</Text>
 
@@ -59,8 +60,10 @@ export default function ProductCard({
                         bg={`gray.${availability ? '9' : '2'}`}
                         disabled={!availability}
                         c={availability ? 'white' : 'gray.5'}
+                        w="100%"
+                        size="lg"
                     >
-                        Додати до кошика
+                        <Text size="18px">Додати до кошика</Text>
                     </Button>
                 </Stack>
             </Flex>

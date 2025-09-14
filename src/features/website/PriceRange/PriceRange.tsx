@@ -15,7 +15,7 @@ export default function PriceRange({ defaultValue, range, ...rest }: Props) {
 
     return (
         <RangeInput
-            w="370px"
+            w={370}
             label={null}
             defaultValue={defaultValue}
             marks={marks}

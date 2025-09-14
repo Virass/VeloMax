@@ -24,7 +24,7 @@ export default function FilteredProducts({ initialProducts, total }: Props) {
     >('flex');
 
     const loadMore = () => {
-        // implement this fucntion that will load more items and update products as well as total
+        // TODO implement this function to load more items and update products
     };
 
     const icons = [
@@ -67,7 +67,7 @@ export default function FilteredProducts({ initialProducts, total }: Props) {
                 </Group>
             </Group>
 
-            <LoadMore hasMore={true} loadMore={() => {}}>
+            <LoadMore hasMore={true} loadMore={loadMore}>
                 <Box
                     className={
                         productsDisplayMode === 'flex'

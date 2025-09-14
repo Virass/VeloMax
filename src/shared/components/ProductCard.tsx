@@ -37,7 +37,7 @@ export default function ProductCard({
                 gap={cardDirection === 'row' ? undefined : 'lg'}
                 align={cardDirection === 'column' ? 'center' : 'flex-start'}
             >
-                <Box mx={cardDirection === 'column' ? 'auto' : undefined}>
+                <Box mx="auto">
                     <Image
                         src={image}
                         height={160}

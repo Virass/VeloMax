@@ -17,8 +17,9 @@ export default async function Categories({ filters }: Props) {
     });
 
     return (
-        <Container size="xl">
-            <Group align="start">
+        // TODO replace this hardcoded value.
+        <Container size="2000px">
+            <Group align="start" gap="30px">
                 <SideBar />
 
                 <Stack flex={1}>

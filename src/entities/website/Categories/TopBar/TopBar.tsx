@@ -5,6 +5,7 @@ import { Button } from '@/shared/components/Button';
 import FilterIcon from '@/shared/ui/icons/FilterIcon';
 import LeftArrowIcon from '@/shared/ui/icons/LeftArrowIcon';
 
+// TODO separate these buttons when filter logic is completed.
 const buttons = [
     {
         label: 'Назад',
@@ -27,7 +28,14 @@ export default function TopBar() {
                 ))}
             </Group>
 
-            <Box visibleFrom="sm" bg="gray.1" p="48px 64px" bdrs="48px">
+            <Box
+                visibleFrom="sm"
+                bg="gray.1"
+                p="48px 64px"
+                bdrs="48px"
+                flex={1}
+                ml="-23px"
+            >
                 <Breadcrumbs />
             </Box>
         </>

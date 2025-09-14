@@ -13,7 +13,7 @@ export default function Breadcrumbs() {
 
     const breadcrumbSections = splittedPathname
         .map((path) => websiteSections.find((section) => section.link === path))
-        // Bypass ts -> remove and fix later
+        // TODO Bypass ts -> Better to replace with something more reliable
         .filter((section): section is NonNullable<typeof section> => !!section);
 
     return (

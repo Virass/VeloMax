@@ -4,6 +4,7 @@ $card-gap: 1rem;
 
 .filteredProductsContainer {
     gap: 30px;
+    max-width: $mantine-breakpoint-lg;
 
     @media (min-width: $mantine-breakpoint-sm) {
         gap: 64px;

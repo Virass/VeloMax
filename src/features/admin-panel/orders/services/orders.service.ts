@@ -1,5 +1,5 @@
 import { simulateCrud } from '@/core/config/api';
-import { ordersExample } from '@/shared/constants/mockData';
+import { ordersExample } from '@/shared/constants/mockData/mockData';
 import { createLookupMap } from '@/shared/lib/createLookupMap';
 import type { OrderEntity } from '@/shared/types/orderType';
 

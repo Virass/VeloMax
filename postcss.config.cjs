@@ -1,4 +1,4 @@
-const BREAKPOINTS = require('./src/shared/config/breakpoints.json');
+const BREAKPOINTS = require('./src/shared/constants/breakpoints.json');
 
 module.exports = {
     plugins: {

@@ -11,10 +11,10 @@ interface ContactDetailProps {
 export default function ContactDetail({
     icon,
     contactInfo,
-    size = 'lg',
+    size = 'md',
 }: ContactDetailProps) {
     return (
-        <Group align="flex-start" gap="xs">
+        <Group align="center" gap="xs">
             {icon}
 
             <Stack gap="xs">

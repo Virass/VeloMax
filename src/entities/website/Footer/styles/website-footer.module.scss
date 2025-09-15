@@ -1,0 +1,113 @@
+@import '../../../../shared/styles/variables.scss';
+
+.footerFeedBack,
+.footerContainer {
+    border-radius: 32px;
+    padding: 24px 19px;
+    background-color: var(--mantine-color-dark-8);
+    color: var(--mantine-color-gray-0);
+}
+
+.footerFeedBack {
+    padding: 12px 8px 8px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        padding: 0;
+        width: 250px;
+    }
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        width: 350px;
+    }
+
+    @media (min-width: $mantine-breakpoint-xxl) {
+        width: 450px;
+    }
+}
+
+.footerFeedBackLabel {
+    text-align: center;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        text-align: start;
+    }
+}
+
+.footerNavigationItems {
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: $mantine-breakpoint-sm) and (max-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+    }
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        flex-direction: column;
+    }
+
+    @media (min-width: $mantine-breakpoint-xxl) {
+        flex-direction: row;
+    }
+}
+
+.footerNavigationItem {
+    text-decoration: none;
+}
+
+.footerNavigationContainer {
+    @media (min-width: $mantine-breakpoint-sm) and (max-width: $mantine-breakpoint-lg) {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    @media (min-width: $mantine-breakpoint-xxl) {
+        flex-direction: column;
+    }
+}
+
+.footerContacts {
+    gap: 2rem;
+    flex-direction: column;
+
+    @media (min-width: $mantine-breakpoint-sm) and (max-width: $mantine-breakpoint-lg) {
+        gap: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        gap: 1rem;
+        flex-direction: column;
+    }
+}
+
+.footerLogo {
+    width: 72px;
+    height: 72px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.footerSocialMedias {
+    gap: 2rem;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.footerContainer {
+    @media (min-width: $mantine-breakpoint-sm) and (max-width: $mantine-breakpoint-lg) {
+        gap: 2.5rem;
+    }
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        padding: 30px 100px;
+        gap: 2rem;
+    }
+}

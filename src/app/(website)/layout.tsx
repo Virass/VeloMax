@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Stack } from '@mantine/core';
 
-import { Footer } from '@/entities/website/components/Footer';
+import Footer from '@/entities/website/Footer/Footer';
 import { Header } from '@/features/website/header';
 
 export default function WebsiteLayout({

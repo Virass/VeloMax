@@ -13,7 +13,7 @@ import { useMediaQuery } from '@mantine/hooks';
 
 import { Actions } from '@/features/website/header/view/Actions';
 import { DrawerMenu } from '@/features/website/header/view/DrawerMenu';
-import { BREAKPOINTS } from '@/shared/config/breakpoints';
+import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { Brand } from '@/shared/ui/Brand';
 
 interface HeaderMobileProps extends BoxProps {

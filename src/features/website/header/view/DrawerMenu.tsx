@@ -45,9 +45,9 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
             }}
         >
             <Stack
-                gap={{ xs: 'xs', sm: 'sm' }}
+                gap={24}
                 align="center"
-                style={{ width: '100%' }}
+                style={{ width: '100%', overflowY: 'auto' }}
                 ff="inherit"
             >
                 {Object.values(NAV_LINKS).map((l) => (
@@ -62,8 +62,9 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
                     >
                         <Text
                             fw={pathname === l.href ? 600 : 400}
-                            size="xl"
+                            size="lg"
                             c="#212529"
+                            p={8}
                             style={{
                                 textAlign: 'center',
                                 textTransform: 'capitalize',

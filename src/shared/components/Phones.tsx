@@ -1,9 +1,9 @@
 import {
+    Anchor,
     Group,
     type MantineColor,
     type MantineFontSize,
     Stack,
-    Text,
 } from '@mantine/core';
 
 import { phonesExample } from '@/shared/constants/mockData';
@@ -12,7 +12,7 @@ import { PhoneIcon } from '@/shared/ui/icons/PhoneIcon';
 
 type Props = {
     color?: MantineColor;
-    fontSize?: MantineFontSize;
+    fontSize?: MantineFontSize | string | number;
     fontWeight?: number;
     align?: 'flex-start' | 'center' | 'flex-end';
     iconSize?: 12 | 24 | 32;
@@ -25,21 +25,24 @@ export const Phones = ({
     align = 'flex-start',
     iconSize = 32,
 }: Props) => (
-    <Group align={align} gap="xs">
+    <Group align={align} gap="sm">
         <PhoneIcon width={iconSize} height={iconSize} color={color} />
 
         <Stack gap="0.3">
             {phonesExample.map((phone) => (
-                <Group key={phone} gap="xs">
-                    <a
-                        href={`tel:${phone}`}
-                        style={{ textDecoration: 'none', outline: 'none' }}
-                    >
-                        <Text c={color} size={fontSize} fw={fontWeight}>
-                            {formatPhoneNumber(phone)}
-                        </Text>
-                    </a>
-                </Group>
+                <Anchor
+                    key={phone}
+                    href={`tel:${phone}`}
+                    style={{
+                        color,
+                        fontSize,
+                        fontWeight,
+                        lineHeight: '160%',
+                        textDecoration: 'none',
+                    }}
+                >
+                    {formatPhoneNumber(phone)}
+                </Anchor>
             ))}
         </Stack>
     </Group>

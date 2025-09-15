@@ -8,14 +8,15 @@ export const Brand = () => (
     <Link
         href={NAV_LINKS.main.href}
         aria-label={SITE_NAME}
-        style={{ textDecoration: 'none' }}
+        style={{ textDecoration: 'none', flex: 1 }}
     >
         <Text
             fw={500}
-            fz={{ base: 18, md: 20 }}
-            lh={1}
+            fz={20}
+            lh={0.8}
             ff="inherit"
             style={{ letterSpacing: 0.2, color: 'rgba(0, 0, 0, 1)' }}
+            ta="center"
         >
             {SITE_NAME}
         </Text>

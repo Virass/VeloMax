@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
-import type {
-    MantineBreakpoint,
+import {
+    type BoxProps,
+    type MantineBreakpoint,
     Box,
     Group,
     Burger,
-    type BoxProps,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -22,7 +22,10 @@ interface HeaderMobileProps extends BoxProps {
 
 export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
     const [open, setOpen] = useState(false);
-    const handleBurgerClick = useCallback(() => setOpen((v) => !v), []);
+    const handleBurgerClick = useCallback(
+        () => setOpen((isOpen) => !isOpen),
+        []
+    );
     const closeDrawer = useCallback(() => setOpen(false), []);
     const isDesktop = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
 
@@ -37,21 +40,28 @@ export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
             <Box
                 hiddenFrom={hiddenFrom}
                 w="100%"
-                h="5vh"
                 display="flex"
-                direction="column"
-                align="center"
-                justify="space-between"
-                ff="inherit"
+                px={14}
+                py={10}
+                mx={16}
+                bd="2px solid var(--mantine-color-white)"
+                style={{
+                    borderRadius: 40,
+                    backdropFilter: 'blur(16px)',
+                }}
             >
-                <Group h="100%" w="100%" px={16} justify="space-between">
-                    <Burger
-                        opened={open}
-                        onClick={handleBurgerClick}
-                        aria-label="Меню"
-                        size={24}
-                        lineSize={2}
-                    />
+                <Group h="100%" w="100%" gap={0}>
+                    <Box flex={1}>
+                        <Burger
+                            opened={open}
+                            onClick={handleBurgerClick}
+                            aria-label="Меню"
+                            size={15}
+                            lineSize={2}
+                            p={4.5}
+                            h={24}
+                        />
+                    </Box>
                     <Brand />
                     <Actions />
                 </Group>

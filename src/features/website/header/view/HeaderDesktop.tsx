@@ -5,8 +5,8 @@ import {
     type MantineBreakpoint,
     Box,
     Group,
-    Text,
     Badge,
+    NavLink,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
@@ -23,70 +23,127 @@ interface HeaderDesktopProps extends BoxProps {
 export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const pathname = usePathname();
     const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl})`);
+    const CART = NAV_LINKS.cart;
+    const PROFILE = NAV_LINKS.profile;
+
+    //TODO мок даних поки немає функціональності кошика
     const cartItemCount = 1;
 
     return (
         <Box
             visibleFrom={visibleFrom}
             w="100%"
-            h="6vh"
+            maw={isXl ? '1380' : '940'}
+            py="0.375rem"
+            px="lg"
             display="flex"
-            align="center"
-            justify="center"
+            mx="auto"
+            bd="2px solid var(--mantine-color-white)"
+            bdrs={40}
+            style={{
+                backdropFilter: 'blur(16px)',
+            }}
         >
             <Group
-                h="100%"
                 w="100%"
-                px={{ md: 20, lg: 93 }}
-                py="0.5vh"
-                justify="space-between"
-                align="center"
+                gap={isXl ? '3.125rem' : '1.5rem'}
+                display="flex"
+                justify="center"
             >
                 <Phones
                     align="center"
                     iconSize={isXl ? 32 : 24}
-                    fontSize={isXl ? 'lg' : 'md'}
+                    fontSize={isXl ? '1.25rem' : '1rem'}
+                    fontWeight={600}
                 />
 
-                <Group gap={isXl ? 'xl' : 'lg'}>
-                    {Object.values(NAV_LINKS).map((l) => {
-                        const isCartLink =
-                            l.href === '/cart' && cartItemCount > 0;
+                <Box
+                    component="nav"
+                    display="flex"
+                    style={{
+                        gap: isXl ? '3rem' : '1.25rem',
+                    }}
+                >
+                    {Object.values(NAV_LINKS).map(({ href, label }) => {
+                        if (href === '/cart' || href === '/profile') {
+                            return;
+                        }
+
+                        const isActive = pathname === href;
 
                         return (
-                            <Link
-                                key={l.href}
-                                href={l.href}
-                                style={{
-                                    textDecoration: 'none',
+                            <NavLink
+                                key={href}
+                                label={label}
+                                href={href}
+                                active={isActive}
+                                styles={{
+                                    root: {
+                                        padding: 0,
+                                        width: 'fit-content',
+                                        backgroundColor: 'transparent',
+                                    },
+                                    label: {
+                                        color: 'var(--mantine-color-black)',
+                                        fontSize: isXl ? '1.25rem' : '1rem',
+                                        fontWeight: isActive ? 600 : 400,
+                                        textTransform: 'capitalize',
+                                    },
                                 }}
-                            >
-                                <Group gap={4}>
-                                    <Text
-                                        fw={pathname === l.href ? 600 : 400}
-                                        size={isXl ? 'xl' : 'md'}
-                                        c="#212529"
-                                        style={{
-                                            textAlign: 'center',
-                                            textTransform: 'capitalize',
-                                        }}
-                                    >
-                                        {l.label}
-                                    </Text>
-                                    {isCartLink && (
-                                        <Badge
-                                            size={isXl ? 'lg' : 'md'}
-                                            color="#000000"
-                                            variant="filled"
-                                            circle
-                                        >
-                                            {cartItemCount}
-                                        </Badge>
-                                    )}
-                                </Group>
-                            </Link>
+                            />
                         );
                     })}
+                </Box>
+
+                <Group gap={isXl ? '1.5rem' : '1rem'}>
+                    <Link
+                        href={CART.href}
+                        style={{
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Box
+                            component="span"
+                            fw={pathname === CART.href ? 600 : 400}
+                            fz={isXl ? 'xl' : 'md'}
+                            c="var(--mantine-color-black)"
+                            tt="capitalize"
+                        >
+                            {CART.label}
+                        </Box>
+                        {cartItemCount && (
+                            <Badge
+                                color="var(--mantine-color-black)"
+                                variant="filled"
+                                circle
+                                ml={4}
+                                size={isXl ? 'xl' : 'md'}
+                            >
+                                {cartItemCount}
+                            </Badge>
+                        )}
+                    </Link>
+
+                    <Link
+                        href={PROFILE.href}
+                        style={{
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Box
+                            component="span"
+                            fw={pathname === CART.href ? 600 : 400}
+                            fz={isXl ? 'xl' : 'md'}
+                            c="var(--mantine-color-black)"
+                            tt="capitalize"
+                        >
+                            {PROFILE.label}
+                        </Box>
+                    </Link>
                 </Group>
             </Group>
         </Box>

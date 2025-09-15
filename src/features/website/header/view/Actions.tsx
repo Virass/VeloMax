@@ -17,24 +17,24 @@ const actions: Action[] = [
     {
         href: NAV_LINKS.cart.href,
         ariaLabel: 'Кошик',
-        icon: <ShoppingBagIcon />,
+        icon: <ShoppingBagIcon width={20} height={20} />,
     },
     {
         href: NAV_LINKS.profile.href,
         ariaLabel: 'Особистий кабінет',
-        icon: <UserIcon />,
+        icon: <UserIcon width={20} height={20} />,
     },
 ];
 
 export const Actions = () => (
-    <Group gap="md">
+    <Group gap={24} flex={1} justify="end">
         {actions.map((action) => (
             <Link
                 href={action.href}
                 aria-label={action.ariaLabel}
                 key={action.href}
             >
-                <ActionIcon size="lg" variant="transparent">
+                <ActionIcon size={24} variant="transparent">
                     {action.icon}
                 </ActionIcon>
             </Link>

@@ -54,12 +54,9 @@ npm run lint   # перевірити код лінтером
 - **Zustand** для стану додатку
 - **React Hook Form** для форм
 
-## Структура проекту та конвенції
+## Структура проекту
 
-- **Назви файлів**: PascalCase для компонентів, camelCase для утиліт/сервісів
-- **Експорти**: використовуй `index.ts` файли для public API
 - **Типи**: розміщуй у `src/shared/types/`
-- **Стилі**: SCSS модулі + Mantine компоненти
 - **Конфігурація**: `src/core/config/` (api.ts, auth.ts, supabase.ts)
 - **Якість коду**: JSDoc для складних функцій, Error Boundaries для компонентів, Loading/Error стани
 
@@ -102,10 +99,7 @@ src/
 - **Supabase auth** — основна система автентифікації
 - **RLS політики** — Row Level Security в Supabase для всіх таблиць
 - **Захищені роути** — через middleware.ts
-- **Валідація даних** — на клієнті та сервері
 - **Environment variables**: завжди `process.env.VARIABLE_NAME`, ніколи не хардкодь
-    - Client-side: `process.env.NEXT_PUBLIC_*`
-    - Server-side: `process.env.*`
 
 ## Стек технологій VeloMax
 

@@ -23,8 +23,10 @@ interface HeaderDesktopProps extends BoxProps {
 export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const pathname = usePathname();
     const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl})`);
-    const CART = NAV_LINKS.cart;
-    const PROFILE = NAV_LINKS.profile;
+    const CART = NAV_LINKS.find((item) => item.label === 'кошик');
+    const PROFILE = NAV_LINKS.find(
+        (item) => item.label === 'особистий кабінет'
+    );
 
     //TODO мок даних поки немає функціональності кошика
     const cartItemCount = 1;
@@ -97,7 +99,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
 
                 <Group gap={isXl ? '1.5rem' : '1rem'}>
                     <Link
-                        href={CART.href}
+                        href={CART?.href || '/cart'}
                         style={{
                             textDecoration: 'none',
                             display: 'flex',
@@ -106,12 +108,12 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART.href ? 600 : 400}
+                            fw={pathname === CART?.href ? 600 : 400}
                             fz={isXl ? 'xl' : 'md'}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                         >
-                            {CART.label}
+                            {CART?.label}
                         </Box>
                         {cartItemCount && (
                             <Badge
@@ -127,7 +129,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     </Link>
 
                     <Link
-                        href={PROFILE.href}
+                        href={PROFILE?.href || '/profile'}
                         style={{
                             textDecoration: 'none',
                             display: 'flex',
@@ -136,12 +138,12 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART.href ? 600 : 400}
+                            fw={pathname === CART?.href ? 600 : 400}
                             fz={isXl ? 'xl' : 'md'}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                         >
-                            {PROFILE.label}
+                            {PROFILE?.label}
                         </Box>
                     </Link>
                 </Group>

@@ -1,14 +1,17 @@
 import { Drawer, Stack, Text } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
+import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { NAV_LINKS } from '@/shared/constants/urls';
 
 type Props = { opened: boolean; onClose: () => void };
 
 export const DrawerMenu = ({ opened, onClose }: Props) => {
     const pathname = usePathname();
+    const isSm = useMediaQuery(`(min-width: ${BREAKPOINTS.sm})`);
 
     return (
         <Drawer
@@ -19,12 +22,12 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
             styles={{
                 content: {
                     position: 'fixed',
-                    top: '9.5vh',
+                    top: isSm ? '68px' : '64px',
                     left: '4.45vw',
                     right: '4.45vw',
                     height: '78vh',
                     maxHeight: '78vh',
-                    background: '#00000033',
+                    background: '#ffffff66',
                     backdropFilter: 'blur(8px)',
                     WebkitBackdropFilter: 'blur(8px)',
                     border: '2px solid rgba(255,255,255,1)',

@@ -3,7 +3,7 @@ import React from 'react';
 import { Stack } from '@mantine/core';
 import { Roboto } from 'next/font/google';
 
-import { Footer } from '@/entities/website/components/Footer';
+import Footer from '@/entities/website/Footer/Footer';
 import { Header } from '@/entities/website/components/Header';
 
 const roboto = Roboto({

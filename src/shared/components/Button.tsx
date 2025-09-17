@@ -13,7 +13,23 @@ interface Props extends MantineButtonProps {
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
     children: ReactNode;
+    variant?: MantineButtonProps['variant'] | 'invisible';
 }
+
+const invisibleProps: Partial<MantineButtonProps> = {
+    variant: 'subtle',
+    px: 0,
+    py: 0,
+    c: 'inherit',
+    fw: 'inherit',
+    styles: {
+        root: {
+            border: 'none',
+            background: 'transparent',
+            '&:hover': { background: 'transparent' },
+        },
+    },
+};
 
 export function Button({
     leftIcon,
@@ -25,6 +41,9 @@ export function Button({
     justify = 'center',
     ...rest
 }: Props) {
+    const appliedProps =
+        variant === 'invisible' ? { ...invisibleProps } : { variant };
+
     return (
         <MantineButton
             fullWidth={fullWidth}
@@ -34,6 +53,7 @@ export function Button({
             type={type}
             leftSection={leftIcon}
             rightSection={rightIcon}
+            {...appliedProps}
             {...rest}
         />
     );

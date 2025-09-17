@@ -94,4 +94,69 @@ applyTo: "src/**"
 - **Типи**: загальні типи, не бізнес-специфічні
 - Обов'язкові `index.ts` для public API
 
+## Конвенції коду VeloMax
+
+### Іменування файлів:
+- **Компоненти**: PascalCase (`UserProfile.tsx`, `LoginForm.tsx`)
+- **Хуки**: camelCase з префіксом "use" (`useAuth.ts`, `useLocalStorage.ts`)
+- **Утиліти**: camelCase (`dateUtils.ts`, `apiHelpers.ts`)
+- **Типи**: camelCase (`userTypes.ts`, `apiTypes.ts`)
+- **Константи**: camelCase (`urls.ts`, `breakpoints.ts`)
+
+### Експорти:
+- **export default**: React компоненти, Next.js сторінки, основні модулі
+- **named exports**: утиліти, хуки, константи, типи
+- **export type**: завжди для TypeScript типів
+
+### Слайси VeloMax:
+- `admin-panel/` — функції адмін-панелі (каталог, замовлення, аналітика)
+- `website/` — публічні функції (каталог, кошик, пошук)
+
+### Ключові сутності проекту:
+- **Categories** — категорії велосипедів (гірські, шосейні, міські)
+- **Products** — товари (велосипеди, аксесуари, запчастини)
+- **Orders** — замовлення клієнтів
+- **Users** — користувачі (клієнти + адміністратори)
+- **SiteSettings** — налаштування сайту
+
+## Безпека та інтеграції
+
+### Supabase:
+- Завжди використовуй RLS (Row Level Security) політики
+- Валідація даних на клієнті ТА сервері
+- Використовуй `process.env` для змінних середовища (ніколи не хардкодь)
+- Client-side: `process.env.NEXT_PUBLIC_*`
+- Server-side: `process.env.*`
+
+### Автентифікація:
+- Захищені роути через `middleware.ts`
+- Перевіряй права доступу для admin функцій
+- Використовуй `requireManagerAccess()` для адмін-сторінок
+
+### Валідація форм:
+- React Hook Form + zod схеми для валідації
+- Error стани для кожного поля
+- Loading стани під час submission
+
+## Продуктивність та UX
+
+### Оптимізація:
+- Використовуй `next/image` замість `<img>`
+- Lazy loading для features через `dynamic()` imports
+- Мемоізація через `useMemo`/`useCallback` для важких обчислень
+- Error Boundaries для кожної великої feature
+- Loading/Error стани для всіх async операцій
+
+### Доступність:
+- Семантичні HTML теги
+- ARIA атрибути для складних UI
+- Keyboard navigation підтримка
+- Screen reader friendly тексти
+
+### Mantine UI:
+- Використовуй Mantine компоненти як основу
+- Кастомізація через theme або styled-components
+- Responsive дизайн через Mantine breakpoints
+- Консистентні кольори та typography
+
 ```

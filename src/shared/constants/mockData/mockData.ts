@@ -1,10 +1,9 @@
-import type { Filter } from '@/entities/website/Categories/types/filters';
-
-import type { Category } from '../types/categoryType';
-import type { OrderEntity } from '../types/orderType';
-import type { Product } from '../types/productType';
-import type { Service } from '../types/serviceType';
-import type { SocialMedia } from '../types/socialMediaType';
+import { Filter } from '@/entities/website/Categories/types/filters';
+import type { Category } from '../../types/categoryType';
+import type { OrderEntity } from '../../types/orderType';
+import type { Product } from '../../types/productType';
+import type { Service } from '../../types/serviceType';
+import type { SocialMedia } from '../../types/socialMediaType';
 
 export const productsExample: Product[] = [
     {
@@ -257,6 +256,7 @@ export const ordersExample: OrderEntity[] = [
     },
 ];
 
+export const phonesExample = ['+380637476963', '+380679954177'];
 export const socialMediaLinks: SocialMedia[] = [
     {
         platform: 'instagram',

@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { simulateCrud } from '@/core/config/api';
-import { categoriesExample } from '@/shared/constants/mockData';
+import { categoriesExample } from '@/shared/constants/mockData/mockData';
 import type { Category } from '@/shared/types/categoryType';
 
 export async function getCategories(): Promise<Category[]> {

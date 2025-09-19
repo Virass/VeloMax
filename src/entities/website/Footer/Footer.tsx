@@ -5,6 +5,7 @@ import { FooterFeedbackForm } from '@/entities/website/Footer/FeedbackForm';
 import { FooterLogoAndSocialsSection } from '@/entities/website/Footer/LogoAndSocialsSection';
 import { FooterNavigation } from '@/entities/website/Footer/Navigation';
 import { FooterPolicy } from '@/entities/website/Footer/Policy';
+
 import styles from './styles/website-footer.module.scss';
 
 export default function Footer() {
@@ -23,9 +24,9 @@ export default function Footer() {
             <Box className={styles.footerContainer} visibleFrom="lg">
                 <Group
                     justify="space-between"
-                    m={'0 auto'}
-                    w={'100%'}
-                    maw={'1280px'}
+                    m="0 auto"
+                    w="100%"
+                    maw="1280px" // TODO Перенести цей magic number в об'єкт з розмірами
                 >
                     <Stack>
                         <FooterLogoAndSocialsSection />

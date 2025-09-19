@@ -12,6 +12,7 @@ export default function Icon({
     height = 24,
     color = 'white',
     mode = 'fill',
+    viewBox = '0 0 24 24',
     path,
     ...rest
 }: Props) {
@@ -21,6 +22,7 @@ export default function Icon({
         <svg
             width={width}
             height={height}
+            viewBox={viewBox}
             {...{ [mode]: resolvedColor }}
             {...rest}
         >

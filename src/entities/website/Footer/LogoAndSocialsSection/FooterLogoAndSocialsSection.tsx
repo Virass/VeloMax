@@ -10,9 +10,9 @@ import TelegramIcon from '@/shared/ui/icons/TelegramIcon';
 import { getSocialMedias } from './services/footerSocialMedias.service';
 
 const socialMediasIconMap = {
-    instagram: <InstagramIcon width={18} height={18} />,
-    facebook: <FacebookIcon width={13} height={20} />,
-    telegram: <TelegramIcon width={20} height={18} mode="fill" />,
+    instagram: <InstagramIcon />,
+    facebook: <FacebookIcon />,
+    telegram: <TelegramIcon />,
 };
 
 export default async function FooterLogoAndSocialsSection() {

@@ -2,7 +2,6 @@ import {
     type AdminCatalogNameMapping,
     SINGULAR_CATALOG_NAME,
 } from '../types/urls';
-import type { WebsiteNavigationSections } from '../types/websiteNavigation';
 
 const BASE_URL = '/';
 const AUTH_URL = `${BASE_URL}auth`;
@@ -43,6 +42,16 @@ export const websiteSections = [
     { label: 'особистий кабінет', link: website.profile },
     { label: 'кошик', link: website.cart },
 ];
+
+export const NAV_LINKS = [
+    { label: 'головна', href: website.main },
+    { label: 'категорії', href: website.categories },
+    { label: 'послуги', href: website.services },
+    { label: 'про нас', href: website.about },
+    { label: 'відгуки', href: website.reviews },
+    { label: 'кошик', href: website.cart },
+    { label: 'особистий кабінет', href: website.profile },
+] as const;
 
 const auth = {
     main: AUTH_URL,

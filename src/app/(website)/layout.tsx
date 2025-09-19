@@ -1,15 +1,9 @@
 import React from 'react';
 
 import { Stack } from '@mantine/core';
-import { Roboto } from 'next/font/google';
 
 import Footer from '@/entities/website/Footer/Footer';
-import { Header } from '@/entities/website/components/Header';
-
-const roboto = Roboto({
-    variable: '--font-roboto',
-    subsets: ['latin', 'cyrillic'],
-});
+import { Header } from '@/entities/website/Header/Header';
 
 export default function WebsiteLayout({
     children,
@@ -17,16 +11,17 @@ export default function WebsiteLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className={roboto.className}>
-            <Stack
-                mih="100dvh"
-                px={{ base: 16, sm: 20, md: 24 }}
-                py={{ base: 8, sm: 12, md: 16 }}
-            >
-                <Header />
-                <main style={{ flex: 1 }}>{children}</main>
-                <Footer />
-            </Stack>
-        </div>
+        <Stack
+            mih="100dvh"
+            px={{ base: 16, sm: 20, md: 24 }}
+            py={{ base: 8, sm: 12, md: 16 }}
+            style={{
+                background: 'gray.10',
+            }}
+        >
+            <Header />
+            <main style={{ flex: 1 }}>{children}</main>
+            <Footer />
+        </Stack>
     );
 }

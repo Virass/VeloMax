@@ -1,2 +1,2 @@
-const maxVisibleProductsOnDesktop = 8;
-const maxVisibleProductsOnMobile = 3;
+export const maxVisibleProductsOnDesktop = 8;
+export const maxVisibleProductsOnMobile = 3;

@@ -37,10 +37,9 @@ export const getFilteredProducts = async (
                       return product.price === Number(value);
                   }
 
-                  return (
-                      String((product as any)[key]).toLowerCase() ===
-                      value.toLowerCase()
-                  );
+                  return String(product[key as keyof Product])
+                      .toLowerCase()
+                      .includes(value.toLowerCase());
               })
           )
         : productsExample;

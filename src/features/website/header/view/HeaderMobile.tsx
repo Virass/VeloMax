@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import {
     type BoxProps,
@@ -9,7 +9,7 @@ import {
     Group,
     Burger,
 } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 
 import { Actions } from '@/features/website/header/view/Actions';
 import { DrawerMenu } from '@/features/website/header/view/DrawerMenu';
@@ -21,19 +21,14 @@ interface HeaderMobileProps extends BoxProps {
 }
 
 export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
-    const [open, setOpen] = useState(false);
-    const handleBurgerClick = useCallback(
-        () => setOpen((isOpen) => !isOpen),
-        []
-    );
-    const closeDrawer = useCallback(() => setOpen(false), []);
+    const [opened, { toggle, close }] = useDisclosure(false);
     const isDesktop = useMediaQuery(`(min-width: ${BREAKPOINTS.md})`);
 
     useEffect(() => {
-        if (isDesktop && open) {
-            closeDrawer();
+        if (isDesktop && opened) {
+            close();
         }
-    }, [isDesktop, open, closeDrawer]);
+    }, [isDesktop, opened, close]);
 
     return (
         <>
@@ -53,8 +48,8 @@ export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
                 <Group h="100%" w="100%" gap={0}>
                     <Box flex={1}>
                         <Burger
-                            opened={open}
-                            onClick={handleBurgerClick}
+                            opened={opened}
+                            onClick={toggle}
                             aria-label="Меню"
                             size={15}
                             lineSize={2}
@@ -66,7 +61,7 @@ export const HeaderMobile = ({ hiddenFrom }: HeaderMobileProps) => {
                     <Actions />
                 </Group>
             </Box>
-            <DrawerMenu opened={open} onClose={closeDrawer} />
+            <DrawerMenu opened={opened} onClose={close} />
         </>
     );
 };

@@ -16,7 +16,7 @@ export default function WebsiteLayout({
             px={{ base: 16, sm: 20, md: 24 }}
             py={{ base: 8, sm: 12, md: 16 }}
             style={{
-                background: 'var(--Gray-10, rgba(248, 249, 250, 1))',
+                background: 'gray.10',
             }}
         >
             <Header />

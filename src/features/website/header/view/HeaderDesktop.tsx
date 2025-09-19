@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
-import { NAV_LINKS } from '@/shared/constants/urls';
+import { NAV_LINKS, website } from '@/shared/constants/urls';
 
 interface HeaderDesktopProps extends BoxProps {
     visibleFrom?: MantineBreakpoint;
@@ -23,10 +23,8 @@ interface HeaderDesktopProps extends BoxProps {
 export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const pathname = usePathname();
     const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl})`);
-    const CART = NAV_LINKS.find((item) => item.label === 'кошик');
-    const PROFILE = NAV_LINKS.find(
-        (item) => item.label === 'особистий кабінет'
-    );
+    const CART = { href: website.cart, label: 'кошик' };
+    const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 
     //TODO мок даних поки немає функціональності кошика
     const cartItemCount = 1;
@@ -35,8 +33,8 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
         <Box
             visibleFrom={visibleFrom}
             w="100%"
-            maw={isXl ? '1380' : '940'}
-            py="0.375rem"
+            maw={isXl ? '1380' : '940'} //TODO Перенести ці magic number в об'єкт з розмірами
+            py="6px"
             px="lg"
             display="flex"
             mx="auto"
@@ -48,14 +46,14 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
         >
             <Group
                 w="100%"
-                gap={isXl ? '3.125rem' : '1.5rem'}
+                gap={isXl ? '50px' : '24px'}
                 display="flex"
                 justify="center"
             >
                 <Phones
                     align="center"
                     iconSize={isXl ? 32 : 24}
-                    fontSize={isXl ? '1.25rem' : '1rem'}
+                    fontSize={isXl ? '20px' : '16px'}
                     fontWeight={600}
                 />
 
@@ -63,11 +61,11 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     component="nav"
                     display="flex"
                     style={{
-                        gap: isXl ? '3rem' : '1.25rem',
+                        gap: isXl ? '48px' : '20px',
                     }}
                 >
                     {Object.values(NAV_LINKS).map(({ href, label }) => {
-                        if (href === '/cart' || href === '/profile') {
+                        if (href === website.cart || href === website.profile) {
                             return;
                         }
 
@@ -87,7 +85,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                                     },
                                     label: {
                                         color: 'var(--mantine-color-black)',
-                                        fontSize: isXl ? '1.25rem' : '1rem',
+                                        fontSize: isXl ? '20px' : '16px',
                                         fontWeight: isActive ? 600 : 400,
                                         textTransform: 'capitalize',
                                     },
@@ -97,9 +95,9 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     })}
                 </Box>
 
-                <Group gap={isXl ? '1.5rem' : '1rem'}>
+                <Group gap={isXl ? '24px' : '16px'}>
                     <Link
-                        href={CART?.href || '/cart'}
+                        href={CART.href}
                         style={{
                             textDecoration: 'none',
                             display: 'flex',
@@ -108,12 +106,12 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART?.href ? 600 : 400}
+                            fw={pathname === CART.href ? 600 : 400}
                             fz={isXl ? 'xl' : 'md'}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                         >
-                            {CART?.label}
+                            {CART.label}
                         </Box>
                         {cartItemCount && (
                             <Badge
@@ -138,12 +136,12 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART?.href ? 600 : 400}
+                            fw={pathname === CART.href ? 600 : 400}
                             fz={isXl ? 'xl' : 'md'}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                         >
-                            {PROFILE?.label}
+                            {PROFILE.label}
                         </Box>
                     </Link>
                 </Group>

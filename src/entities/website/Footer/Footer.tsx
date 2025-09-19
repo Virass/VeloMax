@@ -22,7 +22,12 @@ export default function Footer() {
             </Stack>
 
             <Box className={styles.footerContainer} visibleFrom="lg">
-                <Group justify="space-between" m="0 auto" w="100%" maw="1280px">
+                <Group
+                    justify="space-between"
+                    m="0 auto"
+                    w="100%"
+                    maw="1280px" // TODO Перенести цей magic number в об'єкт з розмірами
+                >
                     <Stack>
                         <FooterLogoAndSocialsSection />
                         <FooterPolicy />

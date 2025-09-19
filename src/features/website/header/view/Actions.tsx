@@ -3,7 +3,7 @@ import React from 'react';
 import { ActionIcon, Group } from '@mantine/core';
 import Link from 'next/link';
 
-import { NAV_LINKS } from '@/shared/constants/urls';
+import { website } from '@/shared/constants/urls';
 import { ShoppingBagIcon } from '@/shared/ui/icons/ShoppingBagIcon';
 import { UserIcon } from '@/shared/ui/icons/UserIcon';
 
@@ -15,14 +15,12 @@ interface Action {
 
 const actions: Action[] = [
     {
-        href: NAV_LINKS.find((link) => link.label === 'кошик')?.href || '/cart',
+        href: website.cart,
         ariaLabel: 'Кошик',
         icon: <ShoppingBagIcon width={20} height={20} />,
     },
     {
-        href:
-            NAV_LINKS.find((link) => link.label === 'особистий кабінет')
-                ?.href || '/profile',
+        href: website.profile,
         ariaLabel: 'Особистий кабінет',
         icon: <UserIcon width={20} height={20} />,
     },

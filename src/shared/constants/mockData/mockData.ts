@@ -1,4 +1,4 @@
-import type { Filter } from '@/entities/website/Categories/types/filters';
+import type { Filter } from '@/features/website/Products/types/filters';
 
 import type { Category } from '../../types/categoryType';
 import type { OrderEntity } from '../../types/orderType';

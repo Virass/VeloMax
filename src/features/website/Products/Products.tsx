@@ -10,7 +10,7 @@ interface Props {
     filters?: Record<string, string>;
 }
 
-export default async function Categories({ filters }: Props) {
+export default async function Products({ filters }: Props) {
     const { filteredProducts, total } = await getFilteredProducts(filters, {
         limit: 8,
         offset: 0,

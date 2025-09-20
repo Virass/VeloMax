@@ -1,14 +1,15 @@
 import type { SVGProps } from 'react';
 
 import Icon from '@/shared/components/Icon';
+import type { IconProps } from '@/shared/types/icon';
 
-type Props = {
-    width?: number;
-    height?: number;
-    color?: string;
-} & Omit<SVGProps<SVGSVGElement>, 'color'>;
-
-export function ShoppingBagIcon({ width, height, color, ...rest }: Props) {
+export function ShoppingBagIcon({
+    width = 24,
+    height = 24,
+    color = 'white',
+    mode = 'fill',
+    ...rest
+}: IconProps) {
     const path = (
         <>
             <path
@@ -30,7 +31,7 @@ export function ShoppingBagIcon({ width, height, color, ...rest }: Props) {
             height={height}
             color={color}
             viewBox="0 0 17.3395 20"
-            mode="fill"
+            mode={mode}
             {...rest}
             path={path}
         />

@@ -1,6 +1,6 @@
 'use client';
 
-import { type PropsWithChildren } from 'react';
+import { type PropsWithChildren, Suspense } from 'react';
 
 import { Group, Stack } from '@mantine/core';
 import { useSelectedLayoutSegment } from 'next/navigation';
@@ -21,10 +21,12 @@ export default function CatalogLayout({ children }: PropsWithChildren) {
     return (
         <Stack>
             <Group justify="space-between">
-                <SearchBar
-                    placeholder={`Look for a specific ${catalogInSingular}`}
-                    width={300}
-                />
+                <Suspense fallback={<div>Loading search...</div>}>
+                    <SearchBar
+                        placeholder={`Look for a specific ${catalogInSingular}`}
+                        width={300}
+                    />
+                </Suspense>
 
                 <Drawer
                     title={`New ${catalogInSingular}`}

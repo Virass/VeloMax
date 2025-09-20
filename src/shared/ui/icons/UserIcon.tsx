@@ -1,14 +1,13 @@
-import type { SVGProps } from 'react';
-
 import Icon from '@/shared/components/Icon';
+import type { IconProps } from '@/shared/types/icon';
 
-type Props = {
-    width?: number;
-    height?: number;
-    color?: string;
-} & Omit<SVGProps<SVGSVGElement>, 'color'>;
-
-export const UserIcon = ({ width, height, color, ...rest }: Props) => {
+export const UserIcon = ({
+    width = 20,
+    height = 20,
+    color = 'white',
+    mode = 'fill',
+    ...rest
+}: IconProps) => {
     const path = (
         <>
             <path
@@ -32,7 +31,7 @@ export const UserIcon = ({ width, height, color, ...rest }: Props) => {
             height={height}
             color={color}
             viewBox="0 0 20 20"
-            mode="fill"
+            mode={mode}
             {...rest}
             path={path}
         />

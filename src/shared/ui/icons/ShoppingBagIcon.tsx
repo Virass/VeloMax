@@ -1,5 +1,3 @@
-import type { SVGProps } from 'react';
-
 import Icon from '@/shared/components/Icon';
 import type { IconProps } from '@/shared/types/icon';
 

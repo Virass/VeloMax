@@ -6,16 +6,48 @@ import { simulateCrud } from '@/core/config/api';
 import { productsExample } from '@/shared/constants/mockData/mockData';
 import type { Product } from '@/shared/types/productType';
 
-export async function getProducts(): Promise<Product[]> {
+export const getProducts = async (): Promise<Product[]> => {
     const products = await simulateCrud(productsExample, 1500);
 
     return products;
-}
+};
 
-export async function addProduct(newProduct: Product): Promise<Product> {
+export const addProduct = async (newProduct: Product): Promise<Product> => {
     productsExample.push(newProduct);
 
     revalidatePath('/products'); // added just for demonstration purposes
 
     return simulateCrud(newProduct, 500);
-}
+};
+
+export const getFilteredProducts = async (
+    filters?: Record<string, string>,
+    options?: { limit?: number; offset?: number }
+): Promise<{ filteredProducts: Product[]; total: number }> => {
+    const { limit = 8, offset = 0 } = options ?? {};
+
+    const filteredProducts = filters
+        ? productsExample.filter((product) =>
+              Object.entries(filters).every(([key, value]) => {
+                  if (!value) {
+                      return true;
+                  }
+
+                  if (key === 'price') {
+                      return product.price === Number(value);
+                  }
+
+                  return String(product[key as keyof Product])
+                      .toLowerCase()
+                      .includes(value.toLowerCase());
+              })
+          )
+        : productsExample;
+
+    const paginatedProducts = filteredProducts.slice(offset, offset + limit);
+
+    return {
+        filteredProducts: paginatedProducts,
+        total: filteredProducts.length,
+    };
+};

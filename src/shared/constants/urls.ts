@@ -34,7 +34,7 @@ export const website = {
 
 export const websiteSections = [
     { label: 'головна', link: website.main },
-    { label: 'категорії', link: website.categories },
+    { label: 'товари', link: website.products },
     { label: 'послуги', link: website.services },
     { label: 'про нас', link: website.about },
     { label: 'відгуки', link: website.reviews },
@@ -43,9 +43,9 @@ export const websiteSections = [
     { label: 'кошик', link: website.cart },
 ];
 
-export const NAV_LINKS = [
+export const HEADER_NAV_LINKS = [
     { label: 'головна', href: website.main },
-    { label: 'категорії', href: website.categories },
+    { label: 'товари', href: website.products },
     { label: 'послуги', href: website.services },
     { label: 'про нас', href: website.about },
     { label: 'відгуки', href: website.reviews },

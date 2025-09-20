@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
-import { NAV_LINKS, website } from '@/shared/constants/urls';
+import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
 
 interface HeaderDesktopProps extends BoxProps {
     visibleFrom?: MantineBreakpoint;
@@ -64,7 +64,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                         gap: isXl ? '48px' : '20px',
                     }}
                 >
-                    {Object.values(NAV_LINKS).map(({ href, label }) => {
+                    {Object.values(HEADER_NAV_LINKS).map(({ href, label }) => {
                         if (href === website.cart || href === website.profile) {
                             return;
                         }

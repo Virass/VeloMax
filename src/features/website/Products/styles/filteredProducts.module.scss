@@ -1,0 +1,47 @@
+@import '../../../../shared/styles/variables.scss';
+
+$card-gap: 1rem;
+
+.filteredProductsContainer {
+    gap: 30px;
+    max-width: $mantine-breakpoint-lg;
+
+    @media (min-width: $mantine-breakpoint-sm) {
+        gap: 64px;
+    }
+}
+
+.remainingItemsText {
+    font-size: 20px;
+
+    @media (min-width: $mantine-breakpoint-sm) {
+        font-size: 34px;
+    }
+}
+
+.positioningModeIcons {
+    display: none;
+
+    @media (min-width: $mantine-breakpoint-sm) {
+        display: flex;
+    }
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $card-gap;
+}
+
+.gridContainer {
+    display: grid;
+    gap: $card-gap;
+
+    @media (min-width: $mantine-breakpoint-sm) {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}

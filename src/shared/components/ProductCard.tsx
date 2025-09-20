@@ -12,22 +12,6 @@ import { Button } from './Button';
 import CardPrice from './ProductCardPrice';
 
 interface Props {
-    /*  Please REMOVE THIS comment once you start working with this component
-
-        Note: This component is not adaptive by default.
-        Some parts of the application require rendering in a column layout on both mobile and desktop.
-        To add responsiveness, handle it inside specific components. For example:
-
-        const isMobile = useResponsive();
-
-        <Card
-          title="Колесо"
-          price={100}
-          availability={false}
-          cardDirection={isMobile ? "column" : "row"}
-        />
-    */
-
     cardDirection?: 'row' | 'column';
     image?: string; // should be mandatory once images are ready
     title: string;
@@ -51,8 +35,9 @@ export default function ProductCard({
                     cardDirection === 'row' ? 'space-between' : 'flex-start'
                 }
                 gap={cardDirection === 'row' ? undefined : 'lg'}
+                align={cardDirection === 'column' ? 'center' : 'flex-start'}
             >
-                <Box mx={cardDirection === 'column' ? 'auto' : undefined}>
+                <Box mx="auto">
                     <Image
                         src={image}
                         height={160}
@@ -61,7 +46,7 @@ export default function ProductCard({
                     />
                 </Box>
 
-                <Stack>
+                <Stack w={306}>
                     <Group justify="space-between">
                         <Text fw="bold">{title}</Text>
 
@@ -75,8 +60,10 @@ export default function ProductCard({
                         bg={`gray.${availability ? '9' : '2'}`}
                         disabled={!availability}
                         c={availability ? 'white' : 'gray.5'}
+                        w="100%"
+                        size="lg"
                     >
-                        Додати до кошика
+                        <Text size="18px">Додати до кошика</Text>
                     </Button>
                 </Stack>
             </Flex>

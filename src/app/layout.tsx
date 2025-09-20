@@ -9,9 +9,14 @@ import type { Metadata } from 'next';
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
 import '@/shared/styles/reset.css';
-import { Roboto } from 'next/font/google';
+import { Inter, Roboto } from 'next/font/google';
 
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
+
+export const inter = Inter({
+    variable: '--font-inter',
+    subsets: ['latin', 'cyrillic'],
+});
 
 export const metadata: Metadata = {
     title: 'VeloMax',

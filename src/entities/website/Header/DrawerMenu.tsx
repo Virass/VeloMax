@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
-import { NAV_LINKS } from '@/shared/constants/urls';
+import { HEADER_NAV_LINKS } from '@/shared/constants/urls';
 
 type Props = { opened: boolean; onClose: () => void };
 
@@ -53,7 +53,7 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
                 style={{ width: '100%', overflowY: 'auto' }}
                 ff="inherit"
             >
-                {Object.values(NAV_LINKS).map((l) => (
+                {Object.values(HEADER_NAV_LINKS).map((l) => (
                     <Link
                         key={l.href}
                         href={l.href}

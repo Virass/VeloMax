@@ -46,7 +46,7 @@ export default function ProductCard({
                     />
                 </Box>
 
-                <Stack w={306}>
+                <Stack w={270}>
                     <Group justify="space-between">
                         <Text fw="bold">{title}</Text>
 

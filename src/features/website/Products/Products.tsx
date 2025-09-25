@@ -2,6 +2,7 @@ import { Container, Group, Stack } from '@mantine/core';
 
 import { getFilteredProducts } from '@/features/admin-panel/products/services/products.service';
 
+import { maxVisibleProductsOnDesktop } from './constants';
 import { FilteredProducts } from './FilteredProducts';
 import { SideBar } from './SideBar';
 import { TopBar } from './TopBar';
@@ -12,7 +13,8 @@ interface Props {
 
 export default async function Products({ filters }: Props) {
     const { filteredProducts, total } = await getFilteredProducts(filters, {
-        limit: 8,
+        // TODO dynamically pass in the limit
+        limit: maxVisibleProductsOnDesktop,
         offset: 0,
     });
 

@@ -1,4 +1,4 @@
-import Products from '@/features/website/Products/Products';
+import { Products } from '@/features/website/Products';
 
 export default async function CategoriesPage(props: {
     searchParams?: Promise<Record<string, string>>;

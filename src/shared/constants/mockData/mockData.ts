@@ -14,6 +14,11 @@ export const productsExample: Product[] = [
         article: 'road-2000',
         brand: 'SpeedX',
         price: 499,
+        imagesUrls: [
+            'https://customwheelbuilder.com/cdn/shop/products/Screenshot2021-08-139.36.38AM_4337d2e9-b2d8-40f3-9d1d-1e06813ae497_540x.png?v=1628878170',
+            'https://customwheelbuilder.com/cdn/shop/products/470563_540x.jpg?v=1586286914',
+            'https://customwheelbuilder.com/cdn/shop/products/Screenshot2022-09-144.41.56PM_540x.png?v=1663195342',
+        ],
         isActive: true,
         amount: 'unlimited',
         createdAt: new Date(2024, 11, 8),

@@ -1,4 +1,5 @@
 import type { Filter } from '@/features/website/Products/types/filters';
+import type { Review } from '@/shared/types/reviewType';
 
 import type { Category } from '../../types/categoryType';
 import type { OrderEntity } from '../../types/orderType';
@@ -10,23 +11,29 @@ export const productsExample: Product[] = [
     {
         id: 'prod_01',
         name: 'Roadster 2000',
+        rating: 4,
+        description:
+            'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         categoryId: 'Road Bike',
+        colors: ['white', 'black', 'gray.7', 'green.5', 'yellow.7'],
         article: 'road-2000',
         brand: 'SpeedX',
         price: 499,
+        discountPrice: 100,
         imagesUrls: [
             'https://customwheelbuilder.com/cdn/shop/products/Screenshot2021-08-139.36.38AM_4337d2e9-b2d8-40f3-9d1d-1e06813ae497_540x.png?v=1628878170',
             'https://customwheelbuilder.com/cdn/shop/products/470563_540x.jpg?v=1586286914',
             'https://customwheelbuilder.com/cdn/shop/products/Screenshot2022-09-144.41.56PM_540x.png?v=1663195342',
         ],
         isActive: true,
-        amount: 'unlimited',
+        amount: 10,
         createdAt: new Date(2024, 11, 8),
         updatedAt: new Date(2024, 11, 8),
     },
     {
         id: 'prod_02',
         name: 'Mountain King',
+        rating: 5,
         categoryId: 'Mountain Bike',
         article: 'mountain-king',
         brand: 'TrailBlazer',
@@ -42,6 +49,7 @@ export const productsExample: Product[] = [
         categoryId: 'City Bike',
         article: 'city-cruiser',
         brand: 'UrbanRide',
+        rating: 2,
         price: 299,
         isActive: true,
         amount: 'unlimited',
@@ -322,5 +330,63 @@ export const filters: Filter[] = [
         name: 'Колір',
         type: 'checkbox',
         options: ['Білий', 'Чорний', 'Червоний', 'Синій', 'Зелений', 'Жовтий'],
+    },
+];
+
+export const reviews: Review[] = [
+    {
+        id: 'rev_001',
+        user: 'user_001',
+        productId: 'prod_01',
+        rating: 5,
+        title: 'Cras pretium',
+        comment:
+            'Absolutely love the Roadster 2000! Smooth ride, lightweight frame, and stylish design. Definitely worth the price.',
+        createdAt: new Date(2025, 6, 12),
+        updatedAt: new Date(2025, 7, 25),
+    },
+    {
+        id: 'rev_002',
+        productId: 'prod_01',
+        user: 'John',
+        rating: 4,
+        title: 'Cras pretium',
+        comment:
+            'Great bike overall. Very comfortable on long rides. The only thing is the seat could be slightly better.',
+        createdAt: new Date(2025, 6, 20),
+        updatedAt: new Date(2025, 7, 25),
+    },
+    {
+        id: 'rev_003',
+        productId: 'prod_01',
+        user: 'user_003',
+        rating: 5,
+        title: 'Cras pretium',
+        comment:
+            'I’ve had this for a month now and it’s perfect for daily commuting. Sturdy build and the brakes are reliable.',
+        createdAt: new Date(2025, 7, 3),
+        updatedAt: new Date(2025, 7, 25),
+    },
+    {
+        id: 'rev_004',
+        productId: 'prod_01',
+        user: 'user_004',
+        rating: 3,
+        title: 'Cras pretium',
+        comment:
+            'Decent bike, but I expected a bit more at this price point. The gears sometimes feel a little stiff.',
+        createdAt: new Date(2025, 7, 18),
+        updatedAt: new Date(2025, 7, 25),
+    },
+    {
+        id: 'rev_005',
+        productId: 'prod_01',
+        user: 'user_005',
+        rating: 4,
+        title: 'Cras pretium',
+        comment:
+            'Solid purchase. Took it on a weekend trip and it handled hills really well. Would recommend to friends.',
+        createdAt: new Date(2025, 8, 5),
+        updatedAt: new Date(2025, 7, 25),
     },
 ];

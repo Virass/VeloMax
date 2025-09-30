@@ -2,8 +2,15 @@
 
 .productContainer {
     flex-direction: column;
+    gap: 48px;
 
     @media (min-width: $mantine-breakpoint-lg) {
         flex-direction: row;
     }
+}
+
+.productContentContainer {
+    border-radius: 32px;
+    background-color: white;
+    padding: 16px;
 }

@@ -12,7 +12,7 @@ export default function Icon({
     height = 24,
     color = 'white',
     mode = 'fill',
-    viewBox = '0 0 24 24',
+    viewBox = `0 0 ${width} ${height}`,
     path,
     ...rest
 }: Props) {

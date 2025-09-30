@@ -11,7 +11,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Button } from './Button';
 
 interface Props extends Omit<MantineDrawerProps, 'opened' | 'onClose'> {
-    title: string;
+    title?: string;
     CustomButton?: ComponentType<{ onClick: () => void }>;
     targetButtonTitle?: string;
     children: ReactNode;

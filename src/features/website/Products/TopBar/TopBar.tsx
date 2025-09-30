@@ -1,31 +1,46 @@
-import { Box, Group } from '@mantine/core';
+import { Box, DEFAULT_THEME, Group } from '@mantine/core';
 
+import { MobileFilters } from '@/features/website/Products/MobileFilters';
 import Breadcrumbs from '@/shared/components/Breadcrumbs';
 import { Button } from '@/shared/components/Button';
-import FilterIcon from '@/shared/ui/icons/FilterIcon';
+import Drawer from '@/shared/components/Drawer';
+import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import LeftArrowIcon from '@/shared/ui/icons/LeftArrowIcon';
 
-// TODO separate these buttons when filter logic is completed.
-const buttons = [
-    {
-        label: 'Назад',
-        icon: <LeftArrowIcon color="gray.9" height={10} width={16} />,
-    },
-    {
-        label: 'Фільтрувати',
-        icon: <FilterIcon color="gray.9" height={16} width={16} />,
-    },
-];
+import { FilterDrawerButton } from './FilterDrawerButton';
+import { getFilters } from '../SideBar/services/sidebar.service';
 
-export default function TopBar() {
+export default async function TopBar() {
+    const productFilters = await getFilters();
+
     return (
         <>
-            <Group hiddenFrom="sm" justify="space-between">
-                {buttons.map(({ label, icon }) => (
-                    <Button key={label} leftIcon={icon} variant="invisible">
-                        {label}
-                    </Button>
-                ))}
+            <Group hiddenFrom='lg' justify="space-between">
+                <Button
+                    leftIcon={
+                        <LeftArrowIcon color="gray.9" height={10} width={16} />
+                    }
+                    variant="invisible"
+                >
+                    Назад
+                </Button>
+
+                <Drawer
+                    CustomButton={FilterDrawerButton}
+                    position="bottom"
+                    withCloseButton={false}
+                    padding="5px"
+                    styles={{
+                        content: {
+                            backgroundColor: DEFAULT_THEME.colors.gray[0],
+                            borderTopLeftRadius: '32px',
+                            borderTopRightRadius: '32px',
+                            height: 'fit-content',
+                        },
+                    }}
+                >
+                    <MobileFilters filters={productFilters} />
+                </Drawer>
             </Group>
 
             <Box
@@ -34,6 +49,7 @@ export default function TopBar() {
                 p="48px 64px"
                 bdrs="48px"
                 flex={1}
+                maw={BREAKPOINTS.lg}
                 ml="-23px"
             >
                 <Breadcrumbs />

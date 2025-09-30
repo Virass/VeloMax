@@ -15,7 +15,7 @@ export default async function TopBar() {
 
     return (
         <>
-            <Group hiddenFrom="sm" justify="space-between">
+            <Group hiddenFrom='lg' justify="space-between">
                 <Button
                     leftIcon={
                         <LeftArrowIcon color="gray.9" height={10} width={16} />

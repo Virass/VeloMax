@@ -3,7 +3,7 @@ import {
     Carousel as MantineCarousel,
     CarouselSlide,
 } from '@mantine/carousel';
-import { Box, Text } from '@mantine/core';
+import { Box } from '@mantine/core';
 import Image from 'next/image';
 
 import LeftArrowIcon from '@/shared/ui/icons/LeftArrowIcon';
@@ -25,9 +25,9 @@ export default function Carousel({
             height={carouselHeight}
             previousControlIcon={<LeftArrowIcon color="gray.5" />}
             nextControlIcon={
-                <Text component="span" className="rightIcon">
+                <span className="rightIcon">
                     <LeftArrowIcon color="gray.5" />
-                </Text>
+                </span>
             }
             className="carousel"
             {...rest}

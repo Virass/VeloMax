@@ -1,3 +1,5 @@
+@import '../../../../shared/styles/variables.scss';
+
 .carousel {
     position: relative;
     padding-bottom: 30px;
@@ -6,10 +8,18 @@
         background: white;
         border-radius: 32px;
         height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
     }
 
     .slideImg {
         object-fit: contain;
+
+        @media (min-width: $mantine-breakpoint-sm) {
+            width: 420px;
+            height: 360px;
+        }
     }
 
     .rightIcon {

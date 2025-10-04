@@ -12,17 +12,12 @@ import './styles/carousel.scss';
 
 interface Props extends CarouselProps {
     images: string[];
-    carouselHeight?: number;
 }
 
-export default function Carousel({
-    images,
-    carouselHeight = 160,
-    ...rest
-}: Props) {
+export default function Carousel({ images, ...rest }: Props) {
     return (
         <MantineCarousel
-            height={carouselHeight}
+            height="auto"
             previousControlIcon={<LeftArrowIcon color="gray.5" />}
             nextControlIcon={
                 <span className="rightIcon">
@@ -39,7 +34,8 @@ export default function Carousel({
                             src={url}
                             className="slideImg"
                             alt="Carousel image"
-                            fill
+                            width={200}
+                            height={160}
                         />
                     </Box>
                 </CarouselSlide>

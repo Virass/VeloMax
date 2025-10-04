@@ -1,5 +1,7 @@
 import { Avatar as MantineAvatar, Text } from '@mantine/core';
 
+import styles from '../../features/website/Reviews/styles/reviews.module.scss';
+
 interface Props {
     name: string;
 }
@@ -18,8 +20,13 @@ export default function Avatar({ name }: Props) {
     };
 
     return (
-        <MantineAvatar>
-            <Text tt="uppercase" fw="700" c="gray.9">
+        <MantineAvatar size="md">
+            <Text
+                tt="uppercase"
+                fw="700"
+                c="gray.9"
+                className={styles.review__avatarText}
+            >
                 {getAvatar()}
             </Text>
         </MantineAvatar>

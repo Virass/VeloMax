@@ -1,12 +1,12 @@
-import { Text } from '@mantine/core';
+import { Text, type ButtonProps } from '@mantine/core';
 
 import { Button } from './Button';
 
-interface Props {
+interface Props extends ButtonProps {
     availability: boolean;
 }
 
-export default function AddToCartButton({ availability }: Props) {
+export default function AddToCartButton({ availability, ...rest }: Props) {
     return (
         <Button
             bdrs="32px"
@@ -15,6 +15,7 @@ export default function AddToCartButton({ availability }: Props) {
             c={availability ? 'white' : 'gray.5'}
             w="100%"
             size="lg"
+            {...rest}
         >
             <Text size="18px">Додати до кошика</Text>
         </Button>

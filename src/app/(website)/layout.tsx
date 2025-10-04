@@ -4,6 +4,7 @@ import { Stack } from '@mantine/core';
 
 import Footer from '@/entities/website/Footer/Footer';
 import { Header } from '@/entities/website/Header/Header';
+import Breadcrumbs from '@/shared/components/Breadcrumbs';
 
 export default function WebsiteLayout({
     children,
@@ -20,7 +21,11 @@ export default function WebsiteLayout({
             }}
         >
             <Header />
+
+            <Breadcrumbs />
+
             <main style={{ flex: 1 }}>{children}</main>
+
             <Footer />
         </Stack>
     );

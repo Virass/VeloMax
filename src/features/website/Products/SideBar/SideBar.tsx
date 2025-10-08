@@ -9,13 +9,7 @@ export default async function SideBar() {
     const filters = await getFilters();
 
     return (
-        <Stack
-            visibleFrom="lg"
-            bg="gray.1"
-            bdrs="48px"
-            p="48px 12px 48px 100px"
-            gap="32px"
-        >
+        <Stack visibleFrom="lg" bg="gray.1" bdrs="48px" p="50px" gap="32px">
             <Text size="34px" className={inter.className}>
                 Категорії
             </Text>

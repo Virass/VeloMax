@@ -1,4 +1,4 @@
-import { Box, Flex, Group, Stack, Text, Title } from '@mantine/core';
+import { Box, Flex, Stack, Text, Title } from '@mantine/core';
 import { notFound } from 'next/navigation';
 
 import { inter } from '@/app/layout';
@@ -8,9 +8,9 @@ import { getProductAvailabilityText } from '@/shared/lib/getProductAvailabilityT
 
 import { Carousel } from '../Carousel';
 import { Price } from './Price';
-import { QuantitySelection } from './QuantitySelection';
+import { ProductImageGallery } from '../ProductImageGallery';
 import { Reviews } from '../Reviews';
-import { AvailableColors } from './AvailableColors';
+import ProductConfigurator from './ProductConfigurator/ProductConfigurator';
 import { getProduct } from './services/product.service';
 import styles from './styles/product.module.scss';
 
@@ -41,48 +41,114 @@ export default async function Product({ id }: Props) {
 
     return (
         <Flex className={styles.productContainer}>
-            <Carousel images={imagesUrls ?? []} />
+            <Carousel images={imagesUrls ?? []} hiddenFrom="lg" />
 
-            <Stack gap="12px">
-                <Stack className={styles.productContentContainer}>
-                    <Title
-                        className={inter.className}
-                        tt="uppercase"
-                        fw="400"
-                        fz="20px"
-                        c="dark.9"
-                    >
-                        {name}
-                    </Title>
+            <Stack
+                gap="12px"
+                className={styles.productContainer__innerContainer}
+            >
+                <Flex gap="30px" justify="center">
+                    <Box visibleFrom="lg">
+                        <ProductImageGallery images={imagesUrls ?? []} />
+                    </Box>
 
-                    <Price price={price} discountPrice={discountPrice} />
+                    <Stack className={styles.productContentContainer}>
+                        <Title
+                            className={`${inter.className} ${styles.productContentContainer__title}`}
+                            tt="uppercase"
+                        >
+                            {name}
+                        </Title>
 
-                    <Group justify="space-between">
-                        <Text size="sm" c="gray.9">
-                            {getProductAvailabilityText(availability)}
+                        <Box hiddenFrom="sm">
+                            <Price
+                                price={price}
+                                discountPrice={discountPrice}
+                            />
+                        </Box>
+
+                        <Flex
+                            className={
+                                styles.productContentContainer__productMainInfoContainer
+                            }
+                        >
+                            <Text
+                                size="sm"
+                                c="gray.9"
+                                className={
+                                    styles.productContentContainer__paragraph
+                                }
+                            >
+                                {getProductAvailabilityText(availability)}
+                            </Text>
+
+                            <Box visibleFrom="sm">
+                                <Price
+                                    price={price}
+                                    discountPrice={discountPrice}
+                                />
+                            </Box>
+
+                            <Rating
+                                readOnly
+                                value={rating}
+                                classNames={{
+                                    starSymbol:
+                                        styles.productContentContainer__rating,
+                                }}
+                            />
+                        </Flex>
+
+                        {/* // TODO Maybe create 2 description values. E.g. displayDescription, description */}
+                        <Text
+                            className={
+                                styles.productContentContainer__paragraph
+                            }
+                        >
+                            {description?.slice(0, 124)}
                         </Text>
 
-                        <Rating readOnly value={rating} />
-                    </Group>
+                        <Box visibleFrom="sm">
+                            <ProductConfigurator
+                                colors={colors}
+                                availability={availability}
+                                amount={amount}
+                            />
+                        </Box>
+                    </Stack>
+                </Flex>
 
-                    {/* // TODO Maybe create 2 description values. E.g. displayDescription, description */}
-                    <Text>{description?.slice(0, 124)}</Text>
-                </Stack>
+                <Box hiddenFrom="sm">
+                    <ProductConfigurator
+                        colors={colors}
+                        availability={availability}
+                        amount={amount}
+                    />
+                </Box>
 
-                {colors && <AvailableColors colors={colors} />}
-
-                {availability && <QuantitySelection maxQuantity={amount} />}
-
-                <AddToCartButton availability={availability} />
+                <Box hiddenFrom="sm">
+                    <AddToCartButton availability={availability} />
+                </Box>
             </Stack>
 
-            <Stack gap="32px">
-                <Title fz="20px" c="dark.9" fw="400">
+            <Stack
+                gap="32px"
+                className={styles.productContentContainer__descriptionContainer}
+            >
+                <Title className={styles.productContentContainer__title}>
                     Опис товару
                 </Title>
 
-                <Box p="16px" bg="gray.1" bdrs="30px">
-                    <Text>{description}</Text>
+                <Box
+                    bg="gray.1"
+                    bdrs="30px"
+                    className={
+                        styles.productContentContainer__paragraphContainer
+                    }
+                >
+                    <Text className={styles.productContentContainer__paragraph}>
+                        {description}
+                    </Text>
                 </Box>
             </Stack>
 

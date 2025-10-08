@@ -18,17 +18,17 @@ export default function AvailableColors({ colors }: Props) {
     };
 
     return (
-        <Group
-            className={styles.productContentContainer}
+        <Flex
+            className={styles.productAvailableColorsContainer}
             justify="space-between"
         >
-            <Text>Колір:</Text>
+            <Text className={styles.productContentContainer__paragraph}>
+                Колір:
+            </Text>
 
             <Group gap="12px">
                 {colors.map((color) => (
                     <Flex
-                        w="24px"
-                        h="24px"
                         justify="center"
                         align="center"
                         key={color}
@@ -36,17 +36,21 @@ export default function AvailableColors({ colors }: Props) {
                         bdrs="50%"
                         bd={color === 'white' ? '1px solid gray.5' : 'none'}
                         onClick={() => selectColor(color)}
+                        className={
+                            styles.productAvailableColorsContainer__colorSelector
+                        }
                     >
                         {selectedColor === color && (
                             <CheckIcon
                                 color={color === 'white' ? 'black' : 'white'}
-                                width="8px"
-                                height="6px"
+                                className={
+                                    styles.productAvailableColorsContainer__colorSelector__checkIcon
+                                }
                             />
                         )}
                     </Flex>
                 ))}
             </Group>
-        </Group>
+        </Flex>
     );
 }

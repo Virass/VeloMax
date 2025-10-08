@@ -55,7 +55,7 @@ export default function ProductCard({
                     </Link>
                 </Box>
 
-                <Stack w={306}>
+                <Stack w={270}>
                     <Group justify="space-between">
                         <Link
                             href={productUrl}

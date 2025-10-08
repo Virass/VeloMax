@@ -1,0 +1,37 @@
+.mainImageWrapper {
+    width: 650px;
+    height: 430px;
+    padding-top: 100%;
+}
+
+.mainImageWrapper,
+.thumbnailWrapper {
+    position: relative;
+    border-radius: 32px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.mainImage,
+.thumbnail {
+    object-fit: contain;
+}
+
+.thumbnailWrapper {
+    height: 155px;
+    flex: 1 1 150px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition:
+        border 0.2s ease,
+        transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        border-color: #ccc;
+    }
+}
+
+.active {
+    border-color: #0070f3;
+}

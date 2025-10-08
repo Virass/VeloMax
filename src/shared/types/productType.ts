@@ -2,6 +2,7 @@ export type Product = BasicEntity & {
     name: string;
     categoryId: string;
     article: string;
+    rating?: number;
     description?: string;
     brand?: string;
     price: number;
@@ -11,4 +12,5 @@ export type Product = BasicEntity & {
     isActive: boolean;
     isSoldOut?: boolean;
     amount: number | 'unlimited';
+    colors?: string[];
 };

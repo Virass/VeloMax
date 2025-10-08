@@ -8,6 +8,7 @@ import {
 import type { Metadata } from 'next';
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 import '@/shared/styles/reset.css';
 import { Inter, Roboto } from 'next/font/google';
 

@@ -1,0 +1,149 @@
+@import '../../../../shared/styles/variables.scss';
+
+.productContainer {
+    flex-direction: column;
+    gap: 48px;
+    max-width: $mantine-breakpoint-xxl;
+
+    &__innerContainer {
+        @media (min-width: $mantine-breakpoint-lg) {
+            align-items: center;
+        }
+    }
+}
+
+.productAvailableColorsContainer,
+.productQuantitySelectionContainer,
+.productContentContainer {
+    border-radius: 32px;
+    background-color: white;
+    padding: 16px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        border-radius: 0;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 400;
+        color: #141414;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            font-size: 34px;
+        }
+    }
+
+    &__productMainInfoContainer {
+        flex-direction: row;
+        justify-content: space-between;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            flex-direction: column-reverse;
+            justify-content: flex-start;
+            gap: 24px;
+        }
+    }
+
+    &__productConfiguration {
+        gap: 8px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            gap: 16px;
+        }
+    }
+
+    &__paragraphContainer {
+        padding: 16px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            padding: 0;
+        }
+    }
+
+    &__paragraph {
+        font-size: 14px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            font-size: 18px;
+        }
+    }
+
+    &__descriptionContainer {
+        @media (min-width: $mantine-breakpoint-lg) {
+            padding: 48px 99px;
+            border-radius: 32px;
+            background-color: #f1f3f5;
+        }
+    }
+
+    &__rating {
+        width: 18px;
+        height: 18px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            width: 28px;
+            height: 28px;
+        }
+    }
+}
+
+.productAvailableColorsContainer {
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__colorSelector {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            width: 48px;
+            height: 48px;
+        }
+
+        &__checkIcon {
+            width: 8px;
+            height: 6px;
+
+            @media (min-width: $mantine-breakpoint-lg) {
+                width: 16px;
+                height: 12px;
+            }
+        }
+    }
+}
+
+.productQuantitySelectionContainer {
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__quantitySelection {
+        gap: 12px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            gap: 16px;
+        }
+    }
+
+    &__input {
+        width: 42px;
+        font-size: 14px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            width: 72px;
+            font-size: 18px;
+        }
+    }
+}

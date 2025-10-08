@@ -13,6 +13,7 @@ export default function ProductItem({ product, customDirection }: Props) {
         title: product.name,
         availability: product.isActive,
         price: product.price,
+        productId: product.id,
     };
 
     return (

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Icon from '@/shared/components/Icon';
 import type { IconProps } from '@/shared/types/icon';
 
-export default function LeftArrowIcon({
+export default function PlusIcon({
     width = 24,
     height = 24,
     color,
@@ -16,8 +16,8 @@ export default function LeftArrowIcon({
             color={color}
             mode={mode}
             path={
-                <g transform="translate(4 7)">
-                    <path d="M5.707.293a1 1 0 0 1 0 1.414L3.414 4H15a1 1 0 1 1 0 2H3.414l2.293 2.293a1 1 0 1 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0Z" />
+                <g transform="translate(4 4)">
+                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1Z" />
                 </g>
             }
         />

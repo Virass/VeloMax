@@ -69,3 +69,5 @@ export const AdminCatalogNameMap: AdminCatalogNameMapping = {
     categories: SINGULAR_CATALOG_NAME.CATEGORIES,
     products: SINGULAR_CATALOG_NAME.PRODUCTS,
 };
+
+export const placeHolderImageURL = '/No-Image-Placeholder.svg';

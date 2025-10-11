@@ -61,3 +61,39 @@
         }
     }
 }
+
+.addReviewForm {
+    &__ratingStar {
+        width: 20px;
+        height: 20px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    &__input {
+        @media (min-width: $mantine-breakpoint-lg) {
+            max-width: 378px;
+        }
+    }
+
+    &__textareaContainer {
+        width: 100%;
+        gap: 16px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            justify-items: center;
+            align-items: center;
+            max-width: 738px;
+        }
+    }
+
+    &__button {
+        @media (min-width: $mantine-breakpoint-lg) {
+            max-width: 180px;
+            align-self: flex-end;
+        }
+    }
+}

@@ -6,7 +6,7 @@ import AddToCartButton from '@/shared/components/AddToCartButton';
 import Rating from '@/shared/components/Rating';
 import { getProductAvailabilityText } from '@/shared/lib/getProductAvailabilityText';
 
-import { Carousel } from '../Carousel';
+import { Carousel } from './Carousel';
 import { Price } from './Price';
 import { ProductImageGallery } from '../ProductImageGallery';
 import { Reviews } from '../Reviews';

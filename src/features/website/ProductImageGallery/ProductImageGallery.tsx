@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Box, Group, Stack } from '@mantine/core';
 import Image from 'next/image';
 
+import { placeHolderImageURL } from '@/shared/constants/urls';
+
 import styles from './styles/productImageGallery.module.scss';
 
 interface Props {
@@ -14,15 +16,11 @@ interface Props {
 export default function ProductImageGallery({ images }: Props) {
     const [selectedImage, setSelectedImage] = useState(images[0]);
 
-    const selectImage = (img: string) => {
-        setSelectedImage(img);
-    };
-
     return (
         <Stack gap="16px">
             <Box className={styles.mainImageWrapper}>
                 <Image
-                    src={selectedImage}
+                    src={selectedImage || placeHolderImageURL}
                     alt="Selected product image"
                     fill
                     className={styles.mainImage}
@@ -36,7 +34,7 @@ export default function ProductImageGallery({ images }: Props) {
                         className={`${styles.thumbnailWrapper} ${
                             selectedImage === image ? styles.active : ''
                         }`}
-                        onClick={() => selectImage(image)}
+                        onClick={() => setSelectedImage(image)}
                     >
                         <Image
                             src={image}

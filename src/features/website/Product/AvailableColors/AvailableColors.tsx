@@ -13,10 +13,6 @@ import styles from '../styles/product.module.scss';
 export default function AvailableColors({ colors }: Props) {
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-    const selectColor = (color: string) => {
-        setSelectedColor(color);
-    };
-
     return (
         <Flex
             className={styles.productAvailableColorsContainer}
@@ -35,7 +31,7 @@ export default function AvailableColors({ colors }: Props) {
                         bg={color}
                         bdrs="50%"
                         bd={color === 'white' ? '1px solid gray.5' : 'none'}
-                        onClick={() => selectColor(color)}
+                        onClick={() => setSelectedColor(color)}
                         className={
                             styles.productAvailableColorsContainer__colorSelector
                         }

@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import type { StoreStateType } from './store';
 
 export enum ModalSize {
     sm = 'sm',
@@ -28,18 +28,32 @@ export type ModalWindowStoreType = ModalWindowType & ModalWindowStoreActions;
 
 const initialState = {
     isModalOpen: false,
+    title: '',
     content: null,
     size: ModalSize.md,
 };
 
-export const useModalWindow = create<ModalWindowStoreType>((set) => ({
+export const createModalWindowStore: StoreStateType<ModalWindowStoreType> = (
+    set
+) => ({
     ...initialState,
 
-    openModal: ({ content }) =>
-        set({
-            isModalOpen: true,
-            content,
-        }),
+    openModal: ({ content }) => {
+        set((state) => ({
+            modalWindow: {
+                ...state.modalWindow,
+                isModalOpen: true,
+                content,
+            },
+        }));
+    },
 
-    closeModal: () => set(initialState),
-}));
+    closeModal: () => {
+        set((state) => ({
+            modalWindow: {
+                ...state.modalWindow,
+                ...initialState,
+            },
+        }));
+    },
+});

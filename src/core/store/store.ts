@@ -6,7 +6,7 @@ import { createAppStore, type AppStoreType } from './app-store';
 import {
     createModalWindowStore,
     type ModalWindowStoreType,
-} from './modal-window-store';
+} from './modalWindowStore';
 
 export type StoreType = {
     app: AppStoreType;

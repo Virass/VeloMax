@@ -1,45 +1,39 @@
 'use client';
 
-import type { ComponentType, ReactNode } from 'react';
-
-import {
-    Drawer as MantineDrawer,
-    type DrawerProps as MantineDrawerProps,
-} from '@mantine/core';
+import { Drawer as MantineDrawer } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import { Button } from './Button';
-
-interface Props extends Omit<MantineDrawerProps, 'opened' | 'onClose'> {
-    title?: string;
-    CustomButton?: ComponentType<{ onClick: () => void }>;
-    targetButtonTitle?: string;
-    children: ReactNode;
-}
+import type { DrawerProps } from '../types/drawerType';
 
 export default function Drawer({
     title,
     CustomButton,
     targetButtonTitle,
     children,
+    isOpened,
+    close,
     ...rest
-}: Props) {
-    const [opened, { open, close }] = useDisclosure(false);
+}: DrawerProps) {
+    const [localOpened, { open, close: localClose }] = useDisclosure(false);
+
+    const opened = isOpened ?? localOpened;
+    const handleClose = close ?? localClose;
 
     return (
         <>
             <MantineDrawer
                 opened={opened}
-                onClose={close}
+                onClose={handleClose}
                 title={title}
                 {...rest}
             >
                 {children}
             </MantineDrawer>
 
-            {CustomButton ? (
-                <CustomButton onClick={open} />
-            ) : (
+            {CustomButton && <CustomButton onClick={open} />}
+
+            {targetButtonTitle && !isOpened && !close && (
                 <Button onClick={open}>
                     <p>{targetButtonTitle}</p>
                 </Button>

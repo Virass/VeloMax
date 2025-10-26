@@ -1,0 +1,11 @@
+@import '../../../../shared/styles/variables.scss';
+
+.content {
+    background: #fff;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 28px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        min-width: 800px;
+    }
+}

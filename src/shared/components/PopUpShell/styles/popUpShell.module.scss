@@ -1,0 +1,29 @@
+@import '../../../../shared/styles/variables.scss';
+
+.content {
+    position: fixed;
+    top: 32px;
+    left: 4.45vw;
+    right: 4.45vw;
+    height: 78vh;
+    max-height: 78vh;
+    background: #fff;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 28px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        top: 64px;
+    }
+}
+
+.header {
+    border: none;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}

@@ -9,14 +9,14 @@ export enum ModalSize {
 
 type ModalWindowType = {
     isModalOpen: boolean;
-    title: string;
-    content: React.ReactNode | React.ComponentType;
+    title?: string;
+    content: React.ReactNode;
     size: ModalSize;
 };
 
 type OpenModalPayload = {
-    title: string;
-    content: React.ReactNode | React.ComponentType;
+    title?: string;
+    content: React.ReactNode;
 };
 
 type ModalWindowStoreActions = {
@@ -38,12 +38,11 @@ export const createModalWindowStore: StoreStateType<ModalWindowStoreType> = (
 ) => ({
     ...initialState,
 
-    openModal: ({ title, content }) => {
+    openModal: ({ content }) => {
         set((state) => ({
             modalWindow: {
                 ...state.modalWindow,
                 isModalOpen: true,
-                title,
                 content,
             },
         }));

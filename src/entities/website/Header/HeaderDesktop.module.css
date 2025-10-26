@@ -1,0 +1,85 @@
+.container {
+    box-shadow: -1px 5px 29px -18px rgba(0, 0, 0, 1);
+    max-width: 940px;
+}
+
+@media (min-width: 88rem) {
+    .container {
+        max-width: 1380px;
+    }
+}
+
+.group {
+    gap: 24px;
+}
+
+@media (min-width: 88rem) {
+    .group {
+        gap: 50px;
+    }
+}
+
+.phonesWrapper {
+    --phone-icon-size: 24px;
+    --phone-font-size: 16px;
+}
+
+@media (min-width: 88rem) {
+    .phonesWrapper {
+        --phone-icon-size: 32px;
+        --phone-font-size: 20px;
+    }
+}
+
+.nav {
+    gap: 20px;
+}
+
+@media (min-width: 88rem) {
+    .nav {
+        gap: 48px;
+    }
+}
+
+.navLabel {
+    font-size: 16px;
+}
+
+@media (min-width: 88rem) {
+    .navLabel {
+        font-size: 20px;
+    }
+}
+
+.linksGroup {
+    gap: 16px;
+}
+
+@media (min-width: 88rem) {
+    .linksGroup {
+        gap: 24px;
+    }
+}
+
+.linkText {
+    font-size: var(--mantine-font-size-md);
+}
+
+@media (min-width: 88rem) {
+    .linkText {
+        font-size: var(--mantine-font-size-xl);
+    }
+}
+
+.badge {
+    font-size: var(--mantine-font-size-md);
+}
+
+@media (min-width: 88rem) {
+    .badge {
+        font-size: var(--mantine-font-size-xl);
+        height: var(--badge-height-xl);
+        min-height: var(--badge-height-xl);
+        min-width: var(--badge-height-xl);
+    }
+}

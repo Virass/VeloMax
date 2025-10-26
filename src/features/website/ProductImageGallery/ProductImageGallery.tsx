@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { Box, Group, Stack } from '@mantine/core';
 import Image from 'next/image';
 
-import styles from './styles/productImageGallery.module.scss';
 import { placeHolderImageURL } from '@/shared/constants/urls';
+
+import styles from './styles/productImageGallery.module.scss';
 
 interface Props {
     images: string[];

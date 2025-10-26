@@ -7,8 +7,7 @@
     right: 4.45vw;
     height: 78vh;
     max-height: 78vh;
-    background: #ffffff66;
-    backdrop-filter: blur(8px);
+    background: #fff;
     border: 2px solid rgba(255, 255, 255, 1);
     border-radius: 28px;
 
@@ -18,12 +17,7 @@
 }
 
 .header {
-    background: transparent;
     border: none;
-}
-
-.overlay {
-    background: transparent;
 }
 
 .body {

@@ -58,17 +58,17 @@ export default function AddReviewForm() {
                     })}
                 />
 
-                <Stack className={styles.addReviewForm__textareaContainer}>
+                <Stack w="100%" className={styles.addReviewForm__textareaContainer}>
                     <Stack gap="4px" w="100%">
                         <Text ta="center" fz="18px">
                             Ви можете залишити свій відгук
                         </Text>
 
-                        {/* // TODO Not sure how to handle the size of this textarea correctly without hardcoding. Possibly fix it if there's any solution for it. */}
                         <Textarea
                             placeholder="Ваш відгук"
                             size="lg"
                             rounded
+                            w="100%"
                             className={styles.addReviewForm__textarea}
                             styles={{
                                 input: {

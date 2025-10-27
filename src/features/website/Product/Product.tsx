@@ -127,7 +127,10 @@ export default async function Product({ id }: Props) {
                 </Box>
 
                 <Box hiddenFrom="sm">
-                    <AddToCartButton availability={availability} />
+                    <AddToCartButton
+                        availability={availability}
+                        product={product}
+                    />
                 </Box>
             </Stack>
 

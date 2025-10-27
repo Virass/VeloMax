@@ -1,0 +1,77 @@
+@import '../../../../shared/styles/variables.scss';
+
+.container {
+    box-shadow: -1px 5px 29px -18px rgba(0, 0, 0, 1);
+    max-width: 940px;
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        max-width: 1380px;
+    }
+}
+
+.group {
+    gap: 24px;
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        gap: 50px;
+    }
+}
+
+.phonesWrapper {
+    --phone-icon-size: 24px;
+    --phone-font-size: 16px;
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        --phone-icon-size: 32px;
+        --phone-font-size: 20px;
+    }
+}
+
+.nav {
+    gap: 20px;
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        gap: 48px;
+    }
+
+    &Label {
+        font-size: 16px;
+
+        @media (min-width: $mantine-breakpoint-xl) {
+            font-size: 20px;
+        }
+    }
+}
+
+.linksGroup {
+    gap: 16px;
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        gap: 24px;
+    }
+
+    .linkText {
+        font-size: var(--mantine-font-size-md);
+
+        @media (min-width: $mantine-breakpoint-xl) {
+            font-size: var(--mantine-font-size-xl);
+        }
+    }
+}
+
+.badge {
+    font-size: var(--mantine-font-size-md);
+
+    &__topRightCorner {
+        position: absolute;
+        right: -12px;
+        top: -5px;
+    }
+
+    @media (min-width: $mantine-breakpoint-xl) {
+        font-size: var(--mantine-font-size-xl);
+        height: var(--badge-height-xl);
+        min-height: var(--badge-height-xl);
+        min-width: var(--badge-height-xl);
+    }
+}

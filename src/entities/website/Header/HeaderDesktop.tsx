@@ -5,15 +5,17 @@ import {
     type MantineBreakpoint,
     Box,
     Group,
-    Badge,
     NavLink,
 } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { useCartStore } from '@/core/store/shoppingCartStore';
 import { Phones } from '@/shared/components/Phones';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
-import styles from './HeaderDesktop.module.css';
+
+import CartCount from './CartCount';
+import styles from './styles/HeaderDesktop.module.scss';
 
 interface HeaderDesktopProps extends BoxProps {
     visibleFrom?: MantineBreakpoint;
@@ -24,8 +26,8 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const CART = { href: website.cart, label: 'кошик' };
     const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 
-    //TODO мок даних поки немає функціональності кошика
-    const cartItemCount = 1;
+    const items = useCartStore((s) => s.items);
+    const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
     return (
         <Box
@@ -38,7 +40,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
             mx="auto"
             bd="2px solid var(--mantine-color-white)"
             bdrs={40}
-            bg={'white'}
+            bg="white"
         >
             <Group
                 w="100%"
@@ -105,16 +107,9 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                         >
                             {CART.label}
                         </Box>
+
                         {cartItemCount && (
-                            <Badge
-                                color="var(--mantine-color-black)"
-                                variant="filled"
-                                circle
-                                ml={4}
-                                className={styles.badge}
-                            >
-                                {cartItemCount}
-                            </Badge>
+                            <CartCount cartItemCount={cartItemCount} />
                         )}
                     </Link>
 

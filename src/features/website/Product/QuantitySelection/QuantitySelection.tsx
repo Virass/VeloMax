@@ -27,7 +27,7 @@ export default function QuantitySelection({
     };
 
     const decrement = () => {
-        setLocalQuantity((prev) => Number(prev) - 1);
+        setLocalQuantity((prev) => (Number(prev) > 0 ? Number(prev) - 1 : 0));
     };
 
     return (

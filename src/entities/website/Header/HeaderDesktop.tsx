@@ -7,14 +7,17 @@ import {
     Group,
     NavLink,
 } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useCartStore } from '@/core/store/shoppingCartStore';
+import { CartDrawerContent } from '@/features/CartDrawerContent';
+import Drawer from '@/shared/components/Drawer';
 import { Phones } from '@/shared/components/Phones';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
 
-import CartCount from './CartCount';
+import GoToCart from './GoToCart';
 import styles from './styles/HeaderDesktop.module.scss';
 
 interface HeaderDesktopProps extends BoxProps {
@@ -23,11 +26,10 @@ interface HeaderDesktopProps extends BoxProps {
 
 export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const pathname = usePathname();
-    const CART = { href: website.cart, label: 'кошик' };
-    const PROFILE = { href: website.profile, label: 'особистий кабінет' };
-
     const items = useCartStore((s) => s.items);
-    const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
+    const [opened, { open, close }] = useDisclosure(false);
+
+    const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 
     return (
         <Box
@@ -90,28 +92,26 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                 </Box>
 
                 <Group className={styles.linksGroup}>
-                    <Link
-                        href={CART.href}
-                        style={{
-                            textDecoration: 'none',
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Box
-                            component="span"
-                            fw={pathname === CART.href ? 600 : 400}
-                            c="var(--mantine-color-black)"
-                            tt="capitalize"
-                            className={styles.linkText}
+                    {!!items.length && (
+                        <Drawer
+                            isOpened={opened}
+                            close={close}
+                            position="right"
+                            padding="20px"
+                            styles={{
+                                content: {
+                                    overflow: 'hidden',
+                                },
+                                body: {
+                                    height: '90%',
+                                },
+                            }}
                         >
-                            {CART.label}
-                        </Box>
+                            <CartDrawerContent closeDrawer={close} />
+                        </Drawer>
+                    )}
 
-                        {cartItemCount && (
-                            <CartCount cartItemCount={cartItemCount} />
-                        )}
-                    </Link>
+                    <GoToCart openDrawer={open} />
 
                     <Link
                         href={PROFILE?.href || '/profile'}
@@ -123,7 +123,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART.href ? 600 : 400}
+                            fw={pathname === PROFILE.href ? 600 : 400}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                             className={styles.linkText}

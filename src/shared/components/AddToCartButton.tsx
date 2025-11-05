@@ -1,3 +1,5 @@
+'use client';
+
 import { Text, type ButtonProps } from '@mantine/core';
 
 import { useCartStore } from '@/core/store/shoppingCartStore';
@@ -7,7 +9,7 @@ import type { Product } from '../types/productType';
 
 interface Props extends ButtonProps {
     availability: boolean;
-    product: Product;
+    product?: Product;
 }
 
 export default function AddToCartButton({
@@ -19,9 +21,15 @@ export default function AddToCartButton({
     const removeItem = useCartStore((s) => s.removeItem);
     const shoppingCartItems = useCartStore((s) => s.items);
 
-    const isInCart = shoppingCartItems.some((item) => item.id === product.id);
+    const isInCart = product
+        ? shoppingCartItems.some((item) => item.id === product.id)
+        : false;
 
     const toggle = () => {
+        if (!product) {
+            return;
+        }
+
         if (isInCart) {
             removeItem(product.id);
         } else {

@@ -34,6 +34,8 @@ export const Actions = () => {
     const items = useCartStore((s) => s.items);
     const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
+    console.log(items);
+
     return (
         <Group gap={24} flex={1} justify="end">
             {actions.map((action) => (
@@ -48,7 +50,10 @@ export const Actions = () => {
                     </ActionIcon>
 
                     {action.href === website.cart && cartItemCount > 0 && (
-                        <CartCount cartItemCount={cartItemCount} />
+                        <CartCount
+                            cartItemCount={cartItemCount}
+                            topRightCornerPlacement
+                        />
                     )}
                 </Link>
             ))}

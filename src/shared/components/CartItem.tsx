@@ -1,7 +1,11 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import { Group, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 
-import type { CartItem } from '@/core/store/shoppingCartStore';
+import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
 
 import { Button } from './Button';
 import NumberInputField from './NumberInputField';
@@ -12,7 +16,23 @@ interface Props {
 }
 
 export default function CartItem({ item }: Props) {
-    const { name, description, quantity, price } = item;
+    const { name, description, quantity, price, discountPrice, id } = item;
+    const [localQuantity, setLocalQuantity] = useState<string>(
+        quantity.toString()
+    );
+    const correctedPrice = discountPrice ?? price;
+
+    console.log(discountPrice);
+
+    const [totalPrice, setTotalPrice] = useState(correctedPrice);
+    const { updateQuantity, removeItem } = useCartStore();
+
+    useEffect(() => {
+        const numericQuantity = Number(localQuantity);
+
+        updateQuantity(id, numericQuantity);
+        setTotalPrice(correctedPrice * numericQuantity);
+    }, [localQuantity]);
 
     return (
         <Group align="start" justify="space-between">
@@ -27,20 +47,22 @@ export default function CartItem({ item }: Props) {
                 <Stack gap="5px">
                     <Text fw="600">{name}</Text>
 
-                    <Text maw="200px">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Vero, eligendi.
-                    </Text>
+                    <Text maw="200px">{`${description?.slice(0, 50)}...`}</Text>
                 </Stack>
 
                 <Group justify="space-between">
-                    <NumberInputField value={quantity} w="60px" />
+                    <NumberInputField
+                        value={localQuantity}
+                        min={1}
+                        w="60px"
+                        onChange={(value) => setLocalQuantity(value.toString())}
+                    />
 
-                    <Text>{`$${price}`}</Text>
+                    <Text>{`$${totalPrice}`}</Text>
                 </Group>
             </Stack>
             {/* DeleteButton */}
-            <Button variant="invisible">
+            <Button variant="invisible" onClick={() => removeItem(id)}>
                 <DeleteIcon color="gray.6" />
             </Button>
         </Group>

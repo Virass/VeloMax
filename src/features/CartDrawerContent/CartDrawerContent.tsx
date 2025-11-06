@@ -17,7 +17,15 @@ interface Props {
 
 export default function CartDrawerContent({ closeDrawer }: Props) {
     const items = useCartStore((s) => s.items);
-    const productsCount = pluralize(items.length, 'Товар');
+
+    const totalPrice = items.reduce((acc, item) => {
+        const price = item.discountPrice ?? item.price;
+
+        return acc + price * item.quantity;
+    }, 0);
+    const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
+
+    const productsCount = pluralize(totalQuantity, 'Товар');
 
     return (
         <Stack justify="space-between" h="100%">
@@ -36,10 +44,12 @@ export default function CartDrawerContent({ closeDrawer }: Props) {
             </Stack>
 
             <Stack>
-                <Subtotal total={123} />
+                <Subtotal total={totalPrice} />
 
                 <Stack>
-                    <Button>Checkout</Button>
+                    <Button bg="gray.9" c="white">
+                        Checkout
+                    </Button>
                     <Link
                         href={website.cart}
                         style={{

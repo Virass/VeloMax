@@ -110,9 +110,9 @@ export default async function Product({ id }: Props) {
 
                         <Box visibleFrom="sm">
                             <ProductConfigurator
-                                colors={colors}
                                 availability={availability}
-                                amount={amount}
+                                colors={colors}
+                                product={product}
                             />
                         </Box>
                     </Stack>
@@ -121,8 +121,8 @@ export default async function Product({ id }: Props) {
                 <Box hiddenFrom="sm">
                     <ProductConfigurator
                         colors={colors}
+                        product={product}
                         availability={availability}
-                        amount={amount}
                     />
                 </Box>
 

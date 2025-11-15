@@ -18,8 +18,10 @@ export default function EmptyCart() {
             <Title order={3}>Кошик порожній</Title>
 
             <Box>
-                <Text>У твоєму кошику поки що немає товарів.</Text>
-                <Text>Повернись до покупок і знайди щось цікаве!</Text>
+                <Text ta="center"> У твоєму кошику поки що немає товарів.</Text>
+                <Text ta="center">
+                    Повернись до покупок і знайди щось цікаве!
+                </Text>
             </Box>
 
             <Title order={4}>Шукаєш щось особливе?</Title>

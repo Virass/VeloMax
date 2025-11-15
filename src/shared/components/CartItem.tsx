@@ -1,70 +1,99 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
-import { Group, Stack, Text } from '@mantine/core';
+import { Group, Stack, Text, Title } from '@mantine/core';
 import Image from 'next/image';
+import Link from 'next/link';
 
+import type { OpenModalPayload } from '@/core/store/modalWindowStore';
 import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
+import { Price } from '@/features/website/Product/Price';
+import EditCartItemContent from '@/features/website/ShoppingCart/EditCartItemContent';
 
 import { Button } from './Button';
-import NumberInputField from './NumberInputField';
-import DeleteIcon from '../ui/icons/DeleteIcon';
+import styles from '../../features/website/ShoppingCart/styles/shoppingCart.module.scss';
+import { website } from '../constants/urls';
+import { useCart } from '../hooks/useCart';
 
 interface Props {
     item: CartItem;
+    openModal: (payload: OpenModalPayload) => void;
+    closeModal: () => void;
 }
 
-export default function CartItem({ item }: Props) {
-    const { name, description, quantity, price, discountPrice, id } = item;
-    const [localQuantity, setLocalQuantity] = useState<string>(
-        quantity.toString()
-    );
-    const correctedPrice = discountPrice ?? price;
-
-    console.log(discountPrice);
-
-    const [totalPrice, setTotalPrice] = useState(correctedPrice);
-    const { updateQuantity, removeItem } = useCartStore();
-
-    useEffect(() => {
-        const numericQuantity = Number(localQuantity);
-
-        updateQuantity(id, numericQuantity);
-        setTotalPrice(correctedPrice * numericQuantity);
-    }, [localQuantity]);
+export default function CartItem({ item, openModal, closeModal }: Props) {
+    const { localQuantity, setLocalQuantity } = useCart(item);
+    const { removeItem } = useCartStore();
+    const { name, id, price, discountPrice } = item;
 
     return (
-        <Group align="start" justify="space-between">
-            <Image
-                src="https://customwheelbuilder.com/cdn/shop/products/Screenshot2021-08-139.36.38AM_4337d2e9-b2d8-40f3-9d1d-1e06813ae497_540x.png?v=1628878170"
-                height={80}
-                width={100}
-                alt="image"
-            />
+        <Group gap="lg" p="lg" className={styles.shoppingCart__cartItem}>
+            <Link href={`${website.products}/${id}`}>
+                <Image
+                    src="https://customwheelbuilder.com/cdn/shop/products/Screenshot2021-08-139.36.38AM_4337d2e9-b2d8-40f3-9d1d-1e06813ae497_540x.png?v=1628878170"
+                    height={155}
+                    width={155}
+                    alt="image"
+                    className={styles.shoppingCart__cartItem__image}
+                />
+            </Link>
 
-            <Stack gap="15px">
-                <Stack gap="5px">
-                    <Text fw="600">{name}</Text>
-
-                    <Text maw="200px">{`${description?.slice(0, 50)}...`}</Text>
-                </Stack>
-
+            <Stack flex={1}>
                 <Group justify="space-between">
-                    <NumberInputField
-                        value={localQuantity}
-                        min={1}
-                        w="60px"
-                        onChange={(value) => setLocalQuantity(value.toString())}
-                    />
+                    <Link
+                        href={`${website.products}/${id}`}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Title c="gray.8" fw={400} fz="34px">
+                            {name}
+                        </Title>
+                    </Link>
 
-                    <Text>{`$${totalPrice}`}</Text>
+                    <Price
+                        price={localQuantity * price}
+                        discountPrice={
+                            discountPrice
+                                ? localQuantity * discountPrice
+                                : undefined
+                        }
+                    />
+                </Group>
+
+                <Group gap="0">
+                    <Text>{`Кількість: ${localQuantity}`}</Text>(ціна за 1:
+                    <Price
+                        price={price}
+                        discountPrice={
+                            discountPrice ? discountPrice : undefined
+                        }
+                        small
+                    />
+                    )
+                </Group>
+
+                <Group>
+                    <Button
+                        variant="invisible"
+                        td="underline"
+                        onClick={() =>
+                            openModal({
+                                content: (
+                                    <EditCartItemContent
+                                        item={item}
+                                        quantity={localQuantity}
+                                        setQuantity={setLocalQuantity}
+                                        closeModal={closeModal}
+                                    />
+                                ),
+                            })
+                        }
+                    >
+                        <Text>Редагувати</Text>
+                    </Button>
+                    <Button variant="invisible" td="underline">
+                        <Text onClick={() => removeItem(item.id)}>
+                            Прибрати з кошику
+                        </Text>
+                    </Button>
                 </Group>
             </Stack>
-            {/* DeleteButton */}
-            <Button variant="invisible" onClick={() => removeItem(id)}>
-                <DeleteIcon color="gray.6" />
-            </Button>
         </Group>
     );
 }

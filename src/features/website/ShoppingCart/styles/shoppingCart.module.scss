@@ -1,0 +1,50 @@
+@import '../../../../shared/styles/variables.scss';
+
+.shoppingCart {
+    flex-direction: column;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+        gap: 100px;
+        width: 100%;
+    }
+
+    &__summary {
+        border: 1px solid #adb5bd;
+        border-radius: 20px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            justify-content: center;
+            padding: 20px;
+            height: fit-content;
+
+            > * {
+                width: 500px;
+            }
+        }
+
+        &__border {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #adb5bd;
+        }
+    }
+
+    &__cartItem {
+        border-top: 1px solid #adb5bd;
+
+        &__image {
+            object-fit: cover;
+        }
+
+        &__properties {
+            flex-direction: column;
+
+            @media (min-width: $mantine-breakpoint-lg) {
+                flex-direction: row;
+                flex: 1;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+}

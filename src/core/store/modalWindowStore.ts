@@ -14,7 +14,7 @@ type ModalWindowType = {
     size: ModalSize;
 };
 
-type OpenModalPayload = {
+export type OpenModalPayload = {
     title?: string;
     content: React.ReactNode;
 };

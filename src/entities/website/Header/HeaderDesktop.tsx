@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useCartStore } from '@/core/store/shoppingCartStore';
-import { CartDrawerContent } from '@/features/CartDrawerContent';
+import { CartDrawerContent } from '@/features/website/CartDrawerContent';
 import Drawer from '@/shared/components/Drawer';
 import { Phones } from '@/shared/components/Phones';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';

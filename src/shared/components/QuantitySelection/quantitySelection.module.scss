@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.productQuantitySelectionContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    border-radius: 32px;
+    background-color: white;
+    padding: 16px;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        border-radius: 0;
+        align-items: initial;
+        width: fit-content;
+        background-color: transparent;
+        padding: 0;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__quantitySelection {
+        gap: 12px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            gap: 16px;
+        }
+    }
+
+    &__paragraph {
+        font-size: 14px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            font-size: 18px;
+        }
+    }
+
+    &__input {
+        width: 42px;
+        font-size: 14px;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            width: 72px;
+            font-size: 18px;
+        }
+    }
+}

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Flex, Group, NumberInput, Text } from '@mantine/core';
 
 import type { CartItem } from '@/core/store/shoppingCartStore';
 import { Button } from '@/shared/components/Button';
+import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
 import type { SetState } from '@/shared/types/tsHelpersTypes';
 import MinusIcon from '@/shared/ui/icons/MinusIcon';
 import PlusIcon from '@/shared/ui/icons/PlusIcon';
@@ -17,6 +18,7 @@ interface Props {
     direction?: 'row' | 'column';
     quantity: number;
     setQuantity: SetState<number>;
+    updateCartItem: UpdateCartItem;
 }
 
 export default function QuantitySelection({
@@ -24,8 +26,15 @@ export default function QuantitySelection({
     direction,
     quantity,
     setQuantity,
+    updateCartItem,
 }: Props) {
     const [localQuantity, setLocalQuantity] = useState(quantity);
+
+    useEffect(() => {
+        if (updateCartItem) {
+            updateCartItem('quantity', localQuantity);
+        }
+    }, [localQuantity]);
 
     const increment = () => {
         setLocalQuantity((prev) => prev + 1);

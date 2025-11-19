@@ -12,8 +12,9 @@ export type CartItem = Product & {
 
 interface CartState {
     items: CartItem[];
-    addItem: (product: Product, quantity?: number) => void;
+    addItem: (cartItem: CartItem) => void;
     removeItem: (id: string) => void;
+    updateItem: (id: string, updatedItem: CartItem) => void;
     updateQuantity: (id: string, quantity: number) => void;
     clearCart: () => void;
     totalItems: number;
@@ -116,25 +117,42 @@ export const useCartStore = create<CartState>()(
                 },
             ],
 
-            addItem: (product, quantity = 1) => {
+            addItem: (cartItem) => {
                 const items = get().items;
-                const existingItem = items.find((i) => i.id === product.id);
+                const existingItem = items.find((i) => i.id === cartItem.id);
 
                 if (existingItem) {
                     set({
                         items: items.map((i) =>
-                            i.id === product.id
-                                ? { ...i, quantity: i.quantity + quantity }
+                            i.id === cartItem.id
+                                ? {
+                                      ...i,
+                                      quantity: i.quantity + cartItem.quantity,
+                                  }
                                 : i
                         ),
                     });
                 } else {
-                    set({ items: [...items, { ...product, quantity }] });
+                    set({ items: [...items, cartItem] });
                 }
             },
 
             removeItem: (id) => {
                 set({ items: get().items.filter((i) => i.id !== id) });
+            },
+
+            updateItem: (id, updatedItem) => {
+                const items = get().items;
+
+                set({
+                    items: items.map((i) => {
+                        if (i.id === id) {
+                            return updatedItem;
+                        }
+
+                        return i;
+                    }),
+                });
             },
 
             updateQuantity: (id, quantity) => {

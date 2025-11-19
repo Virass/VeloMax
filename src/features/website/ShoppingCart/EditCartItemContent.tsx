@@ -5,12 +5,14 @@ import { useState } from 'react';
 import { Box, Group, Stack, Title } from '@mantine/core';
 import Link from 'next/link';
 
-import type { CartItem } from '@/core/store/shoppingCartStore';
+import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
 import { Button } from '@/shared/components/Button';
 import { QuantitySelection } from '@/shared/components/QuantitySelection';
 import { website } from '@/shared/constants/urls';
+import { useCartItem } from '@/shared/hooks/useCartItem';
 import type { SetState } from '@/shared/types/tsHelpersTypes';
 
+import { AvailableColors } from '../Product/AvailableColors';
 import { Price } from '../Product/Price';
 import { ProductImageGallery } from '../ProductImageGallery';
 import styles from '../ShoppingCart/styles/shoppingCart.module.scss';
@@ -28,11 +30,15 @@ export default function EditCartItemContent({
     setQuantity,
     closeModal,
 }: Props) {
-    const { name, price, discountPrice, imagesUrls, id } = item;
+    const { name, price, discountPrice, imagesUrls, id, colors, color } = item;
     const [localQuantity, setLocalQuantity] = useState(quantity);
+    const { cartItem, updateCartItem } = useCartItem(item);
+    const { updateItem } = useCartStore();
 
     const applyNewChanges = () => {
         setQuantity(localQuantity);
+
+        updateItem(id, cartItem);
 
         closeModal();
     };
@@ -61,10 +67,19 @@ export default function EditCartItemContent({
                         <Price price={price} discountPrice={discountPrice} />
                     </Stack>
 
+                    {colors && (
+                        <AvailableColors
+                            preselectedColor={color}
+                            colors={colors}
+                            updateCartItem={updateCartItem}
+                        />
+                    )}
+
                     <QuantitySelection
                         item={item}
                         quantity={localQuantity}
                         setQuantity={setLocalQuantity}
+                        updateCartItem={updateCartItem}
                         direction="row"
                     />
                 </Stack>

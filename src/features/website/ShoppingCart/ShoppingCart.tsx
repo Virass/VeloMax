@@ -4,7 +4,7 @@ import { Flex, Stack, Title } from '@mantine/core';
 
 import { useCartStore } from '@/core/store/shoppingCartStore';
 import { useAppStore } from '@/core/store/store';
-import CartItem from '@/shared/components/CartItem';
+import CartItem from '@/features/website/ShoppingCart/CartItem';
 import EmptyCart from '@/shared/components/EmptyCart';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 
@@ -16,6 +16,7 @@ import styles from './styles/shoppingCart.module.scss';
 
 export default function ShoppingCart() {
     const items = useCartStore((s) => s.items);
+    // Figure out the better way to organize these constants.
     const totalPrice = items.reduce((acc, item) => {
         const price = item.discountPrice ?? item.price;
 

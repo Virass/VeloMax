@@ -12,6 +12,8 @@
     &__summary {
         border: 1px solid #adb5bd;
         border-radius: 20px;
+        padding: 16px;
+        width: 100%;
 
         @media (min-width: $mantine-breakpoint-lg) {
             justify-content: center;
@@ -29,21 +31,77 @@
         }
     }
 
+    &__promoForm {
+        width: 100%;
+
+        form {
+            width: 100%;
+        }
+
+        form > div {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            form > div {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+
     &__cartItem {
         border-top: 1px solid #adb5bd;
+        flex-direction: column;
+
+        @media (min-width: $mantine-breakpoint-sm) {
+            flex-direction: row;
+        }
 
         &__image {
             object-fit: cover;
+            width: 120px;
+            height: 120px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
+                width: 155px;
+                height: 155px;
+            }
         }
 
-        &__properties {
-            flex-direction: column;
+        &__content {
+            flex: 1;
+        }
 
-            @media (min-width: $mantine-breakpoint-lg) {
+        &__header {
+            flex-direction: column;
+            gap: 6px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
                 flex-direction: row;
-                flex: 1;
-                justify-content: space-between;
                 align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        &__quantityRow {
+            font-size: 14px;
+
+            @media (min-width: $mantine-breakpoint-md) {
+                font-size: 16px;
+            }
+        }
+
+        &__actions {
+            flex-direction: column;
+            margin-top: 8px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
+                flex-direction: row;
+                margin-top: 0;
+                gap: 16px;
             }
         }
     }

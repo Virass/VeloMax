@@ -1,6 +1,7 @@
 'use client';
 
 import { Flex, Stack, Title } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 
 import { useCartStore } from '@/core/store/shoppingCartStore';
 import { useAppStore } from '@/core/store/store';
@@ -16,6 +17,7 @@ import styles from './styles/shoppingCart.module.scss';
 
 export default function ShoppingCart() {
     const items = useCartStore((s) => s.items);
+    const isDesktop = useMediaQuery(`(min-width: 1024px)`);
     // Figure out the better way to organize these constants.
     const totalPrice = items.reduce((acc, item) => {
         const price = item.discountPrice ?? item.price;
@@ -40,7 +42,7 @@ export default function ShoppingCart() {
             <Stack w="100%">
                 <Title>Кошик</Title>
 
-                <Flex justify="center" align="ctenter">
+                <Flex justify="center" align="center">
                     {!items.length ? (
                         <EmptyCart />
                     ) : (
@@ -62,11 +64,15 @@ export default function ShoppingCart() {
                                 totalSavings={totalSavings}
                             />
 
-                            <EditCartItemModal
-                                closeModal={closeModal}
-                                content={content}
-                                isModalOpen={isModalOpen}
-                            />
+                            {isDesktop ? (
+                                <EditCartItemModal
+                                    closeModal={closeModal}
+                                    content={content}
+                                    isModalOpen={isModalOpen}
+                                />
+                            ) : (
+                                content
+                            )}
                         </Flex>
                     )}
                 </Flex>

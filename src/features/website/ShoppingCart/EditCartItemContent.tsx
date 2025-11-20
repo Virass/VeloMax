@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Box, Group, Stack, Title } from '@mantine/core';
+import { Box, Flex, Stack, Title } from '@mantine/core';
 import Link from 'next/link';
 
 import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
@@ -35,6 +35,15 @@ export default function EditCartItemContent({
     const { cartItem, updateCartItem } = useCartItem(item);
     const { updateItem } = useCartStore();
 
+    useEffect(() => {
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, []);
+
     const applyNewChanges = () => {
         setQuantity(localQuantity);
 
@@ -44,8 +53,8 @@ export default function EditCartItemContent({
     };
 
     return (
-        <Stack>
-            <Group align="start">
+        <Stack className={styles.shoppingCart__editCartContent}>
+            <Flex className={styles.shoppingCart__editCartContent__top}>
                 <Box flex={1}>
                     <ProductImageGallery images={imagesUrls ?? []} minimized />
                 </Box>
@@ -83,12 +92,12 @@ export default function EditCartItemContent({
                         direction="row"
                     />
                 </Stack>
-            </Group>
+            </Flex>
+
             <Button
                 variant="fill"
                 bg="gray.9"
-                style={{ alignSelf: 'self-end' }}
-                w="300px"
+                className={styles.shoppingCart__editCartContent__button}
                 size="md"
                 onClick={applyNewChanges}
             >

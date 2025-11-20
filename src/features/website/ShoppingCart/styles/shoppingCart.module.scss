@@ -31,6 +31,52 @@
         }
     }
 
+    &__editCartContent {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        overflow: hidden;
+
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        z-index: 9999;
+
+        &__top {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__button {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        @media (min-width: $mantine-breakpoint-xl) {
+            position: static;
+            width: auto;
+            height: auto;
+            overflow: visible;
+            padding: 0;
+            background: transparent;
+
+            &__top {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            &__button {
+                width: 300px;
+                margin-top: 0;
+                align-self: flex-end;
+            }
+        }
+    }
+
     &__promoForm {
         width: 100%;
 

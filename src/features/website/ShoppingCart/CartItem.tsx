@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type { OpenModalPayload } from '@/core/store/modalWindowStore';
-import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
+import { useCartStore, type CartItem } from '@/core/store/useShoppingCartStore';
 import { Price } from '@/features/website/Product/Price';
 import EditCartItemContent from '@/features/website/ShoppingCart/EditCartItemContent';
+import { useStore } from '@/shared/hooks/useStore';
 
 import styles from './styles/shoppingCart.module.scss';
 import { Button } from '../../../shared/components/Button';
@@ -20,7 +21,7 @@ interface Props {
 
 export default function CartItem({ item, openModal, closeModal }: Props) {
     const { localQuantity, setLocalQuantity } = useCart(item);
-    const { removeItem } = useCartStore();
+    const removeItem = useStore(useCartStore, (state) => state.removeItem);
     const { name, id, price, discountPrice } = item;
 
     return (

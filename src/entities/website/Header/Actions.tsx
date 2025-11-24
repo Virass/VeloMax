@@ -3,8 +3,12 @@ import React from 'react';
 import { ActionIcon, Group } from '@mantine/core';
 import Link from 'next/link';
 
-import { useCartStore } from '@/core/store/shoppingCartStore';
+import {
+    type CartState,
+    useCartStore,
+} from '@/core/store/useShoppingCartStore';
 import { website } from '@/shared/constants/urls';
+import { useStore } from '@/shared/hooks/useStore';
 import { ShoppingBagIcon } from '@/shared/ui/icons/ShoppingBagIcon';
 import { UserIcon } from '@/shared/ui/icons/UserIcon';
 
@@ -30,9 +34,9 @@ const actions: Action[] = [
 ];
 
 export const Actions = () => {
-    // const cartItemCount = useCartStore((s) => s.totalItems);
-    const items = useCartStore((s) => s.items);
-    const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
+    const items = useStore(useCartStore, (state) => state.items);
+    // const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
+    const cartItemCount = 2;
 
     console.log(items);
 

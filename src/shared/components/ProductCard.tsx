@@ -12,6 +12,7 @@ import Link from 'next/link';
 import AddToCartButton from './AddToCartButton';
 import CardPrice from './ProductCardPrice';
 import { website } from '../constants/urls';
+import { useCartItem } from '../hooks/useCartItem';
 import { getProductAvailabilityText } from '../lib/getProductAvailabilityText';
 import type { Product } from '../types/productType';
 
@@ -33,6 +34,11 @@ export default function ProductCard({
         isActive: availability,
         id: productId,
     } = product;
+
+    const { cartItem } = useCartItem({
+        ...product,
+        quantity: 1,
+    });
 
     const productUrl = `${website.products}/${productId}`;
 
@@ -77,7 +83,7 @@ export default function ProductCard({
 
                     <AddToCartButton
                         availability={availability}
-                        product={product}
+                        cartItem={cartItem}
                     />
                 </Stack>
             </Flex>

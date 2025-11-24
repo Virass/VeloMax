@@ -2,9 +2,10 @@
 
 import { Text, type ButtonProps } from '@mantine/core';
 
-import { type CartItem, useCartStore } from '@/core/store/shoppingCartStore';
+import { type CartItem, useCartStore } from '@/core/store/useShoppingCartStore';
 
 import { Button } from './Button';
+import { useStore } from '../hooks/useStore';
 
 interface Props extends ButtonProps {
     availability: boolean;
@@ -16,9 +17,11 @@ export default function AddToCartButton({
     cartItem,
     ...rest
 }: Props) {
-    const addItem = useCartStore((s) => s.addItem);
-    const removeItem = useCartStore((s) => s.removeItem);
-    const shoppingCartItems = useCartStore((s) => s.items);
+    const addItem = useStore(useCartStore, (state) => state.addItem);
+    const removeItem = useStore(useCartStore, (state) => state.removeItem);
+    const shoppingCartItems = useStore(useCartStore, (state) => state.items);
+
+    // console.log(cartItem);
 
     const isInCart = cartItem
         ? shoppingCartItems.some((item) => item.id === cartItem.id)

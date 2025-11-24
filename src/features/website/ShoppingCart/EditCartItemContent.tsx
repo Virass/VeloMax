@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import { Box, Flex, Stack, Title } from '@mantine/core';
 import Link from 'next/link';
 
-import { useCartStore, type CartItem } from '@/core/store/shoppingCartStore';
+import { useCartStore, type CartItem } from '@/core/store/useShoppingCartStore';
 import { Button } from '@/shared/components/Button';
 import { QuantitySelection } from '@/shared/components/QuantitySelection';
 import { website } from '@/shared/constants/urls';
 import { useCartItem } from '@/shared/hooks/useCartItem';
+import { useStore } from '@/shared/hooks/useStore';
 import type { SetState } from '@/shared/types/tsHelpersTypes';
 
 import { AvailableColors } from '../Product/AvailableColors';
@@ -33,7 +34,7 @@ export default function EditCartItemContent({
     const { name, price, discountPrice, imagesUrls, id, colors, color } = item;
     const [localQuantity, setLocalQuantity] = useState(quantity);
     const { cartItem, updateCartItem } = useCartItem(item);
-    const { updateItem } = useCartStore();
+    const updateItem = useStore(useCartStore, (state) => state.updateItem);
 
     useEffect(() => {
         const originalOverflow = document.body.style.overflow;

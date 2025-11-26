@@ -10,6 +10,7 @@ import { useCartStore } from '@/core/store/useShoppingCartStore';
 import CartItem from '@/features/website/ShoppingCart/CartItem';
 import EmptyCart from '@/shared/components/EmptyCart';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
+import { useCartTotals } from '@/shared/hooks/useCartTotals';
 import { useStore } from '@/shared/hooks/useStore';
 
 import EditCartItemModal from './EditCartItemModal';
@@ -26,8 +27,7 @@ export default function ShoppingCart() {
     const items = useStore(useCartStore, (state) => state.items);
     const isDesktop = useMediaQuery(`(min-width: 1024px)`);
 
-    const totalPrice = 21;
-    const totalSavings = 19;
+    const { totalPrice, totalSavings } = useCartTotals();
 
     const { openModal, closeModal, content, isModalOpen } = useAppStore(
         (state) => state.modalWindow

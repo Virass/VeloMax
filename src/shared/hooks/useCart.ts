@@ -17,7 +17,7 @@ export function useCart(item: CartItem) {
     const safeQuantity =
         Number.isFinite(localQuantity) && localQuantity > 0 ? localQuantity : 1;
 
-    const totalPrice = correctedPrice * safeQuantity;
+    const totalUnitPrice = correctedPrice * safeQuantity;
 
     useEffect(() => {
         updateStoreQuantity(id, safeQuantity);
@@ -26,6 +26,6 @@ export function useCart(item: CartItem) {
     return {
         localQuantity,
         setLocalQuantity,
-        totalPrice,
+        totalUnitPrice,
     };
 }

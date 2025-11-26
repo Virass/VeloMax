@@ -19,7 +19,7 @@ export default function DrawerCartItem({ item }: Props) {
     const { name, description, id } = item;
     const removeItem = useStore(useCartStore, (state) => state.removeItem);
 
-    const { localQuantity, setLocalQuantity, totalPrice } = useCart(item);
+    const { localQuantity, setLocalQuantity, totalUnitPrice } = useCart(item);
 
     return (
         <Group align="start" justify="space-between">
@@ -45,7 +45,7 @@ export default function DrawerCartItem({ item }: Props) {
                         onChange={(value) => setLocalQuantity(Number(value))}
                     />
 
-                    <Text>{`₴${totalPrice}`}</Text>
+                    <Text>{`₴${totalUnitPrice}`}</Text>
                 </Group>
             </Stack>
             <Button variant="invisible" onClick={() => removeItem(id)}>

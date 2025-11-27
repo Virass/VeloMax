@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { useCartStore } from '@/core/store/useShoppingCartStore';
 import { website } from '@/shared/constants/urls';
+import { useCartTotals } from '@/shared/hooks/useCartTotals';
 import { useStore } from '@/shared/hooks/useStore';
 
 import CartCount from './CartCount';
@@ -20,9 +21,7 @@ export default function GoToCart({ openDrawer }: Props) {
 
     const items = useStore(useCartStore, (state) => state.items);
 
-    // const cartItemCount = items.reduce((acc, i) => acc + i.quantity, 0);
-    const cartItemCount = 2;
-
+    const { totalQuantity } = useCartTotals();
     const CART = { href: website.cart, label: 'кошик' };
 
     return (
@@ -51,7 +50,7 @@ export default function GoToCart({ openDrawer }: Props) {
                 {CART.label}
             </Box>
 
-            <CartCount cartItemCount={cartItemCount} />
+            {totalQuantity > 0 && <CartCount cartItemCount={totalQuantity} />}
         </Link>
     );
 }

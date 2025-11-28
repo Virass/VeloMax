@@ -33,13 +33,13 @@
     @media (min-width: $mantine-breakpoint-xl) {
         gap: 48px;
     }
+}
 
-    &Label {
-        font-size: 16px;
+.nav :last-child :global(.mantine-NavLink-label) {
+    font-size: 16px;
 
-        @media (min-width: $mantine-breakpoint-xl) {
-            font-size: 20px;
-        }
+    @media (min-width: $mantine-breakpoint-xl) {
+        font-size: 20px;
     }
 }
 

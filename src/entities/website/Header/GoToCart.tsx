@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useCartStore } from '@/core/store/useShoppingCartStore';
+import { ClientOnly } from '@/shared/components/ClientOnly';
 import { website } from '@/shared/constants/urls';
 import { useCartTotals } from '@/shared/hooks/useCartTotals';
 import { useStore } from '@/shared/hooks/useStore';
@@ -20,7 +21,6 @@ export default function GoToCart({ openDrawer }: Props) {
     const pathname = usePathname();
 
     const items = useStore(useCartStore, (state) => state.items);
-
     const { totalQuantity } = useCartTotals();
     const CART = { href: website.cart, label: 'кошик' };
 
@@ -50,7 +50,11 @@ export default function GoToCart({ openDrawer }: Props) {
                 {CART.label}
             </Box>
 
-            {totalQuantity > 0 && <CartCount cartItemCount={totalQuantity} />}
+            <ClientOnly>
+                {totalQuantity > 0 && (
+                    <CartCount cartItemCount={totalQuantity} />
+                )}
+            </ClientOnly>
         </Link>
     );
 }

@@ -23,6 +23,7 @@ export function useCartTotals(): CartTotals {
 
             return acc;
         },
+
         { totalPrice: 0, totalSavings: 0, totalQuantity: 0 }
     );
 

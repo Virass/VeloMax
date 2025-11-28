@@ -1,8 +1,11 @@
+'use client';
+
 import React from 'react';
 
 import { ActionIcon, Group } from '@mantine/core';
 import Link from 'next/link';
 
+import { ClientOnly } from '@/shared/components/ClientOnly';
 import { website } from '@/shared/constants/urls';
 import { useCartTotals } from '@/shared/hooks/useCartTotals';
 import { ShoppingBagIcon } from '@/shared/ui/icons/ShoppingBagIcon';
@@ -45,12 +48,14 @@ export const Actions = () => {
                         {action.icon}
                     </ActionIcon>
 
-                    {action.href === website.cart && totalQuantity > 0 && (
-                        <CartCount
-                            cartItemCount={totalQuantity}
-                            topRightCornerPlacement
-                        />
-                    )}
+                    <ClientOnly>
+                        {action.href === website.cart && totalQuantity > 0 && (
+                            <CartCount
+                                cartItemCount={totalQuantity}
+                                topRightCornerPlacement
+                            />
+                        )}
+                    </ClientOnly>
                 </Link>
             ))}
         </Group>

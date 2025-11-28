@@ -15,9 +15,7 @@ interface Props {
 
 export default function CartDrawerContent({ closeDrawer }: Props) {
     const items = useStore(useCartStore, (state) => state.items);
-
     const { totalPrice, totalQuantity } = useCartTotals();
-
     const productsCount = pluralize(totalQuantity, 'Товар');
 
     return (

@@ -1,5 +1,4 @@
-import { useCartStore } from '@/core/store/useShoppingCartStore';
-import { useStore } from '@/shared/hooks/useStore';
+import { useAppStore } from '@/core/store/store';
 
 interface CartTotals {
     totalPrice: number;
@@ -8,7 +7,7 @@ interface CartTotals {
 }
 
 export function useCartTotals(): CartTotals {
-    const items = useStore(useCartStore, (state) => state.items);
+    const items = useAppStore((state) => state.shoppingCart.items);
 
     const totals = items.reduce(
         (acc, item) => {

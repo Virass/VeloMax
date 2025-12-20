@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { useCartStore, type CartItem } from '@/core/store/useShoppingCartStore';
-
-import { useStore } from './useStore';
+import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import { useAppStore } from '@/core/store/store';
 
 export function useCart(item: CartItem) {
     const { quantity, price, discountPrice, id } = item;
     const correctedPrice = discountPrice ?? price;
 
     const [localQuantity, setLocalQuantity] = useState<number>(quantity);
-    const updateStoreQuantity = useStore(
-        useCartStore,
-        (state) => state.updateQuantity
+
+    const { updateQuantity: updateStoreQuantity } = useAppStore(
+        (state) => state.shoppingCart
     );
 
     const safeQuantity =

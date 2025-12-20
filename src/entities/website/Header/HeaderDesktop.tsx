@@ -11,12 +11,11 @@ import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { useCartStore } from '@/core/store/useShoppingCartStore';
+import { useAppStore } from '@/core/store/store';
 import { CartDrawerContent } from '@/features/website/CartDrawerContent';
 import Drawer from '@/shared/components/Drawer';
 import { Phones } from '@/shared/components/Phones';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
-import { useStore } from '@/shared/hooks/useStore';
 
 import GoToCart from './GoToCart';
 import styles from './styles/HeaderDesktop.module.scss';
@@ -29,7 +28,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
     const [opened, { open, close }] = useDisclosure(false);
     const pathname = usePathname();
 
-    const items = useStore(useCartStore, (state) => state.items);
+    const { items } = useAppStore((state) => state.shoppingCart);
 
     const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 

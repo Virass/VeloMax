@@ -2,11 +2,10 @@
 
 import { Stack, Text, Title } from '@mantine/core';
 
-import { useCartStore } from '@/core/store/useShoppingCartStore';
+import { useAppStore } from '@/core/store/store';
 import ShoppingCartCheckoutBlock from '@/features/website/CartDrawerContent/CartDrawerCheckout';
 import DrawerCartItem from '@/shared/components/DrawerCartItem';
 import { useCartTotals } from '@/shared/hooks/useCartTotals';
-import { useStore } from '@/shared/hooks/useStore';
 import { pluralize } from '@/shared/lib/pluralize';
 
 interface Props {
@@ -14,7 +13,7 @@ interface Props {
 }
 
 export default function CartDrawerContent({ closeDrawer }: Props) {
-    const items = useStore(useCartStore, (state) => state.items);
+    const { items } = useAppStore((state) => state.shoppingCart);
     const { totalPrice, totalQuantity } = useCartTotals();
     const productsCount = pluralize(totalQuantity, 'Товар');
 

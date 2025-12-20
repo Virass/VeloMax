@@ -3,12 +3,12 @@
 import { Group, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 
-import { useCartStore, type CartItem } from '@/core/store/useShoppingCartStore';
+import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import { useAppStore } from '@/core/store/store';
 
 import { Button } from './Button';
 import NumberInputField from './NumberInputField';
 import { useCart } from '../hooks/useCart';
-import { useStore } from '../hooks/useStore';
 import DeleteIcon from '../ui/icons/DeleteIcon';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
 
 export default function DrawerCartItem({ item }: Props) {
     const { name, description, id } = item;
-    const removeItem = useStore(useCartStore, (state) => state.removeItem);
+    const removeItem = useAppStore((state) => state.shoppingCart.removeItem);
 
     const { localQuantity, setLocalQuantity, totalUnitPrice } = useCart(item);
 

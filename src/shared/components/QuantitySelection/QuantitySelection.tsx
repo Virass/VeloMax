@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { Flex, Group, NumberInput, Text } from '@mantine/core';
 
-import type { CartItem } from '@/core/store/useShoppingCartStore';
+import type { CartItem } from '@/core/store/ShoppingCartSlice';
 import { Button } from '@/shared/components/Button';
 import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
 import type { SetState } from '@/shared/types/tsHelpersTypes';

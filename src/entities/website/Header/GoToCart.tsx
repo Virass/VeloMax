@@ -4,11 +4,10 @@ import { Box } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { useCartStore } from '@/core/store/useShoppingCartStore';
+import { useAppStore } from '@/core/store/store';
 import { ClientOnly } from '@/shared/components/ClientOnly';
 import { website } from '@/shared/constants/urls';
 import { useCartTotals } from '@/shared/hooks/useCartTotals';
-import { useStore } from '@/shared/hooks/useStore';
 
 import CartCount from './CartCount';
 import styles from '../Header/styles/HeaderDesktop.module.scss';
@@ -20,7 +19,7 @@ interface Props {
 export default function GoToCart({ openDrawer }: Props) {
     const pathname = usePathname();
 
-    const items = useStore(useCartStore, (state) => state.items);
+    const { items } = useAppStore((state) => state.shoppingCart);
     const { totalQuantity } = useCartTotals();
     const CART = { href: website.cart, label: 'кошик' };
 

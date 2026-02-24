@@ -11,8 +11,8 @@ import {
 } from '@mantine/core';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 
-import { Actions } from '@/entities/website/Header/Actions';
-import { DrawerMenu } from '@/entities/website/Header/DrawerMenu';
+import { Actions } from '@/widgets/website/Header/Actions';
+import { DrawerMenu } from '@/widgets/website/Header/DrawerMenu';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { Brand } from '@/shared/ui/Brand';
 

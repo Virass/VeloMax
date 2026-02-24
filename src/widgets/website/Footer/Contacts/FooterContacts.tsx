@@ -1,6 +1,6 @@
 import { Flex } from '@mantine/core';
 
-import styles from '@/entities/website/Footer/styles/website-footer.module.scss';
+import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 import ContactDetail from '@/shared/components/ContactDetail';
 import { formatPhoneNumber } from '@/shared/lib/formatPhoneNumber';
 import Clock from '@/shared/ui/icons/ClockIcon';

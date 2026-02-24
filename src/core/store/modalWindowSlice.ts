@@ -7,24 +7,24 @@ export enum ModalSize {
     full = 'full',
 }
 
-type ModalWindowType = {
+type ModalWindowSliceState = {
     isModalOpen: boolean;
     title?: string;
     content: React.ReactNode;
     size: ModalSize;
 };
 
-type OpenModalPayload = {
+export type OpenModalPayload = {
     title?: string;
     content: React.ReactNode;
 };
 
-type ModalWindowStoreActions = {
+type ModalWindowSliceActions = {
     openModal(payload: OpenModalPayload): void;
     closeModal(): void;
 };
 
-export type ModalWindowStoreType = ModalWindowType & ModalWindowStoreActions;
+export type ModalWindowSlice = ModalWindowSliceState & ModalWindowSliceActions;
 
 const initialState = {
     isModalOpen: false,
@@ -33,27 +33,24 @@ const initialState = {
     size: ModalSize.md,
 };
 
-export const createModalWindowStore: StoreStateType<ModalWindowStoreType> = (
+export const createModalWindowSlice: StoreStateType<ModalWindowSlice> = (
     set
 ) => ({
     ...initialState,
 
     openModal: ({ content }) => {
-        set((state) => ({
-            modalWindow: {
+        set((state) => {
+            state.modalWindow = {
                 ...state.modalWindow,
                 isModalOpen: true,
                 content,
-            },
-        }));
+            };
+        });
     },
 
     closeModal: () => {
-        set((state) => ({
-            modalWindow: {
-                ...state.modalWindow,
-                ...initialState,
-            },
-        }));
+        set((state) => {
+            state.modalWindow = { ...state.modalWindow, ...initialState };
+        });
     },
 });

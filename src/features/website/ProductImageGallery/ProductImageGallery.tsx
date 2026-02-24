@@ -11,19 +11,22 @@ import styles from './styles/productImageGallery.module.scss';
 
 interface Props {
     images: string[];
+    minimized?: boolean;
 }
 
-export default function ProductImageGallery({ images }: Props) {
+export default function ProductImageGallery({ images, minimized }: Props) {
     const [selectedImage, setSelectedImage] = useState(images[0]);
 
     return (
         <Stack gap="16px">
-            <Box className={styles.mainImageWrapper}>
+            <Box
+                className={`${styles.mainImageWrapper} ${minimized ? styles.minimizedMain : ''}`}
+            >
                 <Image
                     src={selectedImage || placeHolderImageURL}
                     alt="Selected product image"
                     fill
-                    className={styles.mainImage}
+                    className={`${styles.mainImage} ${minimized ? styles.minimizedMainImage : ''}`}
                 />
             </Box>
 
@@ -32,15 +35,17 @@ export default function ProductImageGallery({ images }: Props) {
                     <Box
                         key={image}
                         className={`${styles.thumbnailWrapper} ${
-                            selectedImage === image ? styles.active : ''
-                        }`}
+                            minimized ? styles.minimizedThumbWrapper : ''
+                        } ${selectedImage === image ? styles.active : ''}`}
                         onClick={() => setSelectedImage(image)}
                     >
                         <Image
                             src={image}
                             alt="Product thumbnail"
                             fill
-                            className={styles.thumbnail}
+                            className={`${styles.thumbnail} ${
+                                minimized ? styles.minimizedThumbnail : ''
+                            }`}
                         />
                     </Box>
                 ))}

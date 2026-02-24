@@ -1,20 +1,20 @@
 import type { StoreStateType } from './store';
 
-export type AppStoreT = {
+export type AppSliceState = {
     someKey: string;
 };
 
-type AppStoreActions = {
+type AppSliceActions = {
     restoreState(): void;
 };
 
-export type AppStoreType = AppStoreT & AppStoreActions;
+export type AppSlice = AppSliceState & AppSliceActions;
 
-const defaultValues: AppStoreT = {
+const defaultValues: AppSliceState = {
     someKey: 'defaultValue',
 };
 
-export const createAppStore: StoreStateType<AppStoreType> = (set, _get) => ({
+export const createAppSlice: StoreStateType<AppSlice> = (set, _get) => ({
     ...defaultValues,
     restoreState: () => {
         set((state) => ({

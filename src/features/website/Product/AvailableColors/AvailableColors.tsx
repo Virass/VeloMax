@@ -1,17 +1,33 @@
 'use client';
 
 interface Props {
+    preselectedColor?: string;
+    updateCartItem: UpdateCartItem;
     colors: string[];
 }
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CheckIcon, Flex, Group, Text } from '@mantine/core';
 
+import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
+
 import styles from '../styles/product.module.scss';
 
-export default function AvailableColors({ colors }: Props) {
-    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+export default function AvailableColors({
+    preselectedColor,
+    colors,
+    updateCartItem,
+}: Props) {
+    const [selectedColor, setSelectedColor] = useState<string | null>(
+        preselectedColor || null
+    );
+
+    useEffect(() => {
+        if (selectedColor) {
+            updateCartItem('color', selectedColor);
+        }
+    }, [selectedColor]);
 
     return (
         <Flex

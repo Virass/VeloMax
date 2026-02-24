@@ -34,6 +34,8 @@ export const productsExample: Product[] = [
         id: 'prod_02',
         name: 'Mountain King',
         rating: 5,
+        description:
+            'and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         categoryId: 'Mountain Bike',
         article: 'mountain-king',
         brand: 'TrailBlazer',

@@ -12,26 +12,34 @@ import Link from 'next/link';
 import AddToCartButton from './AddToCartButton';
 import CardPrice from './ProductCardPrice';
 import { website } from '../constants/urls';
+import { useCartItem } from '../hooks/useCartItem';
 import { getProductAvailabilityText } from '../lib/getProductAvailabilityText';
+import type { Product } from '../types/productType';
 
 interface Props {
     cardDirection?: 'row' | 'column';
     image?: string; // should be mandatory once images are ready
-    title: string;
-    price: number;
-    productId: string;
-    availability: boolean;
+    product: Product;
 }
 
 export default function ProductCard({
     cardDirection = 'column',
-    // for example purposes
     image = 'https://customwheelbuilder.com/cdn/shop/products/Screenshot2021-08-139.36.38AM_4337d2e9-b2d8-40f3-9d1d-1e06813ae497_540x.png?v=1628878170',
-    title,
-    price,
-    productId,
-    availability,
+
+    product,
 }: Props) {
+    const {
+        name: title,
+        price,
+        isActive: availability,
+        id: productId,
+    } = product;
+
+    const { cartItem } = useCartItem({
+        ...product,
+        quantity: 1,
+    });
+
     const productUrl = `${website.products}/${productId}`;
 
     return (
@@ -73,7 +81,10 @@ export default function ProductCard({
                         {getProductAvailabilityText(availability)}
                     </Text>
 
-                    <AddToCartButton availability={availability} />
+                    <AddToCartButton
+                        availability={availability}
+                        cartItem={cartItem}
+                    />
                 </Stack>
             </Flex>
         </MantineCard>

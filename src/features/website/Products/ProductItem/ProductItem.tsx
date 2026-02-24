@@ -9,22 +9,15 @@ interface Props {
 }
 
 export default function ProductItem({ product, customDirection }: Props) {
-    const sharedProps = {
-        title: product.name,
-        availability: product.isActive,
-        price: product.price,
-        productId: product.id,
-    };
-
     return (
         <Box>
             <Box hiddenFrom="sm">
-                <ProductCard cardDirection="column" {...sharedProps} />
+                <ProductCard cardDirection="column" product={product} />
             </Box>
             <Box visibleFrom="sm">
                 <ProductCard
                     cardDirection={customDirection || 'row'}
-                    {...sharedProps}
+                    product={product}
                 />
             </Box>
         </Box>

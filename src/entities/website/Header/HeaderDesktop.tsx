@@ -5,27 +5,32 @@ import {
     type MantineBreakpoint,
     Box,
     Group,
-    Badge,
     NavLink,
 } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { useAppStore } from '@/core/store/store';
+import { CartDrawerContent } from '@/features/website/CartDrawerContent';
+import Drawer from '@/shared/components/Drawer';
 import { Phones } from '@/shared/components/Phones';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
-import styles from './HeaderDesktop.module.css';
+
+import GoToCart from './GoToCart';
+import styles from './styles/HeaderDesktop.module.scss';
 
 interface HeaderDesktopProps extends BoxProps {
     visibleFrom?: MantineBreakpoint;
 }
 
 export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
+    const [opened, { open, close }] = useDisclosure(false);
     const pathname = usePathname();
-    const CART = { href: website.cart, label: 'кошик' };
-    const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 
-    //TODO мок даних поки немає функціональності кошика
-    const cartItemCount = 1;
+    const { items } = useAppStore((state) => state.shoppingCart);
+
+    const PROFILE = { href: website.profile, label: 'особистий кабінет' };
 
     return (
         <Box
@@ -38,7 +43,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
             mx="auto"
             bd="2px solid var(--mantine-color-white)"
             bdrs={40}
-            bg={'white'}
+            bg="white"
         >
             <Group
                 w="100%"
@@ -88,35 +93,26 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                 </Box>
 
                 <Group className={styles.linksGroup}>
-                    <Link
-                        href={CART.href}
-                        style={{
-                            textDecoration: 'none',
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Box
-                            component="span"
-                            fw={pathname === CART.href ? 600 : 400}
-                            c="var(--mantine-color-black)"
-                            tt="capitalize"
-                            className={styles.linkText}
+                    {!!items.length && (
+                        <Drawer
+                            isOpened={opened}
+                            close={close}
+                            position="right"
+                            padding="20px"
+                            styles={{
+                                content: {
+                                    overflow: 'hidden',
+                                },
+                                body: {
+                                    height: '90%',
+                                },
+                            }}
                         >
-                            {CART.label}
-                        </Box>
-                        {cartItemCount && (
-                            <Badge
-                                color="var(--mantine-color-black)"
-                                variant="filled"
-                                circle
-                                ml={4}
-                                className={styles.badge}
-                            >
-                                {cartItemCount}
-                            </Badge>
-                        )}
-                    </Link>
+                            <CartDrawerContent closeDrawer={close} />
+                        </Drawer>
+                    )}
+
+                    <GoToCart openDrawer={open} />
 
                     <Link
                         href={PROFILE?.href || '/profile'}
@@ -128,7 +124,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                     >
                         <Box
                             component="span"
-                            fw={pathname === CART.href ? 600 : 400}
+                            fw={pathname === PROFILE.href ? 600 : 400}
                             c="var(--mantine-color-black)"
                             tt="capitalize"
                             className={styles.linkText}

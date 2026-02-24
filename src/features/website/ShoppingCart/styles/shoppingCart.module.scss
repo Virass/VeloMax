@@ -1,0 +1,154 @@
+@import '../../../../shared/styles/variables.scss';
+
+.shoppingCart {
+    flex-direction: column;
+
+    @media (min-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+        gap: 100px;
+        width: 100%;
+    }
+
+    &__summary {
+        border: 1px solid #adb5bd;
+        border-radius: 20px;
+        padding: 16px;
+        width: 100%;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            justify-content: center;
+            padding: 20px;
+            height: fit-content;
+
+            > * {
+                width: 500px;
+            }
+        }
+
+        &__border {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #adb5bd;
+        }
+    }
+
+    &__editCartContent {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        overflow: hidden;
+
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        z-index: 9999;
+
+        &__top {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__button {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        @media (min-width: $mantine-breakpoint-xl) {
+            position: static;
+            width: auto;
+            height: auto;
+            overflow: visible;
+            padding: 0;
+            background: transparent;
+
+            &__top {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            &__button {
+                width: 300px;
+                margin-top: 0;
+                align-self: flex-end;
+            }
+        }
+    }
+
+    &__promoForm {
+        width: 100%;
+
+        form {
+            width: 100%;
+        }
+
+        form > div {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            form > div {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+
+    &__cartItem {
+        border-top: 1px solid #adb5bd;
+        flex-direction: column;
+
+        @media (min-width: $mantine-breakpoint-sm) {
+            flex-direction: row;
+        }
+
+        &__image {
+            object-fit: cover;
+            width: 120px;
+            height: 120px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
+                width: 155px;
+                height: 155px;
+            }
+        }
+
+        &__content {
+            flex: 1;
+        }
+
+        &__header {
+            flex-direction: column;
+            gap: 6px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        &__quantityRow {
+            font-size: 14px;
+
+            @media (min-width: $mantine-breakpoint-md) {
+                font-size: 16px;
+            }
+        }
+
+        &__actions {
+            flex-direction: column;
+            margin-top: 8px;
+
+            @media (min-width: $mantine-breakpoint-sm) {
+                flex-direction: row;
+                margin-top: 0;
+                gap: 16px;
+            }
+        }
+    }
+}

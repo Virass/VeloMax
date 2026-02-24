@@ -35,3 +35,30 @@
 .active {
     border-color: #0070f3;
 }
+
+.minimizedMain {
+    width: 420px;
+    height: 360px;
+    border-radius: 16px;
+    padding-top: 0 !important;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.minimizedMainImage {
+    object-fit: contain;
+}
+
+.minimizedThumbWrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    flex: 1;
+}
+
+.minimizedThumbnail {
+    object-fit: contain;
+}

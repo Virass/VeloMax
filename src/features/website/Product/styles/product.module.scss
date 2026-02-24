@@ -13,7 +13,6 @@
 }
 
 .productAvailableColorsContainer,
-.productQuantitySelectionContainer,
 .productContentContainer {
     border-radius: 32px;
     background-color: white;
@@ -32,6 +31,16 @@
 
         @media (min-width: $mantine-breakpoint-lg) {
             font-size: 34px;
+        }
+    }
+
+    &__titleSmall {
+        font-size: 14px;
+        font-weight: 400;
+        color: #141414;
+
+        @media (min-width: $mantine-breakpoint-lg) {
+            font-size: 16px;
         }
     }
 
@@ -116,34 +125,6 @@
                 width: 16px;
                 height: 12px;
             }
-        }
-    }
-}
-
-.productQuantitySelectionContainer {
-    flex-direction: row;
-    justify-content: space-between;
-
-    @media (min-width: $mantine-breakpoint-lg) {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    &__quantitySelection {
-        gap: 12px;
-
-        @media (min-width: $mantine-breakpoint-lg) {
-            gap: 16px;
-        }
-    }
-
-    &__input {
-        width: 42px;
-        font-size: 14px;
-
-        @media (min-width: $mantine-breakpoint-lg) {
-            width: 72px;
-            font-size: 18px;
         }
     }
 }

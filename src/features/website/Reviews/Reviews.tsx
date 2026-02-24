@@ -1,12 +1,13 @@
 import { Box, Flex, Stack, Text, Title } from '@mantine/core';
 
+import { FeatureFlags } from '@/shared/constants/FeatureFlags';
+
 import { AddReviewFormDrawer } from './AddReviewFormDrawer';
 import { AddReviewFormModal } from './AddReviewFormModal';
 import ReviewsContainer from './ReviewsContainer/ReviewsContainer';
 import { getReviews } from './services/reviews.service';
 import styles from './styles/reviews.module.scss';
 import productStyles from '../Product/styles/product.module.scss';
-import { FeatureFlags } from '@/shared/constants/FeatureFlags';
 
 interface Props {
     productId: string;

@@ -26,7 +26,7 @@ export default function ShoppingCart() {
 
     return (
         <Flex gap="lg" pb="100px">
-            <Stack w="100%">
+            <Stack w="100%" maw={BREAKPOINTS.xxl} m="auto">
                 <Title>Кошик</Title>
 
                 <Flex justify="center" align="center">

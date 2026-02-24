@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 48px;
     max-width: $mantine-breakpoint-xxl;
+    margin: auto;
 
     &__innerContainer {
         @media (min-width: $mantine-breakpoint-lg) {

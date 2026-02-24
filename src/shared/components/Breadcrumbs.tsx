@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { websiteSections } from '../constants/urls';
+import { BREAKPOINTS } from '../constants/breakpoints';
 
 export default function Breadcrumbs() {
     const pathname = usePathname();
@@ -40,6 +41,8 @@ export default function Breadcrumbs() {
             p={isTablet ? '48px 64px' : 0}
             style={{
                 borderRadius: isTablet ? 48 : 0,
+                width: BREAKPOINTS.xxl,
+                margin: 'auto'
             }}
         >
             <Group gap="0.25rem">

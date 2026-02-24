@@ -1,6 +1,6 @@
 import { Flex, Group } from '@mantine/core';
 
-import styles from '@/entities/website/Footer/styles/website-footer.module.scss';
+import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 import FooterNavigationSection from '@/shared/components/FooterNavigationSection';
 import { websiteSections } from '@/shared/constants/urls';
 

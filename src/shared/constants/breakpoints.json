@@ -3,5 +3,6 @@
     "sm": "48rem",
     "md": "62rem",
     "lg": "75rem",
-    "xl": "88rem"
+    "xl": "90rem",
+    "xxl": "120rem"
 }

@@ -6,5 +6,6 @@ export const BREAKPOINTS = bp as {
     md: string;
     lg: string;
     xl: string;
+    xxl: string;
 };
 export type Breakpoints = typeof BREAKPOINTS;

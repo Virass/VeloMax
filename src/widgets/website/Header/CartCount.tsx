@@ -13,10 +13,11 @@ export default function CartCount({
 }: Props) {
     return (
         <Badge
-            color="gray"
+            color="red"
             variant="filled"
             circle
             ml={4}
+            size="xs"
             className={
                 topRightCornerPlacement
                     ? styles.badge__topRightCorner

@@ -8,9 +8,9 @@ import { useAppStore } from '@/core/store/store';
 import { ClientOnly } from '@/shared/components/ClientOnly';
 import { website } from '@/shared/constants/urls';
 import { useCartTotals } from '@/shared/hooks/useCartTotals';
+import { ShoppingBagIcon } from '@/shared/ui/icons/ShoppingBagIcon';
 
 import CartCount from './CartCount';
-import styles from '../Header/styles/HeaderDesktop.module.scss';
 
 interface Props {
     openDrawer: () => void;
@@ -37,21 +37,21 @@ export default function GoToCart({ openDrawer }: Props) {
                 textDecoration: 'none',
                 display: 'flex',
                 alignItems: 'center',
+                position: 'relative',
             }}
+            aria-label={CART.label}
         >
-            <Box
-                component="span"
-                fw={pathname === CART.href ? 600 : 400}
-                c="var(--mantine-color-black)"
-                tt="capitalize"
-                className={styles.linkText}
-            >
-                {CART.label}
-            </Box>
+            <ShoppingBagIcon
+                width={32}
+                height={32}
+                color="var(--mantine-color-black)"
+            />
 
             <ClientOnly>
                 {totalQuantity > 0 && (
-                    <CartCount cartItemCount={totalQuantity} />
+                    <Box style={{ position: 'absolute', top: -8, right: -12 }}>
+                        <CartCount cartItemCount={totalQuantity} />
+                    </Box>
                 )}
             </ClientOnly>
         </Link>

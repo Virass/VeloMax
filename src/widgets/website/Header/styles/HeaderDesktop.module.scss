@@ -1,19 +1,11 @@
 @import '../../../../shared/styles/variables.scss';
 
 .container {
-    box-shadow: -1px 5px 29px -18px rgba(0, 0, 0, 1);
+    margin: auto;
     max-width: 940px;
 
     @media (min-width: $mantine-breakpoint-xl) {
-        max-width: 1380px;
-    }
-}
-
-.group {
-    gap: 24px;
-
-    @media (min-width: $mantine-breakpoint-xl) {
-        gap: 50px;
+        max-width: 1280px;
     }
 }
 
@@ -70,8 +62,8 @@
 
     @media (min-width: $mantine-breakpoint-xl) {
         font-size: var(--mantine-font-size-xl);
-        height: var(--badge-height-xl);
-        min-height: var(--badge-height-xl);
-        min-width: var(--badge-height-xl);
+        height: var(--badge-height-lg);
+        min-height: var(--badge-height-lg);
+        min-width: var(--badge-height-lg);
     }
 }

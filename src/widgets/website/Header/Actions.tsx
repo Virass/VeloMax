@@ -27,7 +27,7 @@ const actions: Action[] = [
     },
     {
         href: website.profile,
-        ariaLabel: 'Особистий кабінет',
+        ariaLabel: 'Кабінет',
         icon: <UserIcon width={20} height={20} />,
     },
 ];

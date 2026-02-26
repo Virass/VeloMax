@@ -28,7 +28,7 @@ export const Phones = ({
     <Group align={align} gap="sm">
         <PhoneIcon width={iconSize} height={iconSize} color={color} />
 
-        <Stack gap="0.3">
+        <Group gap="32px">
             {phonesExample.map((phone) => (
                 <Anchor
                     key={phone}
@@ -44,6 +44,6 @@ export const Phones = ({
                     {formatPhoneNumber(phone)}
                 </Anchor>
             ))}
-        </Stack>
+        </Group>
     </Group>
 );

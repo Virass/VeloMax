@@ -35,7 +35,7 @@ export default function Breadcrumbs() {
 
     return (
         <Box
-            // Apply outer box styles only from tablet and up
+            // TODO Apply outer box styles only from tablet and up
             bg={isTablet ? 'gray.1' : undefined}
             p={isTablet ? '48px 64px' : 0}
             style={{

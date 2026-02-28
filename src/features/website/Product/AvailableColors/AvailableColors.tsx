@@ -2,7 +2,7 @@
 
 interface Props {
     preselectedColor?: string;
-    updateCartItem: UpdateCartItem;
+    itemId: string;
     colors: string[];
 }
 
@@ -10,22 +10,25 @@ import { useEffect, useState } from 'react';
 
 import { CheckIcon, Flex, Group, Text } from '@mantine/core';
 
-import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
+import { useAppStore } from '@/core/store/store';
 
 import styles from '../styles/product.module.scss';
 
 export default function AvailableColors({
     preselectedColor,
     colors,
-    updateCartItem,
+    itemId,
 }: Props) {
     const [selectedColor, setSelectedColor] = useState<string | null>(
         preselectedColor || null
     );
+    const updateItemField = useAppStore(
+        (state) => state.shoppingCart.updateItemField
+    );
 
     useEffect(() => {
         if (selectedColor) {
-            updateCartItem('color', selectedColor);
+            updateItemField(itemId, 'color', selectedColor);
         }
     }, [selectedColor]);
 

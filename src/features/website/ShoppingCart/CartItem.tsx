@@ -11,7 +11,6 @@ import EditCartItemContent from '@/features/website/ShoppingCart/EditCartItemCon
 import styles from './styles/shoppingCart.module.scss';
 import { Button } from '../../../shared/components/Button';
 import { website } from '../../../shared/constants/urls';
-import { useCart } from '../../../shared/hooks/useCart';
 
 interface Props {
     item: CartItem;
@@ -20,9 +19,13 @@ interface Props {
 }
 
 export default function CartItem({ item, openModal, closeModal }: Props) {
-    const { localQuantity, setLocalQuantity } = useCart(item);
-    const removeItem = useAppStore((state) => state.shoppingCart.removeItem);
-    const { name, id, price, discountPrice } = item;
+    const { removeItem, updateQuantity } = useAppStore(
+        (state) => state.shoppingCart
+    );
+    const { name, id, price, discountPrice, quantity } = item;
+
+    const updateItemQuantity = (updatedQuantity: number) =>
+        updateQuantity(id, updatedQuantity);
 
     return (
         <Group gap="lg" p="lg" className={styles.shoppingCart__cartItem}>
@@ -59,11 +62,9 @@ export default function CartItem({ item, openModal, closeModal }: Props) {
                     </Link>
 
                     <Price
-                        price={localQuantity * price}
+                        price={quantity * price}
                         discountPrice={
-                            discountPrice
-                                ? localQuantity * discountPrice
-                                : undefined
+                            discountPrice ? quantity * discountPrice : undefined
                         }
                     />
                 </Group>
@@ -72,7 +73,7 @@ export default function CartItem({ item, openModal, closeModal }: Props) {
                     gap="xs"
                     className={styles.shoppingCart__cartItem__quantityRow}
                 >
-                    <Text>{`Кількість: ${localQuantity}`}</Text>
+                    <Text>{`Кількість: ${quantity}`}</Text>
                     <Text>(ціна за 1:</Text>
                     <Price
                         price={price}
@@ -91,8 +92,8 @@ export default function CartItem({ item, openModal, closeModal }: Props) {
                                 content: (
                                     <EditCartItemContent
                                         item={item}
-                                        quantity={localQuantity}
-                                        setQuantity={setLocalQuantity}
+                                        quantity={quantity}
+                                        updateQuantity={updateItemQuantity}
                                         closeModal={closeModal}
                                     />
                                 ),

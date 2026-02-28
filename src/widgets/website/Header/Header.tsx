@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Box } from '@mantine/core';
+
 import { HeaderDesktop } from '@/widgets/website/Header/HeaderDesktop';
 import { HeaderMobile } from '@/widgets/website/Header/HeaderMobile';
-import { Box } from '@mantine/core';
 
 export const Header = () => (
     <Box

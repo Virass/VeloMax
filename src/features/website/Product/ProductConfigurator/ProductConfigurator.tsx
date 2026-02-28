@@ -1,12 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Box, Group, Stack } from '@mantine/core';
 
 import type { CartItem } from '@/core/store/ShoppingCartSlice';
 import AddToCartButton from '@/shared/components/AddToCartButton';
 import QuantitySelection from '@/shared/components/QuantitySelection/QuantitySelection';
-import { useCart } from '@/shared/hooks/useCart';
-import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
 import type { Product } from '@/shared/types/productType';
 
 import { AvailableColors } from '../AvailableColors';
@@ -17,40 +17,42 @@ interface Props {
     availability?: boolean;
     product: Product;
     cartItem: CartItem;
-    updateCartItem: UpdateCartItem;
 }
 
 export default function ProductConfigurator({
     colors,
-    product,
     availability,
-    updateCartItem,
+    product,
     cartItem,
 }: Props) {
-    const item: CartItem = { ...product, quantity: 1 };
-    const { localQuantity, setLocalQuantity } = useCart(item);
+    const [localQuantity, setLocalQuantity] = useState(cartItem.quantity);
+
+    if (!cartItem) {
+        return;
+    }
 
     return (
         <Stack className={styles.productContentContainer__productConfiguration}>
             {colors && (
                 <AvailableColors
-                    preselectedColor={item.color}
+                    preselectedColor={cartItem.color}
                     colors={colors}
-                    updateCartItem={updateCartItem}
+                    itemId={cartItem.id}
                 />
             )}
 
             {availability && (
                 <Group gap="16px" align="end">
                     <QuantitySelection
-                        item={item}
+                        instantSelection
+                        item={cartItem}
                         quantity={localQuantity}
                         setQuantity={setLocalQuantity}
-                        updateCartItem={updateCartItem}
                     />
 
                     <Box visibleFrom="sm">
                         <AddToCartButton
+                            product={product}
                             availability={availability}
                             cartItem={cartItem}
                             w="306px"

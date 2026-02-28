@@ -3,9 +3,9 @@
 import { Box, Flex, Stack, Text, Title } from '@mantine/core';
 import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
+import { useAppStore } from '@/core/store/store';
 import AddToCartButton from '@/shared/components/AddToCartButton';
 import Rating from '@/shared/components/Rating';
-import { useCartItem } from '@/shared/hooks/useCartItem';
 import { getProductAvailabilityText } from '@/shared/lib/getProductAvailabilityText';
 import type { Product } from '@/shared/types/productType';
 
@@ -21,11 +21,6 @@ interface Props {
 }
 
 export default function ProductContent({ product, customFont }: Props) {
-    const { cartItem, updateCartItem } = useCartItem({
-        ...product,
-        quantity: 1,
-    });
-
     const {
         name,
         description,
@@ -39,6 +34,9 @@ export default function ProductContent({ product, customFont }: Props) {
 
     const availability =
         (typeof amount === 'number' && amount > 0) || amount === 'unlimited';
+
+    const items = useAppStore((state) => state.shoppingCart.items);
+    const cartItem = items.find((item) => item.id === product.id);
 
     return (
         <>
@@ -109,34 +107,46 @@ export default function ProductContent({ product, customFont }: Props) {
                             {description?.slice(0, 124)}
                         </Text>
 
-                        <Box visibleFrom="sm">
-                            <ProductConfigurator
-                                availability={availability}
-                                colors={colors}
+                        {cartItem ? (
+                            <Box visibleFrom="sm">
+                                <ProductConfigurator
+                                    availability={availability}
+                                    colors={colors}
+                                    product={product}
+                                    cartItem={cartItem}
+                                />
+                            </Box>
+                        ) : (
+                            <AddToCartButton
                                 product={product}
+                                availability={availability}
                                 cartItem={cartItem}
-                                updateCartItem={updateCartItem}
+                                w="306px"
                             />
-                        </Box>
+                        )}
                     </Stack>
                 </Flex>
 
-                <Box hiddenFrom="sm">
-                    <ProductConfigurator
-                        colors={colors}
-                        product={product}
-                        availability={availability}
-                        cartItem={cartItem}
-                        updateCartItem={updateCartItem}
-                    />
-                </Box>
+                {cartItem && (
+                    <>
+                        <Box hiddenFrom="sm">
+                            <ProductConfigurator
+                                colors={colors}
+                                cartItem={cartItem}
+                                product={product}
+                                availability={availability}
+                            />
+                        </Box>
 
-                <Box hiddenFrom="sm">
-                    <AddToCartButton
-                        availability={availability}
-                        cartItem={cartItem}
-                    />
-                </Box>
+                        <Box hiddenFrom="sm">
+                            <AddToCartButton
+                                availability={availability}
+                                product={product}
+                                cartItem={cartItem}
+                            />
+                        </Box>
+                    </>
+                )}
             </Stack>
 
             <Stack

@@ -1,3 +1,5 @@
+'use client';
+
 import {
     Box,
     Flex,
@@ -8,6 +10,8 @@ import {
 } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useAppStore } from '@/core/store/store';
 
 import AddToCartButton from './AddToCartButton';
 import CardPrice from './ProductCardPrice';
@@ -35,10 +39,8 @@ export default function ProductCard({
         id: productId,
     } = product;
 
-    const { cartItem } = useCartItem({
-        ...product,
-        quantity: 1,
-    });
+    const items = useAppStore((state) => state.shoppingCart.items);
+    const cartItem = items.find((item) => item.id === product.id);
 
     const productUrl = `${website.products}/${productId}`;
 
@@ -77,11 +79,14 @@ export default function ProductCard({
                         <CardPrice price={price} />
                     </Group>
 
-                    <Text c="gray.6">
-                        {getProductAvailabilityText(availability)}
-                    </Text>
+                    <Group justify="space-between" wrap="nowrap">
+                        <Text c="gray.6" size="sm" miw={0} truncate>
+                            {getProductAvailabilityText(availability)}
+                        </Text>
+                    </Group>
 
                     <AddToCartButton
+                        product={product}
                         availability={availability}
                         cartItem={cartItem}
                     />

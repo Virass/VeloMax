@@ -1,12 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import { Flex, Group, NumberInput, Text } from '@mantine/core';
 
 import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import { useAppStore } from '@/core/store/store';
 import { Button } from '@/shared/components/Button';
-import type { UpdateCartItem } from '@/shared/hooks/useCartItem';
 import type { SetState } from '@/shared/types/tsHelpersTypes';
 import MinusIcon from '@/shared/ui/icons/MinusIcon';
 import PlusIcon from '@/shared/ui/icons/PlusIcon';
@@ -17,8 +15,9 @@ interface Props {
     item: CartItem;
     direction?: 'row' | 'column';
     quantity: number;
+    instantSelection?: boolean;
     setQuantity: SetState<number>;
-    updateCartItem: UpdateCartItem;
+    label?: boolean;
 }
 
 export default function QuantitySelection({
@@ -26,23 +25,26 @@ export default function QuantitySelection({
     direction,
     quantity,
     setQuantity,
-    updateCartItem,
+    instantSelection = false,
+    label = true,
 }: Props) {
-    const [localQuantity, setLocalQuantity] = useState(quantity);
-
-    useEffect(() => {
-        if (updateCartItem) {
-            updateCartItem('quantity', localQuantity);
-        }
-    }, [localQuantity]);
+    const updateQuantity = useAppStore(
+        (state) => state.shoppingCart.updateQuantity
+    );
 
     const increment = () => {
-        setLocalQuantity((prev) => prev + 1);
+        if (instantSelection) {
+            updateQuantity(item.id, quantity + 1);
+        }
+
         setQuantity((prev) => prev + 1);
     };
 
     const decrement = () => {
-        setLocalQuantity((prev) => (prev === 1 ? prev : prev - 1));
+        if (instantSelection) {
+            updateQuantity(item.id, quantity - 1);
+        }
+
         setQuantity((prev) => (prev === 1 ? prev : prev - 1));
     };
 
@@ -52,11 +54,15 @@ export default function QuantitySelection({
             direction={direction}
             gap="md"
         >
-            <Text
-                className={styles.productQuantitySelectionContainer__paragraph}
-            >
-                Кількість:
-            </Text>
+            {label && (
+                <Text
+                    className={
+                        styles.productQuantitySelectionContainer__paragraph
+                    }
+                >
+                    Кількість:
+                </Text>
+            )}
 
             <Group
                 className={
@@ -67,9 +73,9 @@ export default function QuantitySelection({
                     <MinusIcon color="gray.6" />
                 </Button>
                 <NumberInput
-                    value={localQuantity}
+                    value={quantity}
                     onChange={(value) => setQuantity(Number(value))}
-                    placeholder="1"
+                    placeholder={quantity.toString()}
                     hideControls
                     min={1}
                     max={typeof item.amount === 'string' ? 99 : item.amount}

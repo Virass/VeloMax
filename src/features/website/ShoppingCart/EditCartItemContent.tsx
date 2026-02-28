@@ -6,12 +6,9 @@ import { Box, Flex, Stack, Title } from '@mantine/core';
 import Link from 'next/link';
 
 import type { CartItem } from '@/core/store/ShoppingCartSlice';
-import { useAppStore } from '@/core/store/store';
 import { Button } from '@/shared/components/Button';
 import { QuantitySelection } from '@/shared/components/QuantitySelection';
 import { website } from '@/shared/constants/urls';
-import { useCartItem } from '@/shared/hooks/useCartItem';
-import type { SetState } from '@/shared/types/tsHelpersTypes';
 
 import { AvailableColors } from '../Product/AvailableColors';
 import { Price } from '../Product/Price';
@@ -21,20 +18,18 @@ import styles from '../ShoppingCart/styles/shoppingCart.module.scss';
 interface Props {
     item: CartItem;
     quantity: number;
-    setQuantity: SetState<number>;
+    updateQuantity: (quantity: number) => void;
     closeModal: () => void;
 }
 
 export default function EditCartItemContent({
     item,
     quantity,
-    setQuantity,
+    updateQuantity,
     closeModal,
 }: Props) {
     const { name, price, discountPrice, imagesUrls, id, colors, color } = item;
     const [localQuantity, setLocalQuantity] = useState(quantity);
-    const { cartItem, updateCartItem } = useCartItem(item);
-    const updateItem = useAppStore((state) => state.shoppingCart.updateItem);
 
     useEffect(() => {
         const originalOverflow = document.body.style.overflow;
@@ -46,9 +41,7 @@ export default function EditCartItemContent({
     }, []);
 
     const applyNewChanges = () => {
-        setQuantity(localQuantity);
-
-        updateItem(id, cartItem);
+        updateQuantity(localQuantity);
 
         closeModal();
     };
@@ -81,7 +74,7 @@ export default function EditCartItemContent({
                         <AvailableColors
                             preselectedColor={color}
                             colors={colors}
-                            updateCartItem={updateCartItem}
+                            itemId={item.id}
                         />
                     )}
 
@@ -89,7 +82,6 @@ export default function EditCartItemContent({
                         item={item}
                         quantity={localQuantity}
                         setQuantity={setLocalQuantity}
-                        updateCartItem={updateCartItem}
                         direction="row"
                     />
                 </Stack>

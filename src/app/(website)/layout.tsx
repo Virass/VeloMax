@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Stack } from '@mantine/core';
 
+import Breadcrumbs from '@/shared/components/Breadcrumbs';
 import Footer from '@/widgets/website/Footer/Footer';
 import { Header } from '@/widgets/website/Header/Header';
-import Breadcrumbs from '@/shared/components/Breadcrumbs';
 
 export default function WebsiteLayout({
     children,

@@ -1,8 +1,7 @@
 'use client';
 
-import { Box } from '@mantine/core';
+import { ActionIcon } from '@mantine/core';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 import { useAppStore } from '@/core/store/store';
 import { ClientOnly } from '@/shared/components/ClientOnly';
@@ -17,8 +16,6 @@ interface Props {
 }
 
 export default function GoToCart({ openDrawer }: Props) {
-    const pathname = usePathname();
-
     const { items } = useAppStore((state) => state.shoppingCart);
     const { totalQuantity } = useCartTotals();
     const CART = { href: website.cart, label: 'кошик' };
@@ -34,25 +31,18 @@ export default function GoToCart({ openDrawer }: Props) {
                 openDrawer();
             }}
             style={{
-                textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
                 position: 'relative',
             }}
-            aria-label={CART.label}
         >
-            <ShoppingBagIcon
-                width={32}
-                height={32}
-                color="var(--mantine-color-black)"
-            />
+            <ActionIcon size={24} variant="transparent">
+                <ShoppingBagIcon width={20} height={20} />
+            </ActionIcon>
 
             <ClientOnly>
-                {totalQuantity > 0 && (
-                    <Box style={{ position: 'absolute', top: -8, right: -12 }}>
-                        <CartCount cartItemCount={totalQuantity} />
-                    </Box>
-                )}
+                <CartCount
+                    cartItemCount={totalQuantity}
+                    topRightCornerPlacement
+                />
             </ClientOnly>
         </Link>
     );

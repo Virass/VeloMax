@@ -8,7 +8,7 @@ import { useAppStore } from '@/core/store/store';
 
 import { Button } from './Button';
 import NumberInputField from './NumberInputField';
-import { useCart } from '../hooks/useCart';
+import { getTotalUnitPrice } from '../lib/getTotalItemPrice';
 import DeleteIcon from '../ui/icons/DeleteIcon';
 
 interface Props {
@@ -16,10 +16,12 @@ interface Props {
 }
 
 export default function DrawerCartItem({ item }: Props) {
-    const { name, description, id } = item;
+    const { name, description, id, quantity, discountPrice, price } = item;
     const removeItem = useAppStore((state) => state.shoppingCart.removeItem);
-
-    const { localQuantity, setLocalQuantity, totalUnitPrice } = useCart(item);
+    const totalUnitPrice = getTotalUnitPrice(quantity, discountPrice, price);
+    const updateQuantity = useAppStore(
+        (state) => state.shoppingCart.updateQuantity
+    );
 
     return (
         <Group align="start" justify="space-between">
@@ -39,10 +41,10 @@ export default function DrawerCartItem({ item }: Props) {
 
                 <Group justify="space-between">
                     <NumberInputField
-                        value={localQuantity}
+                        value={quantity}
                         min={1}
                         w="60px"
-                        onChange={(value) => setLocalQuantity(Number(value))}
+                        onChange={(value) => updateQuantity(id, Number(value))}
                     />
 
                     <Text>{`₴${totalUnitPrice}`}</Text>

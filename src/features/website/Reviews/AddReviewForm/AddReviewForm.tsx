@@ -58,7 +58,10 @@ export default function AddReviewForm() {
                     })}
                 />
 
-                <Stack w="100%" className={styles.addReviewForm__textareaContainer}>
+                <Stack
+                    w="100%"
+                    className={styles.addReviewForm__textareaContainer}
+                >
                     <Stack gap="4px" w="100%">
                         <Text ta="center" fz="18px">
                             Ви можете залишити свій відгук

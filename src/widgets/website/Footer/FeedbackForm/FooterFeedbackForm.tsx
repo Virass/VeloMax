@@ -3,11 +3,11 @@
 import { Stack, Text } from '@mantine/core';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 
-import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 import { Button } from '@/shared/components/Button';
 import { Input } from '@/shared/components/Input';
 import InputError from '@/shared/components/InputError';
 import RightArrowIcon from '@/shared/ui/icons/RightArrowIcon';
+import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 
 export default function FooterFeedbackForm() {
     const {

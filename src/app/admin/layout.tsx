@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
-import AdminShell from '@/widgets/admin/AppShellLayout';
 import { requireManagerAccess } from '@/shared/lib/authGuard';
+import AdminShell from '@/widgets/admin/AppShellLayout';
 
 export default function AdminPanelLayout({ children }: PropsWithChildren) {
     requireManagerAccess();

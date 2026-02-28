@@ -5,8 +5,8 @@ import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { websiteSections } from '../constants/urls';
 import { BREAKPOINTS } from '../constants/breakpoints';
+import { websiteSections } from '../constants/urls';
 
 export default function Breadcrumbs() {
     const pathname = usePathname();
@@ -36,13 +36,13 @@ export default function Breadcrumbs() {
 
     return (
         <Box
-            // Apply outer box styles only from tablet and up
+            // TODO Apply outer box styles only from tablet and up
             bg={isTablet ? 'gray.1' : undefined}
             p={isTablet ? '48px 64px' : 0}
             style={{
                 borderRadius: isTablet ? 48 : 0,
                 width: BREAKPOINTS.xxl,
-                margin: 'auto'
+                margin: 'auto',
             }}
         >
             <Group gap="0.25rem">

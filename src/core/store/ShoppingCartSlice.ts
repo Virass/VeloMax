@@ -16,6 +16,11 @@ type ShoppingCartSliceActions = {
     addItem: (cartItem: CartItem) => void;
     removeItem: (id: string) => void;
     updateItem: (id: string, updatedItem: CartItem) => void;
+    updateItemField: <K extends keyof CartItem>(
+        id: string,
+        field: K,
+        value: CartItem[K]
+    ) => void;
     updateQuantity: (id: string, quantity: number) => void;
     clearCart: () => void;
 };
@@ -57,6 +62,17 @@ export const createShoppingCartSlice: StoreStateType<ShoppingCartSlice> = (
             );
         });
     },
+
+    updateItemField: (id, field, value) =>
+        set((state) => {
+            const item = state.shoppingCart.items.find((i) => i.id === id);
+
+            if (!item) {
+                return;
+            }
+
+            item[field] = value;
+        }),
 
     updateQuantity: (id, quantity) => {
         set((state) => {

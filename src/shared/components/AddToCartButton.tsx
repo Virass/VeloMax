@@ -7,15 +7,18 @@ import { useAppStore } from '@/core/store/store';
 
 import { Button } from './Button';
 import { ClientOnly } from './ClientOnly';
+import type { Product } from '../types/productType';
 
 interface Props extends ButtonProps {
     availability: boolean;
-    cartItem: CartItem;
+    product: Product;
+    cartItem?: CartItem;
 }
 
 export default function AddToCartButton({
     availability,
     cartItem,
+    product,
     ...rest
 }: Props) {
     const {
@@ -30,6 +33,12 @@ export default function AddToCartButton({
 
     const toggle = () => {
         if (!cartItem) {
+            const newItem = { ...product, quantity: 1 };
+
+            console.log(newItem, 'This item was added!');
+
+            addItem(newItem);
+
             return;
         }
 

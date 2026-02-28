@@ -1,8 +1,8 @@
 import { Flex, Group } from '@mantine/core';
 
-import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 import FooterNavigationSection from '@/shared/components/FooterNavigationSection';
 import { websiteSections } from '@/shared/constants/urls';
+import styles from '@/widgets/website/Footer/styles/website-footer.module.scss';
 
 export default function FooterNavigation() {
     return (

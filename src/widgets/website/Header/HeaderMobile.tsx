@@ -11,10 +11,10 @@ import {
 } from '@mantine/core';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 
-import { Actions } from '@/widgets/website/Header/Actions';
-import { DrawerMenu } from '@/widgets/website/Header/DrawerMenu';
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { Brand } from '@/shared/ui/Brand';
+import { Actions } from '@/widgets/website/Header/Actions';
+import { DrawerMenu } from '@/widgets/website/Header/DrawerMenu';
 
 interface HeaderMobileProps extends BoxProps {
     hiddenFrom: MantineBreakpoint;

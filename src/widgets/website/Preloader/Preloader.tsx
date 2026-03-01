@@ -12,7 +12,7 @@ export default function WebSitePreloader() {
             direction="column"
             wrap="wrap"
         >
-            <Loader color="blue" size="xl" />
+            <Loader color="black" size="xl" />
         </Flex>
     );
 }

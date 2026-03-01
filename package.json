@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@auth/supabase-adapter": "^1.10.0",
+        "@bprogress/next": "^3.2.12",
         "@mantine/carousel": "^8.2.2",
         "@mantine/charts": "^8.2.2",
         "@mantine/core": "^8.2.2",

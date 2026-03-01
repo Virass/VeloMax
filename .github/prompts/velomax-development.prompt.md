@@ -57,7 +57,7 @@ npm run lint   # перевірити код лінтером
 ## Структура проекту
 
 - **Типи**: розміщуй у `src/shared/types/`
-- **Конфігурація**: `src/core/config/` (api.ts, auth.ts, supabase.ts)
+- **Конфігурація**: `src/core/config/` (api.ts, auth.ts)
 - **Якість коду**: JSDoc для складних функцій, Error Boundaries для компонентів, Loading/Error стани
 
 ## Поточна структура VeloMax
@@ -96,8 +96,6 @@ src/
 
 ## Безпека та автентифікація
 
-- **Supabase auth** — основна система автентифікації
-- **RLS політики** — Row Level Security в Supabase для всіх таблиць
 - **Захищені роути** — через middleware.ts
 - **Environment variables**: завжди `process.env.VARIABLE_NAME`, ніколи не хардкодь
 
@@ -105,7 +103,6 @@ src/
 
 - **Next.js 15** — метафреймворк React з App Router
 - **TypeScript** — строга типізація для всіх файлів
-- **Supabase** — база даних, автентифікація, RLS політики
 - **Zustand** — легкий state management
 - **React Hook Form** — форми з валідацією
 - **Mantine UI** — готові UI компоненти
@@ -117,7 +114,6 @@ src/
 1. Проведи швидкий аудит `#codebase`:
     - поточна структура features та entities;
     - які компоненти потребують доопрацювання;
-    - стан інтеграції з Supabase та NextAuth;
     - які сторінки/функції вже реалізовані.
 2. Сформуй «План з 5–8 ітерацій» з пріоритетами для VeloMax.
 3. Видай **Крок 1**:

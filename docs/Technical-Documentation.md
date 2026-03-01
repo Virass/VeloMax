@@ -22,7 +22,6 @@
       - [Mantine UI](#mantine-ui)
       - [FSD (Feature-Sliced Design)](#fsd-feature-sliced-design)
       - [MVC (Model-View-Controller)](#mvc-model-view-controller)
-      - [Supabase](#supabase)
       - [Vercel](#vercel)
   - [Архітектурні патерни: FSD + MVC у VeloMax](#архітектурні-патерни-fsd--mvc-у-velomax)
     - [FSD (Feature-Sliced Design)](#fsd-feature-sliced-design-1)
@@ -97,7 +96,6 @@ import { readFileSync } from 'fs'; // ❌ читання .env файлу нап�
 #### Структура змінних середовища
 
 Проект використовує наступні категорії змінних:
-- **Supabase:** Конфігурація бази даних та автентифікації
 - **Next.js:** Налаштування додатка та API routes
 - **Зовнішні API:** Ключі для інтеграції з третіми сервісами
 
@@ -153,7 +151,6 @@ work in progress       # Незавершена робота
 - React hook form
 - Mantine UI (UI kit)
 - FSD + MVC (development pattern)
-- Supabase (database)
 - Vercel (develop branch hosting)
 - NodeJS v20+
 
@@ -179,9 +176,6 @@ work in progress       # Незавершена робота
 #### MVC (Model-View-Controller)
 Ще один патерн, який розділяє логіку в коді, дозволить в рамках окремо взятих функціональних частин використовувати правила для кращої організації коду. 
 
-#### Supabase
-Своєрідна альтернатива повноцінному бекенду. Це інструментарій та база даних, яка має в собі рішення для роботи з даними, автентифікації, розділення на ролі, генерації API і т.д.
-Офіційна документація: [Supabase](https://supabase.com/docs)
 
 #### Vercel
 Для розгортання проекту для так званого stage будемо використовувати Vercel. Безкоштовного тарифу для розробки має бути достатньо для розгортання проекту та тестування.
@@ -372,7 +366,7 @@ features/
 ### Best practices для VeloMax
 - Додавайте нові фічі тільки у features
 - Все спільне — у shared (компоненти, хуки, типи, стилі)
-- Глобальні речі (auth, supabase, app-store) — у core
+- Глобальні речі (auth, app-store) — у core
 - Не імпортуйте напряму між features
 - Дотримуйтесь єдиних правил ESLint/Prettier
 - Для складних фіч використовуйте MVC усередині features

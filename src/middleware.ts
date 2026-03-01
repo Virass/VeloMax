@@ -1,1 +1,3 @@
-export { auth as middleware } from '@/core/config/auth';
+export default function middleware() {
+  // Your middleware logic here
+}

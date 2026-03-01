@@ -63,7 +63,7 @@ applyTo: "src/**"
 ## src/core/** - Конфігурації та провайдери
 
 - **Структура**:
-  * `config/` — конфігурації (supabase.ts, auth.ts, api.ts)
+  * `config/` — конфігурації (auth.ts, api.ts)
   * `providers/` — React провайдери
   * `store/` — глобальні Zustand stores
 - **Конфігурації**: централізовані налаштування
@@ -113,13 +113,6 @@ applyTo: "src/**"
 - `website/` — публічні функції
 
 ## Безпека та інтеграції
-
-### Supabase:
-- Завжди використовуй RLS (Row Level Security) політики
-- Валідація даних на клієнті ТА сервері
-- Використовуй `process.env` для змінних середовища (ніколи не хардкодь)
-- Client-side: `process.env.NEXT_PUBLIC_*`
-- Server-side: `process.env.*`
 
 ### Автентифікація:
 - Захищені роути через `middleware.ts`

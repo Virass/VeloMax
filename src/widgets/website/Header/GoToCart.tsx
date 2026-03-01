@@ -34,8 +34,8 @@ export default function GoToCart({ openDrawer }: Props) {
                 position: 'relative',
             }}
         >
-            <ActionIcon size={24} variant="transparent">
-                <ShoppingBagIcon width={20} height={20} />
+            <ActionIcon size={32} variant="transparent">
+                <ShoppingBagIcon width={32} height={32} />
             </ActionIcon>
 
             <ClientOnly>

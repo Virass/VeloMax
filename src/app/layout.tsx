@@ -12,7 +12,7 @@ import '@mantine/carousel/styles.css';
 import '@/shared/styles/reset.css';
 import { Inter, Roboto } from 'next/font/google';
 
-import { BREAKPOINTS } from '@/shared/constants/breakpoints';
+import { Providers } from '@/core/providers/Providers';
 
 export const inter = Inter({
     variable: '--font-inter',
@@ -36,15 +36,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 <ColorSchemeScript />
             </head>
             <body>
-                <MantineProvider
-                    theme={{
-                        fontFamily: 'var(--font-roboto), system-ui, sans-serif',
-                        headings: { fontFamily: 'var(--font-roboto)' },
-                        breakpoints: BREAKPOINTS,
-                    }}
-                >
-                    {children}
-                </MantineProvider>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );

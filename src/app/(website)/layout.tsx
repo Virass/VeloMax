@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { Stack } from '@mantine/core';
 
@@ -21,11 +21,8 @@ export default function WebsiteLayout({
             }}
         >
             <Header />
-
             <Breadcrumbs />
-
             <main style={{ flex: 1 }}>{children}</main>
-
             <Footer />
         </Stack>
     );

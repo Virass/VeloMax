@@ -16,7 +16,6 @@ import { useAppStore } from '@/core/store/store';
 import AddToCartButton from './AddToCartButton';
 import CardPrice from './ProductCardPrice';
 import { website } from '../constants/urls';
-import { useCartItem } from '../hooks/useCartItem';
 import { getProductAvailabilityText } from '../lib/getProductAvailabilityText';
 import type { Product } from '../types/productType';
 

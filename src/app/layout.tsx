@@ -1,10 +1,6 @@
 import { type PropsWithChildren } from 'react';
 
-import {
-    ColorSchemeScript,
-    MantineProvider,
-    mantineHtmlProps,
-} from '@mantine/core';
+import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import type { Metadata } from 'next';
 // import "@/shared/styles/globals.css";
 import '@mantine/core/styles.css';

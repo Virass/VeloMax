@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { type CartItem } from '@/core/store/ShoppingCartSlice';
+import { type CartItem } from '@/core/store/shoppingCartSlice';
 
 export type UpdateCartItem = <K extends keyof CartItem>(
     key: K,

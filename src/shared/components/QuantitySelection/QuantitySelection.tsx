@@ -2,7 +2,7 @@
 
 import { Flex, Group, NumberInput, Text } from '@mantine/core';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { useAppStore } from '@/core/store/store';
 import { Button } from '@/shared/components/Button';
 import type { SetState } from '@/shared/types/tsHelpersTypes';

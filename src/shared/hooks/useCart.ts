@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { useAppStore } from '@/core/store/store';
 
 export function useCart(item: CartItem) {

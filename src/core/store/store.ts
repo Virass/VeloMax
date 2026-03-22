@@ -3,6 +3,7 @@ import { devtools, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 import { createAppSlice, type AppSlice } from './app-store';
+import { type FavoritesSlice, createFavoritesSlice } from './favoritesSlice';
 import {
     createModalWindowSlice,
     type ModalWindowSlice,
@@ -10,12 +11,13 @@ import {
 import {
     createShoppingCartSlice,
     type ShoppingCartSlice,
-} from './ShoppingCartSlice';
+} from './shoppingCartSlice';
 
 export type StoreType = {
     app: AppSlice;
     modalWindow: ModalWindowSlice;
     shoppingCart: ShoppingCartSlice;
+    favorites: FavoritesSlice;
 };
 export type StoreStateType<T> = StateCreator<
     StoreType,
@@ -36,18 +38,26 @@ export const store = createStore<StoreType>()(
                     app: createAppSlice(...args),
                     modalWindow: createModalWindowSlice(...args),
                     shoppingCart: createShoppingCartSlice(...args),
+                    favorites: createFavoritesSlice(...args),
                 }),
                 { enabled: true, name: 'VeloMax Store' }
             )
         ),
         {
             name: 'velomax-storage',
-            partialize: (state) => ({ shoppingCart: state.shoppingCart }),
+            partialize: (state) => ({
+                shoppingCart: state.shoppingCart,
+                favorites: state.favorites,
+            }),
             merge: (persistedState, currentState) => ({
                 ...currentState,
                 shoppingCart: {
                     ...currentState.shoppingCart,
                     ...(persistedState as any).shoppingCart,
+                },
+                favorites: {
+                    ...currentState.favorites,
+                    ...(persistedState as any).favorites,
                 },
             }),
         }

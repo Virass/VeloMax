@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Box, Flex, Stack, Title } from '@mantine/core';
 import Link from 'next/link';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { Button } from '@/shared/components/Button';
 import { QuantitySelection } from '@/shared/components/QuantitySelection';
 import { website } from '@/shared/constants/urls';

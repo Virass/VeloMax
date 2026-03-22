@@ -1,10 +1,11 @@
 'use client';
 
-import { Text, type ButtonProps } from '@mantine/core';
+import { Group, Text, type ButtonProps } from '@mantine/core';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { useAppStore } from '@/core/store/store';
 
+import AddToFavoritesButton from './AddToFavoritesButton';
 import { Button } from './Button';
 import { ClientOnly } from './ClientOnly';
 import type { Product } from '../types/productType';
@@ -35,8 +36,6 @@ export default function AddToCartButton({
         if (!cartItem) {
             const newItem = { ...product, quantity: 1 };
 
-            console.log(newItem, 'This item was added!');
-
             addItem(newItem);
 
             return;
@@ -51,20 +50,24 @@ export default function AddToCartButton({
 
     return (
         <ClientOnly>
-            <Button
-                bdrs="32px"
-                bg={`gray.${availability ? '9' : '2'}`}
-                disabled={!availability}
-                c={availability ? 'white' : 'gray.5'}
-                w="100%"
-                size="lg"
-                onClick={toggle}
-                {...rest}
-            >
-                <Text size="18px">
-                    {isInCart ? 'Видалити з кошика' : 'Додати до кошика'}
-                </Text>
-            </Button>
+            <Group gap="lg">
+                <Button
+                    bdrs="32px"
+                    bg={`gray.${availability ? '9' : '2'}`}
+                    disabled={!availability}
+                    c={availability ? 'white' : 'gray.5'}
+                    style={{ flex: 1 }}
+                    size="lg"
+                    onClick={toggle}
+                    {...rest}
+                >
+                    <Text size="16px">
+                        {isInCart ? 'Видалити з кошика' : 'Додати до кошика'}
+                    </Text>
+                </Button>
+
+                <AddToFavoritesButton product={product} />
+            </Group>
         </ClientOnly>
     );
 }

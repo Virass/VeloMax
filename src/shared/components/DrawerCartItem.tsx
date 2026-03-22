@@ -3,7 +3,7 @@
 import { Group, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { useAppStore } from '@/core/store/store';
 
 import { Button } from './Button';

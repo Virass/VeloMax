@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type { OpenModalPayload } from '@/core/store/modalWindowSlice';
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import { useAppStore } from '@/core/store/store';
 import { Price } from '@/features/website/Product/Price';
 import EditCartItemContent from '@/features/website/ShoppingCart/EditCartItemContent';

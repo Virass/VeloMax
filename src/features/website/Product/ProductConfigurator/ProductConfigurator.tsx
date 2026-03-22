@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Box, Group, Stack } from '@mantine/core';
 
-import type { CartItem } from '@/core/store/ShoppingCartSlice';
+import type { CartItem } from '@/core/store/shoppingCartSlice';
 import AddToCartButton from '@/shared/components/AddToCartButton';
 import QuantitySelection from '@/shared/components/QuantitySelection/QuantitySelection';
 import type { Product } from '@/shared/types/productType';

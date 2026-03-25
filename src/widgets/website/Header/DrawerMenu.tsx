@@ -1,18 +1,20 @@
 'use client';
 
-import { Stack, Text } from '@mantine/core';
-import {} from '@mantine/hooks';
+import { NavLink, Stack, Text } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Phones } from '@/shared/components/Phones';
 import PopUpShell from '@/shared/components/PopUpShell/PopUpShell';
 import { HEADER_NAV_LINKS } from '@/shared/constants/urls';
+import { getAccountMenuItems } from '@/shared/lib/getAccountMenuItems';
 
 type Props = { opened: boolean; onClose: () => void };
 
 export const DrawerMenu = ({ opened, onClose }: Props) => {
     const pathname = usePathname();
+
+    const accountMenuItems = getAccountMenuItems(true);
 
     return (
         <PopUpShell isOpened={opened} close={onClose} centeredContent>
@@ -48,6 +50,19 @@ export const DrawerMenu = ({ opened, onClose }: Props) => {
                 ))}
 
                 <Phones align="center" iconSize={24} />
+
+                <Stack gap="xs">
+                    {accountMenuItems.map((item) => (
+                        <NavLink
+                            key={item.label}
+                            component={Link}
+                            href={item.link as string}
+                            label={item.label}
+                            leftSection={item.icon}
+                            onClick={onClose}
+                        />
+                    ))}
+                </Stack>
             </Stack>
         </PopUpShell>
     );

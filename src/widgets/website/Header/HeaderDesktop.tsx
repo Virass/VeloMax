@@ -128,6 +128,7 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                         <Menu
                             items={getAccountMenuItems(false)}
                             targetButton={<Box>{PROFILE.icon}</Box>}
+                            position="bottom-end"
                         />
                     </Group>
                 </Group>

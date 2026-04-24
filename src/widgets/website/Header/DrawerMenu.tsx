@@ -14,7 +14,7 @@ type Props = { opened: boolean; onClose: () => void };
 export const DrawerMenu = ({ opened, onClose }: Props) => {
     const pathname = usePathname();
 
-    const accountMenuItems = getAccountMenuItems(true);
+    const accountMenuItems = getAccountMenuItems(false);
 
     return (
         <PopUpShell isOpened={opened} close={onClose} centeredContent>

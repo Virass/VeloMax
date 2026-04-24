@@ -9,13 +9,14 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useAppStore } from '@/core/store/store';
 import { CartDrawerContent } from '@/features/website/CartDrawerContent';
 import Drawer from '@/shared/components/Drawer';
+import Menu from '@/shared/components/Menu';
 import { HEADER_NAV_LINKS, website } from '@/shared/constants/urls';
+import { getAccountMenuItems } from '@/shared/lib/getAccountMenuItems';
 import { UserIcon } from '@/shared/ui/icons/UserIcon';
 
 import GoToCart from './GoToCart';
@@ -124,25 +125,11 @@ export const HeaderDesktop = ({ visibleFrom }: HeaderDesktopProps) => {
                         )}
 
                         <GoToCart openDrawer={open} />
-
-                        <Link
-                            href={PROFILE?.href || '/profile'}
-                            style={{
-                                textDecoration: 'none',
-                                display: 'flex',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Box
-                                component="span"
-                                fw={pathname === PROFILE.href ? 600 : 400}
-                                c="var(--mantine-color-black)"
-                                tt="capitalize"
-                                className={styles.linkText}
-                            >
-                                {PROFILE.icon}
-                            </Box>
-                        </Link>
+                        <Menu
+                            items={getAccountMenuItems(false)}
+                            targetButton={<Box>{PROFILE.icon}</Box>}
+                            position="bottom-end"
+                        />
                     </Group>
                 </Group>
             </Group>

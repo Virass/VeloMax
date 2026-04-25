@@ -5,13 +5,17 @@ import {
     type Control,
     type FieldValues,
     type Path,
-    type PathValue,
     Controller,
 } from 'react-hook-form';
 
 import type { ValidationType } from '../types/adminFormTypes';
 
-type InputProps<T extends FieldValues> = ControllerRenderProps<T> & {
+// Change: Allow value to be any of the types a form field can hold
+type InputProps<T extends FieldValues> = Omit<
+    ControllerRenderProps<T>,
+    'value'
+> & {
+    value: any;
     error?: string;
     labelPosition?: 'left' | 'right';
 };
@@ -20,8 +24,11 @@ interface Props<T extends FieldValues, ExtraProps> {
     name: Path<T>;
     control: Control<T>;
     validation?: ValidationType<T>;
+    // Change: Use the modified InputProps
     Input: ComponentType<InputProps<T> & ExtraProps>;
     inputProps?: ExtraProps;
+    // Addition: Allow passing a custom defaultValue (e.g. false for checkboxes)
+    defaultValue?: any;
 }
 
 export default function ControlledInput<T extends FieldValues, ExtraProps>({
@@ -30,13 +37,15 @@ export default function ControlledInput<T extends FieldValues, ExtraProps>({
     validation,
     Input,
     inputProps,
+    defaultValue,
 }: Props<T, ExtraProps>) {
     return (
         <Controller
             name={name}
             control={control}
             rules={validation}
-            defaultValue={'' as PathValue<T, Path<T>>}
+            // Change: Use the passed defaultValue or let the useForm defaultValues handle it
+            defaultValue={defaultValue}
             render={({ field, fieldState }) => (
                 <Input
                     {...field}

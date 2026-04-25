@@ -22,6 +22,7 @@ export function Input({
     size = 'sm',
     width = '100%',
     rounded = false,
+    value = 'string',
     ...rest
 }: Props) {
     return (
@@ -30,6 +31,7 @@ export function Input({
             w={width}
             radius={rounded ? 'xl' : 'sm'}
             leftSection={leftIcon}
+            value={value}
             rightSection={rightIcon}
             {...rest}
         />

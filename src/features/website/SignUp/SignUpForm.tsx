@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/shared/components/Button';
 import ControlledInput from '@/shared/components/ControlledInput';
 import { Input } from '@/shared/components/Input';
+import PasswordStrengthIndicator from '@/shared/components/PasswordStrengthIndicator';
 
 interface SignUpFormValues {
     firstName: string;
@@ -120,26 +121,30 @@ export default function SignUpForm() {
                         }}
                     />
 
-                    <ControlledInput
-                        name="password"
-                        control={control}
-                        Input={Input}
-                        inputProps={{
-                            label: 'Пароль',
-                            placeholder: 'Пароль',
-                            required: true,
-                            styles: labelStyle,
-                            type: 'password',
-                        }}
-                        validation={{
-                            required: "Поле Пароль Обов'язкове",
-                            minLength: {
-                                value: 6,
-                                message:
-                                    'Пароль має містити мінімум 6 символів',
-                            },
-                        }}
-                    />
+                    <Stack gap="0">
+                        <ControlledInput
+                            name="password"
+                            control={control}
+                            Input={Input}
+                            inputProps={{
+                                label: 'Пароль',
+                                placeholder: 'Пароль',
+                                required: true,
+                                styles: labelStyle,
+                                type: 'password',
+                            }}
+                            validation={{
+                                required: "Поле Пароль Обов'язкове",
+                                minLength: {
+                                    value: 6,
+                                    message:
+                                        'Пароль має містити мінімум 6 символів',
+                                },
+                            }}
+                        />
+
+                        <PasswordStrengthIndicator passwordValue={password} />
+                    </Stack>
 
                     <ControlledInput
                         name="confirmPassword"
